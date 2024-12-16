@@ -16,7 +16,7 @@
             </div>
             <div class="col-lg-6">
                 <ol class="breadcrumb pull-right">
-                    <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
+                    <li class="breadcrumb-item"><a href=""><i data-feather="home"></i></a></li>
                     <li class="breadcrumb-item active">Dashboard</li>
                 </ol>
             </div>
@@ -24,7 +24,6 @@
     </div>
 </div>
 <!-- Container-fluid Ends-->
-
 <!-- Container-fluid starts-->
 <div class="container-fluid">
     <div class="row">

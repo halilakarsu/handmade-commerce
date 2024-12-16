@@ -3,10 +3,10 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6 footer-copyright">
-                <p class="mb-0">Copyright 2019 © Bigdeal All rights reserved.</p>
+                <p class="mb-0">Copyright 2025 © letyazilim.com Tüm Hakları Saklıdır.</p>
             </div>
             <div class="col-md-6">
-                <p class="pull-right mb-0">Hand crafted & made with<i class="fa fa-heart"></i></p>
+                <p class="pull-right mb-0">halilakarsu tarafindan hazirlanmıştır.<i class="fa fa-heart"></i></p>
             </div>
         </div>
     </div>
@@ -18,6 +18,7 @@
 
 <!-- latest jquery-->
 <script src="/backend/assets/js/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jqueryui@1.11.1/jquery-ui.min.js"></script>
 
 <!-- Bootstrap js-->
 <script src="/backend/assets/js/popper.min.js"></script>
@@ -67,7 +68,8 @@
 <script src="/backend/assets/js/chart/flot-chart/jquery.flot.pie.js"></script>
 <!--dashboard custom js-->
 <script src="/backend/assets/js/dashboard/default.js"></script>
-
+<script src="/backend/assets/js/datatables/jquery.dataTables.min.js"></script>
+<script src="/backend/assets/js/datatables/custom-basic.js"></script>
 <!--right sidebar js-->
 <script src="/backend/assets/js/chat-menu.js"></script>
 

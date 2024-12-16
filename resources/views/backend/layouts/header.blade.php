@@ -39,6 +39,7 @@
 
     <!-- App css-->
     <link rel="stylesheet" type="text/css" href="/backend/assets/css/admin.css">
+    <link rel="stylesheet" type="text/css" href="/backend/assets/css/datatables.css">
 </head>
 
 <body>
