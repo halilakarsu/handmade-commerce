@@ -73,7 +73,7 @@
                 <li><a class="sidebar-header" href="reports.html"><i data-feather="bar-chart"></i><span>Raporlar</span></a></li>
                 <li><a class="sidebar-header" href=""><i data-feather="settings" ></i><span>Ayarlar</span><i class="fa fa-angle-right pull-right"></i></a>
                     <ul class="sidebar-submenu">
-                        <li><a href="{{route('backend.settings')}}"><i class="fa fa-circle"></i>Genel Ayarlar</a></li>
+                        <li><a href="{{route('settings.index')}}"><i class="fa fa-circle"></i>Genel Ayarlar</a></li>
                         <li><a href="profile.html"><i class="fa fa-circle"></i>Profil</a></li>
                     </ul>
                 </li>

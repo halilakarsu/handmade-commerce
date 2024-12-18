@@ -17,8 +17,20 @@
 </div>
 
 <!-- latest jquery-->
-<script src="/backend/assets/js/jquery-3.3.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jqueryui@1.11.1/jquery-ui.min.js"></script>
+<!-- jquery vendor -->
+@if(session()->has('success'))
+    <script>alertify.success('{{session('success')}}')</script>
+@endif
+@if(session()->has('error'))
+    <script>alertify.success('{{session('success')}}')</script>
+@endif
+@foreach($errors->all() as $error)
+<script>
+    alertify.error('{{$error}}');
+</script>
+
+@endforeach
+<script src="/backend/assets/js/scripts.js"></script>
 
 <!-- Bootstrap js-->
 <script src="/backend/assets/js/popper.min.js"></script>
@@ -81,6 +93,6 @@
 
 <!--script admin-->
 <script src="/backend/assets/js/admin-script.js"></script>
-
+@yield('js')
 </body>
 </html>

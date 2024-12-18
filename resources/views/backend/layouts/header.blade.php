@@ -1,49 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{csrf_token()}}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Bigdeal admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
-    <meta name="keywords" content="admin template, Bigdeal admin template, dashboard template, flat admin template, responsive admin template, web app">
-    <meta name="author" content="pixelstrap">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="halilakarsu">
+    <!-- JavaScript -->
+    <script src="/backend/assets/js/jquery.min.js"></script>
+    <!-- sidebar -->
+    <script src="/backend/assets/js/jquery-ui/jquery-ui.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/default.min.css"/>
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/semantic.min.css"/>
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/bootstrap.min.css"/>
     <link rel="icon" href="/backend/assets/images/favicon/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="/backend/assets/images/favicon/favicon.png" type="image/x-icon">
     <title>@yield('title')</title>
-
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
     <!-- Font Awesome-->
     <link rel="stylesheet" type="text/css" href="/backend/assets/css/font-awesome.css">
-
     <!-- Flag icon-->
     <link rel="stylesheet" type="text/css" href="/backend/assets/css/flag-icon.css">
-
+    <link rel="stylesheet" type="text/css" href="/backend/assets/custom/custom.css">
     <!-- ico-font-->
     <link rel="stylesheet" type="text/css" href="/backend/assets/css/icofont.css">
-
     <!-- Prism css-->
     <link rel="stylesheet" type="text/css" href="/backend/assets/css/prism.css">
-
     <!-- Chartist css -->
     <link rel="stylesheet" type="text/css" href="/backend/assets/css/chartist.css">
-
     <!-- vector map css -->
     <link rel="stylesheet" type="text/css" href="/backend/assets/css/vector-map.css">
-
     <!-- Bootstrap css-->
     <link rel="stylesheet" type="text/css" href="/backend/assets/css/bootstrap.css">
-
     <!-- App css-->
     <link rel="stylesheet" type="text/css" href="/backend/assets/css/admin.css">
     <link rel="stylesheet" type="text/css" href="/backend/assets/css/datatables.css">
 </head>
-
 <body>
-
 <!-- page-wrapper Start-->
 <div class="page-wrapper">
     <!-- Page Header Start-->
