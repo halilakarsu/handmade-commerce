@@ -13,7 +13,6 @@ class SettingsController extends Controller
         $settings=Settings::all()->sortBy('settings_must');
         return view('backend.settings.index',compact('settings'));
     }
-
     public function sortable(){
     foreach($_POST['item'] as $key=>$value)
     {
@@ -39,13 +38,22 @@ class SettingsController extends Controller
         $request->validate([
           'settings_value'=>'required|image|mimes:jpg,jpeg,png|max:2048'
         ]);
+        $file_name='image'.rand(1,3000).'.'.$request->settings_value->getClientOriginalExtension();
+        $request->settings_value->move(public_path('backend/images/settings'),$file_name);
+        $request->settings_value=$file_name;
         $updateSetinngs=Settings::where('id',$id)->update(
             [
                 'settings_value'=>$request->settings_value
             ]
         );
-        if($updateSetinngs){
-            return back()->with('success',"Düzenleme İşlemi Başarılıl");
+             if($updateSetinngs){
+
+                 $path='backend/images/settings/'.$request->oldFile;
+                if(file_exists($path)){
+                    @unlink(public_path($path));
+                }
+
+            return back()->with('success',"Düzenleme İşlemi Başarılı");
         }
         return back()->with("error","düzenleme işlemi başarısız");
     }

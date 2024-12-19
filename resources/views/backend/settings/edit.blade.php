@@ -38,9 +38,15 @@
                                         <label><b>{{ucwords($editSettings->settings_description)}}</b></label>
                                     </div>
                                     @if($editSettings->settings_type=='file')
-                                    <div class="col-md-8">
+                                        <div class="col-md-12">
+                                         <img width="150px" src="/backend/images/settings/{{$editSettings->settings_value}}">
+                                        </div>
+
+                                    <div class="col-md-8 mt-3">
                                         <input class="form-control" name="settings_value" type="file" required="">
                                     </div>
+
+
                                     @endif
                                     @if($editSettings->settings_type=='text')
                                         <div class="col-md-8">
@@ -53,7 +59,7 @@
                                         </div>
                                     @endif
                                 </div>
-
+                                <input name="oldFile" type="hidden" value="{{$editSettings->settings_value}}">
                                 <button type="submit"  class="btn btn-primary d-block">Güncelle</button>
 
                             </form>

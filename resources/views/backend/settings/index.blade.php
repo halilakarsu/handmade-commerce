@@ -41,7 +41,15 @@
                         @foreach($settings as $item)
                         <tr id="item-{{$item->id}}">
                             <td class="sortable">{{$item->settings_description}}</td>
+
+                            @if($item->settings_type=='file')
+                                <td>
+                                <img width="30px" src="/backend/images/settings/{{$item->settings_value}}">
+                                </td>
+                            @else
+
                             <td>{{$item->settings_value}}</td>
+                            @endif
                                    <td>
                                 <div>
                                     <a href="{{route('settings.edit',['id'=>$item->id])}}">
