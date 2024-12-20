@@ -8,16 +8,16 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="page-header-left">
-                            <h3>Sİte Ayarları
-                                <small>Genel Ayarlar</small>
+                            <h3>Ürün İşlemleri
+                                <small>Kategori Ayarları</small>
                             </h3>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <ol class="breadcrumb pull-right">
                             <li class="breadcrumb-item"><a href="{{route('backend.home')}}"><i data-feather="home"></i></a></li>
-                            <li class="breadcrumb-item">Ayarlar</li>
-                            <li class="breadcrumb-item active">Genel Ayarlar</li>
+                            <li class="breadcrumb-item">Kategoriler</li>
+                            <li class="breadcrumb-item active">Kategori Ayarları</li>
                         </ol>
                     </div>
                 </div>
@@ -32,31 +32,31 @@
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th>Açıklama</th>
-                            <th>İçerik</th>
+                            <th>Görsel</th>
+                            <th>Kategori</th>
+                            <th>Durum</th>
                             <th></th>
                             </tr>
                         </thead>
                         <tbody id="sortable">
-                        @foreach($settings as $item)
+                        @foreach($categories as $item)
                         <tr id="item-{{$item->id}}">
-                            <td class="sortable">{{$item->settings_description}}</td>
+                            <td class="sortable">{{$item->categori_description}}</td>
 
-                            @if($item->settings_type=='file')
+                            @if($item->categori_type=='file')
                                 <td>
-                                <img width="30px" src="/backend/images/settings/{{$item->settings_value}}">
+                                <img width="30px" src="/backend/images/categories/{{$item->categori_value}}">
                                 </td>
                             @else
 
-                            <td>{{$item->settings_value}}</td>
+                            <td>{{$item->categori_value}}</td>
                             @endif
                                    <td>
                                 <div>
-                                    <a href="{{route('settings.edit',['id'=>$item->id])}}">
+                                    <a href="{{route('categories.edit',['id'=>$item->id])}}">
                                     <i class="fa fa-edit me-2 font-success"></i></a>
-                                    @if($item->settings_delete)
-                                    <i id="{{$item->id}}" class="fa fa-trash font-danger"></i>
-                                     @endif
+                                     <i id="{{$item->id}}" class="fa fa-trash font-danger"></i>
+
                                 </div>
                             </td>
                         </tr>
@@ -85,7 +85,7 @@
                     $.ajax({
                         type: "POST",
                         data: data,
-                        url: "{{ route('settings.sortable') }}",
+                        url: "{{ route('categories.sortable') }}",
                         success: function(msg) {
                             if (msg) {
                                 alertify.success("Sıralama Değişti");
@@ -103,7 +103,7 @@
            delete_id=$(this).attr('id');
            alertify.confirm('Silme İşlemini Onaylayın','Bu işlem bir daha geri alınamaz.',
                function (){
-               location.href="/letmin/ayarlar/delete/"+delete_id;
+               location.href="/letmin/kategoriler/delete/"+delete_id;
             },
             function (){
             alertify.error('Silme işlemi iptal edildi')

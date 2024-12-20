@@ -3,16 +3,17 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Categories;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        //
+
+        $categories=Categories::all();
+        return view('backend.categories.index')->with('categories',$categories);
     }
 
     /**

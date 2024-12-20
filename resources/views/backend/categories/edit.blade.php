@@ -1,5 +1,5 @@
 @extends('backend.layouts.index')'
-@section('title','Ayarlar Sayfası')
+@section('title','Kategoriler')
 @section('content')
     <div class="page-body">
 
@@ -9,16 +9,16 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="page-header-left">
-                            <h3>Sİte Ayarları
-                                <small>Genel Ayarlar</small>
+                            <h3>Ürün İşlemleri
+                                <small>Kategori Ayarları</small>
                             </h3>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <ol class="breadcrumb pull-right">
                             <li class="breadcrumb-item"><a href="{{route('backend.home')}}"><i data-feather="home"></i></a></li>
-                            <li class="breadcrumb-item">Ayarlar</li>
-                            <li class="breadcrumb-item active">Genel Ayarlar</li>
+                            <li class="breadcrumb-item">Ürün İşlemleri</li>
+                            <li class="breadcrumb-item active">Kategoriler</li>
                         </ol>
                     </div>
                 </div>
@@ -29,37 +29,24 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card">
-                        <a href="{{route('settings.index')}}" type="submit"  class="btn btn-dark btn-xs col-md-1 "><-Geri Dön</a>
+                        <a href="{{route('categories.index')}}" type="submit"  class="btn btn-dark btn-xs col-md-1 "><-Geri Dön</a>
                         <div class="card-body">
-                            <form action="{{route('settings.update',['id'=>$editSettings->id])}}" method="post" enctype="multipart/form-data">
+                            <form action="{{route('categories.update',['id'=>$editCategori->id])}}" method="post" enctype="multipart/form-data">
                                 <div class="form-group row">
                                     @csrf
-                                    <div class="col-xl-3 col-md-4 ">
-                                        <label><b>{{ucwords($editSettings->settings_description)}}</b></label>
-                                    </div>
-                                    @if($editSettings->settings_type=='file')
+
+
                                         <div class="col-md-12">
-                                         <img width="150px" src="/backend/images/settings/{{$editSettings->settings_value}}">
+                                         <img width="150px" src="/backend/images/categories/{{$editCategories->categori_value}}">
                                         </div>
-
-                                    <div class="col-md-8 mt-3">
-                                        <input class="form-control" name="settings_value" type="file" required="">
+                                    <div class="col-xl-3 col-md-4 ">
+                                        <label><b>Kategori Adı</b></label>
                                     </div>
-
-
-                                    @endif
-                                    @if($editSettings->settings_type=='text')
-                                        <div class="col-md-8">
-                                            <input class="form-control"  name="settings_value" type="text" required="" value="{{$editSettings->settings_value}}">
-                                        </div>
-                                    @endif
-                                    @if($editSettings->settings_type=='textarea')
-                                        <div class="col-md-8">
-                                      <textarea required id="editor1" name="settings_value" cols="10" rows="4">{{$editSettings->settings_value}}</textarea>
-                                        </div>
-                                    @endif
+                                    <div class="col-md-8 mt-3">
+                                        <input class="form-control" name="categori_value" type="file" required="">
+                                    </div>
                                 </div>
-                                <input name="oldFile" type="hidden" value="{{$editSettings->settings_value}}">
+                                <input name="oldFile" type="hidden" value="{{$editCategories->categori_value}}">
                                 <button type="submit"  class="btn btn-primary d-block">Güncelle</button>
 
                             </form>

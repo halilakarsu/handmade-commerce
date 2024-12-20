@@ -11,7 +11,9 @@ Route::prefix('letmin')->group(function(){
     Route::get('ayarlar/edit/{id}',[SettingsController::class,'edit'])->name('settings.edit');
     Route::post('ayarlar/update/{id}',[SettingsController::class,'update'])->name('settings.update');
 });
-
 Route::prefix('letmin')->group(function(){
-Route::resource('categories',[CategoriesController::class]);
+    Route::resource('kategoriler', CategoriesController::class);
+    Route::post('sortable',[CategoriesController::class,'sortable'])->name('categories.sortable');
 });
+
+
