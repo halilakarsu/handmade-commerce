@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Models\Categories;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoriesController extends Controller
 {
@@ -12,8 +13,8 @@ class CategoriesController extends Controller
     public function index()
     {
 
-        $categories=Categories::all();
-        return view('backend.categories.index')->with('categories',$categories);
+        $categories = Categories::all()->sortBy('categori_must');
+        return view('backend.categories.index')->with('categories', $categories);
     }
 
     /**
@@ -21,7 +22,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.categories.create');
     }
 
     /**
@@ -29,7 +30,32 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(strlen($request->categori_slug>3)){
+            $slug=Str::slug($request->categori_slug);
+        }
+        else{
+            $slug=Str::slug($request->categori_title);
+        }
+        if($request->hasFile('categori_file')){
+           $request->validate([
+               'categori_file'=>'required|image|mimes:jpg,jpeg,png|max:2048',
+               'categori_title'=>'required',
+               'categori_description'=>'required'
+           ]);
+        }
+        $file_name='image'.rand(1,2000).'.'.$request->categori_file->getClientOriginalExtension();
+        $request->categori_file->move(public_path('backend/images/categories'),$file_name);
+            $categories=Categories::insert([
+            "categori_title"=>$request->categori_title,
+            "categori_slug"=>$slug,
+            "categori_file"=>$file_name,
+            "categori_description"=>$request->categori_description,
+            "categori_status"=>$request->categori_status
+        ]);
+            if($categories){
+             return redirect(route('categories.index'))->with('success','İşlem Başarılı');
+            }
+            return back();
     }
 
     /**
@@ -43,24 +69,82 @@ class CategoriesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $categories=Categories::where('id',$id)->first();
+        return view('backend.categories.edit',compact('categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request,$id)
     {
-        //
+            if(strlen($request->categori_slug>3))
+            {
+            $slug=Str::slug($request->categori_slug);
+        }
+        else{
+            $slug=Str::slug($request->categori_title);
+        }
+        $request->validate([
+            'categori_title'=>'required',
+            'categori_description'=>'required'
+        ]);
+        if($request->hasFile('categori_file')){
+            $request->validate(['categori_file'=>'required|image|mimes:jpg,jpeg,png|max:2048']);
+            $file_name='image'.rand(1,2000).'.'.$request->categori_file->getClientOriginalExtension();
+            $request->categori_file->move(public_path('backend/images/categories'),$file_name);
+            $categories=Categories::where('id',$id)->update([
+                "categori_title"=>$request->categori_title,
+                "categori_slug"=>$slug,
+                "categori_file"=>$file_name,
+                "categori_description"=>$request->categori_description,
+                "categori_status"=>$request->categori_status
+            ]);
+        } else {
+            $categories=Categories::where('id',$id)->update([
+                "categori_title"=>$request->categori_title,
+                "categori_slug"=>$slug,
+                "categori_description"=>$request->categori_description,
+                "categori_status"=>$request->categori_status
+            ]);
+
+        }
+
+        if($categories){
+            $path='backend/images/categories/'.$request->oldFile;
+            if(file_exists($path)){
+                @unlink(public_path($path));
+            }
+            return redirect(route('categories.index'))->with('success','İşlem Başarılı');
+        }
+        return back();
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $destroyCategori=Categories::find(intval($id));
+        if($destroyCategori->delete())
+        {
+         echo 1;
+        }
+        else {
+        echo 0;
+        }
+    }
+
+    public function sortable()
+    {
+        foreach ($_POST['item'] as $key => $value) {
+            $categories = Categories::find(intval($value));
+            $categories->categori_must = intval($key);
+            $categories->save();
+        }
+        return true;
     }
 }

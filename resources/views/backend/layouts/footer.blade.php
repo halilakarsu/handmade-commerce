@@ -93,6 +93,9 @@
 
 <!--script admin-->
 <script src="/backend/assets/js/admin-script.js"></script>
+<script src="/backend/assets/js/jsgrid/jsgrid.min.js"></script>
+<script src="/backend/assets/js/jsgrid/griddata-manage-product.js"></script>
+<script src="/backend/assets/js/jsgrid/jsgrid-manage-product.js"></script>
 @yield('js')
 </body>
 </html>

@@ -34,7 +34,7 @@
     db.clients = [
         {
             "Image": "../assets/images/digital-product/logo.jpg",
-            "Name": "Logo Design",
+            "Name": "Denerem",
             "Price": "$74.00",
             "Status": "<i class=\"fa fa-circle font-warning f-12\"></i>",
             "Sub Category": "Digital",

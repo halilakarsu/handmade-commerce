@@ -1,5 +1,5 @@
 @extends('backend.layouts.index')'
-@section('title','Ayarlar Sayfası')
+@section('title','Kategoriler Sayfası')
 @section('content')
     <div class="page-body">
         <!-- Container-fluid starts-->
@@ -8,9 +8,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="page-header-left">
-                            <h3>Ürün İşlemleri
-                                <small>Kategori Ayarları</small>
-                            </h3>
+                            <h3 style="text-transform:none">Kategori İşlemleri </h3>
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -29,6 +27,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body vendor-table">
+                    <a href="{{route('categories.create')}}" class="btn btn-success">+ Ekle</a>
                     <table class="table table-striped">
                         <thead>
                         <tr>
@@ -41,19 +40,14 @@
                         <tbody id="sortable">
                         @foreach($categories as $item)
                         <tr id="item-{{$item->id}}">
-                            <td class="sortable">{{$item->categori_description}}</td>
-
-                            @if($item->categori_type=='file')
-                                <td>
-                                <img width="30px" src="/backend/images/categories/{{$item->categori_value}}">
-                                </td>
-                            @else
-
-                            <td>{{$item->categori_value}}</td>
-                            @endif
-                                   <td>
+                              <td  class="sortable">
+                                <img width="90px" src="/backend/images/categories/{{$item->categori_file}}">
+                            </td>
+                            <td>{{$item->categori_title}}</td>
+                            <td >{{$item->categori_status}}</td>
+                              <td>
                                 <div>
-                                    <a href="{{route('categories.edit',['id'=>$item->id])}}">
+                                    <a href="{{ route('categories.edit', $item->id)}}">
                                     <i class="fa fa-edit me-2 font-success"></i></a>
                                      <i id="{{$item->id}}" class="fa fa-trash font-danger"></i>
 
@@ -63,10 +57,12 @@
                         @endforeach
                         </tbody>
                     </table>
+
                 </div>
             </div>
         </div>
-        <!-- Container-fluid Ends-->
+
+
     </div>
     <script type="text/javascript">
         $(document).ready(function() {
@@ -103,7 +99,19 @@
            delete_id=$(this).attr('id');
            alertify.confirm('Silme İşlemini Onaylayın','Bu işlem bir daha geri alınamaz.',
                function (){
-               location.href="/letmin/kategoriler/delete/"+delete_id;
+               $.ajax({
+                   type:"DELETE",
+                   url:"categories/"+delete_id,
+                   success:function(msg) {
+                       if (msg) {
+                           $("#item-"+delete_id).remove();
+                           alertify.success("Silme İşlemi Başarılı");
+                       } else {
+                           alertify.error("Silme İşlemi Başarısız");
+                       }
+                   }
+               });
+
             },
             function (){
             alertify.error('Silme işlemi iptal edildi')

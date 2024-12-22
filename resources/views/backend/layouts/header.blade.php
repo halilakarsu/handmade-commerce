@@ -45,6 +45,7 @@
     <!-- App css-->
     <link rel="stylesheet" type="text/css" href="/backend/assets/css/admin.css">
     <link rel="stylesheet" type="text/css" href="/backend/assets/css/datatables.css">
+    <link rel="stylesheet" type="text/css" href="/backend/assets/css/jsgrid.css">
 </head>
 <body>
 <!-- page-wrapper Start-->
