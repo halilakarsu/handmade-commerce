@@ -11,7 +11,7 @@ class SlidersController extends Controller
 {
 
     public function index()
-    {
+    {    $sliders=Sliders::all()->sortBy('slider_must');
          return view('backend.sliders.index')->with('sliders', $sliders);
     }
 
@@ -113,7 +113,7 @@ class SlidersController extends Controller
             }
             return redirect(route('sliders.index'))->with('success','İşlem Başarılı');
         }
-        return back();
+        return back()->with('error','işlem başarısız');
     }
 
     public function destroy($id)

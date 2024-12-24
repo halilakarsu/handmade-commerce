@@ -10,7 +10,7 @@
                     <div class="col-lg-6">
                         <div class="page-header-left">
                             <h3 style="text-transform:none">Sayfa Ayarları
-                                <small><a href="{{route('types.index')}}"><- Geri Dön</a></small>
+                                <small><a href="{{route('pages.index')}}"><- Geri Dön</a></small>
                             </h3>
                         </div>
                     </div>
@@ -84,18 +84,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <div class="col-xl-3 col-sm-4 mb-0">
-                                                <label for="exampleFormControlSelect1" >Kategori :</label>
-                                            </div>
-                                            <div class="col-xl-8 col-sm-7">
-                                                <select class="form-control digits" name="page_categori_id" id="exampleFormControlSelect1">
-                                                    @foreach($types as $item)
-                                                     <option value="{{$item->id}}" >{{$item->type_title}}</option>
-                                                    @endforeach
-                                               </select>
-                                            </div>
-                                        </div>
+
                                         <input name="oldFile" type="hidden">
                                         <div class="form-group row">
                                             <label class="col-xl-3 col-sm-4">Açıklama :</label>

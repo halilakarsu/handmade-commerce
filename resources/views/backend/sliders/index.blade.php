@@ -32,7 +32,6 @@
                         <tr>
                             <th>Görsel</th>
                             <th>Slider Başlık 1</th>
-                            <th>Slider Başlık 2 </th>
                             <th>Durum</th>
                             <th></th>
                             </tr>
@@ -41,10 +40,15 @@
                         @foreach($sliders as $item)
                         <tr id="item-{{$item->id}}">
                               <td  class="sortable">
-                                <img width="90px" src="/backend/images/sliders/{{$item->type_file}}">
+                                <img width="90px" src="/backend/images/sliders/{{$item->slider_file}}">
                             </td>
-                            <td>{{$item->type_title}}</td>
-                            <td>{{$item->categories->categori_title }}</td>
+                            <td>{{$item->slider_title}}</td>
+                            <td ><div style="margin-left:-40px;margin-top:10px" class="form-check form-switch text-lg-left ">
+                                    <label class="custom-switch">
+                                        <input data-id="{{$item->id}}" type="checkbox" class="custom-switch-input" {{$item->slider_status==1 ? "checked": ""}}>
+                                        <span class="custom-switch-slider"></span>
+                                    </label>
+                                </div></td>
                               <td>
                                 <div>
                                     <a href="{{ route('sliders.edit', $item->id)}}">
@@ -94,6 +98,16 @@
             });
             // Seçimleri devre dışı bırak
             $('#sortable').disableSelection();
+        });
+        $(document).on('click', '.custom-switch-input', function() {
+            var itemId = $(this).data('id');
+            var switchStatus  = $(this).is(':checked') ? '1' : '0';
+
+            $.ajax({
+                type: "POST",
+                url: 'sliders/switch/' + itemId,
+                data: {sts: switchStatus}
+            });
         });
         $(".fa-trash").click(function(){
            delete_id=$(this).attr('id');

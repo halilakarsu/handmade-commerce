@@ -8,15 +8,15 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="page-header-left">
-                            <h3 style="text-transform:none">Alt Kategori Güncelle
-                                <small><a href="{{route('categories.index')}}"><- Geri Dön</a></small>
+                            <h3 style="text-transform:none">Kullanıcılar
+                                <small><a href="{{route('users.index')}}"><- Geri Dön</a></small>
                             </h3>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <ol class="breadcrumb pull-right">
                             <li class="breadcrumb-item"><a href="{{route('backend.home')}}"><i data-feather="home"></i></a></li>
-                            <li class="breadcrumb-item">Alt Kategoriler</li>
+                            <li class="breadcrumb-item">Kullanıcılar</li>
                             <li class="breadcrumb-item active">Güncelle</li>
                         </ol>
                     </div>
@@ -35,16 +35,16 @@
                                     <div class="row">
                                         <div class="col-xl-9 xl-50 col-sm-6 col-9">
                                             <h5 class="text-center">Yüklü Görsel</h5>
-                                            <img src="/backend/images/pages/{{$pages->page_file}}" alt="image-edit" class="img-fluid image_zoom_1 blur-up lazyloaded">
+                                            <img src="/backend/images/users/{{$users->user_file}}" alt="image-edit" class="img-fluid image_zoom_1 blur-up lazyloaded">
                                         </div>
-                                        <form method="POST" action="{{route('pages.update',$pages->id)}}" enctype="multipart/form-data">
+                                        <form method="POST" action="{{route('users.update',$users->id)}}" enctype="multipart/form-data">
                                             @method('PUT')
                                             @csrf
                                             <hr>
                                             <br>
                                             <h5>Görseli Değiştir</h5>
                                             <div class="col-xl-3 xl-50 col-sm-6 col-3">
-                                                <input class="form-control btn btn-primary col-3" name="page_file" type="file">
+                                                <input class="form-control btn btn-primary col-3" name="user_file" type="file">
                                         </div>
                                     </div>
                                 </div>
@@ -55,49 +55,64 @@
 
                                         <div class="form-group mb-3  row">
                                             <div class="col-xl-3 col-sm-4 mb-0">
-                                                <label for="validationCustom01" >Alt Kategori :</label>
+                                                <label for="validationCustom01" >Adı Soyadı :</label>
                                             </div>
                                             <div class="col-xl-8 col-sm-7">
-                                                <input class="form-control" id="validationCustom01" type="text" name="page_title"  value="{{$pages->page_title}}" required="">
+                                                <input class="form-control" id="validationCustom01" type="text" name="name"  value="{{$users->name}}" required="">
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-3  row">
+                                            <div class="col-xl-3 col-sm-4 mb-0">
+                                                <label for="validationCustom01" >E-mail Adresi :</label>
+                                            </div>
+                                            <div class="col-xl-8 col-sm-7">
+                                                <input class="form-control" id="validationCustom01" type="email" name="email"  value="{{$users->email}}" required="">
 
                                             </div>
                                         </div>
 
                                         <div class="form-group mb-3 row">
                                             <div class="col-xl-3 col-sm-4 mb-0">
-                                                <label for="validationCustom02" >Seo Link :</label>
+                                                <label for="validationCustom02" >Password :</label>
                                             </div>
                                             <div class="col-xl-8 col-sm-7">
-                                                <input name="page_slug" value="{{$pages->page_slug}}" class="form-control " id="validationCustom02" type="text" >
-
+                                                <input name="password"  class="form-control " id="validationCustom02" type="password">
+                                                <small>Şifreyi Değiştirmek istemiyorsanız boş bırakınız.</small>
                                             </div>
                                         </div>
 
                                     </div>
                                     <div class="form">
-
+                                        <div class="form-group row">
+                                            <div class="col-xl-3 col-sm-4 mb-0">
+                                                <label for="exampleFormControlSelect1" >Rol :</label>
+                                            </div>
+                                            <div class="col-xl-8 col-sm-7">
+                                                <select class="form-control digits" name="user_role" id="exampleFormControlSelect1">
+                                                    <option value="1" {{$users->user_role==1 ? "selected" : "" }}>Admin</option>
+                                                    <option value="0" {{$users->user_role==0 ? "selected" : "" }}>Kullanıcı</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div class="form-group row">
                                             <div class="col-xl-3 col-sm-4 mb-0">
                                                 <label for="exampleFormControlSelect1" >Durum :</label>
                                             </div>
                                             <div class="col-xl-8 col-sm-7">
-                                                <select class="form-control digits" name="page_status" id="exampleFormControlSelect1">
-                                                    <option value="1" {{$pages->page_status=="1" ? "selected" : "" }}>Aktif</option>
-                                                    <option value="0" {{$pages->page_status=="0" ? "selected" : "" }}>Pasif</option>
+                                                <select class="form-control digits" name="user_status" id="exampleFormControlSelect1">
+                                                    <option value="1" {{$users->user_status=="1" ? "selected" : "" }}>Aktif</option>
+                                                    <option value="0" {{$users->user_status=="0" ? "selected" : "" }}>Pasif</option>
                                                 </select>
                                             </div>
                                         </div>
-                                        <input name="oldFile" type="hidden" value="{{$pages->page_file}}">
-                                        <div class="form-group row">
-                                            <label class="col-xl-3 col-sm-4">Açıklama :</label>
-                                            <div class="col-xl-8 col-sm-7 pl-0 description-sm">
-                                                <textarea name="page_description" id="editor1"  cols="10" rows="4">{{$pages->page_description}}</textarea>
-                                            </div>
-                                        </div>
+
+                                        <input name="oldFile" type="hidden" value="{{$users->user_file}}">
+
                                     </div>
                                     <div class="offset-xl-3 offset-sm-4">
                                         <button type="submit" class="btn btn-primary">Güncelle</button>
-                                        <a href="{{route('categories.index')}}" type="button" class="btn btn-light">Vazgeç</a>
+                                        <a href="{{route('users.index')}}" type="button" class="btn btn-light">Vazgeç</a>
                                     </div>
                                 </form>
                             </div>

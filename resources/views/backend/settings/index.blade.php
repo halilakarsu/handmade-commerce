@@ -9,7 +9,7 @@
                     <div class="col-lg-6">
                         <div class="page-header-left">
                             <h3>Sİte Ayarları</h3>
-                                <small><a href="{{route('home.index')}}"><- Geri Dön</a></small>
+                                <small><a href="{{route('backend.home')}}"><- Geri Dön</a></small>
                             </h3>                        </div>
                     </div>
                     <div class="col-lg-6">

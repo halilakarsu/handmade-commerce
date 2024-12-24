@@ -39,11 +39,11 @@
                 </li>
                 <li><a class="sidebar-header" href="javascript:void(0)"><i data-feather="clipboard"></i><span>Sayfalar</span><i class="fa fa-angle-right pull-right"></i></a>
                     <ul class="sidebar-submenu">
-                        <li><a href="pages-list.html"><i class="fa fa-circle"></i>Sayfa Listesi</a></li>
-                        <li><a href="page-create.html"><i class="fa fa-circle"></i>Sayfa Oluştur</a></li>
+                        <li><a href="{{route('pages.index')}}"><i class="fa fa-circle"></i>Sayfa Listesi</a></li>
+                        <li><a href="{{route('pages.create')}}"><i class="fa fa-circle"></i>Sayfa Oluştur</a></li>
                     </ul>
                 </li>
-                <li><a class="sidebar-header" href="{{route('slider.index')}}"><i data-feather="camera"></i><span>Slider</span></a></li>
+                <li><a class="sidebar-header" href="{{route('sliders.index')}}"><i data-feather="camera"></i><span>Slider</span></a></li>
                 <li><a class="sidebar-header" href="javascript:void(0)"><i data-feather="align-left"></i><span>Menüler</span><i class="fa fa-angle-right pull-right"></i></a>
                     <ul class="sidebar-submenu">
                         <li><a href="menu-list.html"><i class="fa fa-circle"></i>Menu Lists</a></li>
@@ -52,8 +52,8 @@
                 </li>
                 <li><a class="sidebar-header" href=""><i data-feather="user-plus"></i><span>Kullanıcılar</span><i class="fa fa-angle-right pull-right"></i></a>
                     <ul class="sidebar-submenu">
-                        <li><a href="user-list.html"><i class="fa fa-circle"></i>Kullancı Listesi</a></li>
-                        <li><a href="create-user.html"><i class="fa fa-circle"></i>Kullanıcı Oluştur</a></li>
+                        <li><a href="{{route('users.index')}}"><i class="fa fa-circle"></i>Kullancı Listesi</a></li>
+                        <li><a href="{{route('users.create')}}"><i class="fa fa-circle"></i>Kullanıcı Oluştur</a></li>
                     </ul>
                 </li>
 

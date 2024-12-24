@@ -35,9 +35,9 @@
                                     <div class="row">
                                         <div class="col-xl-9 xl-50 col-sm-6 col-9">
                                             <h5 class="text-center">Yüklü Görsel</h5>
-                                            <img src="/backend/images/types/{{$sliders->slider_file}}" alt="image-edit" class="img-fluid image_zoom_1 blur-up lazyloaded">
+                                            <img src="/backend/images/sliders/{{$sliders->slider_file}}" alt="image-edit" class="img-fluid image_zoom_1 blur-up lazyloaded">
                                         </div>
-                                        <form method="POST" action="{{route('types.update',$sliders->id)}}" enctype="multipart/form-data">
+                                        <form method="POST" action="{{route('sliders.update',$sliders->id)}}" enctype="multipart/form-data">
                                             @method('PUT')
                                             @csrf
                                             <hr>
@@ -55,7 +55,7 @@
 
                                         <div class="form-group mb-3  row">
                                             <div class="col-xl-3 col-sm-4 mb-0">
-                                                <label for="validationCustom01" >Alt Kategori :</label>
+                                                <label for="validationCustom01" >Başlık:</label>
                                             </div>
                                             <div class="col-xl-8 col-sm-7">
                                                 <input class="form-control" id="validationCustom01" type="text" name="slider_title"  value="{{$sliders->slider_title}}" required="">
@@ -75,19 +75,7 @@
 
                                     </div>
                                     <div class="form">
-                                        <div class="form-group row">
-                                            <div class="col-xl-3 col-sm-4 mb-0">
-                                                <label for="exampleFormControlSelect1" >Kategorisi :</label>
-                                            </div>
-                                            <div class="col-xl-8 col-sm-7">
-                                                <select class="form-control digits" name="slider_categori_id" id="exampleFormControlSelect1">
-                                                    @foreach($categories as $category)
-                                                    <option value="{{$category->id}}" {{$category->id==$sliders->slider_categori_id ? "selected" : "" }}>
-                                                        {{$category->categori_title}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
+
                                         <div class="form-group row">
                                             <div class="col-xl-3 col-sm-4 mb-0">
                                                 <label for="exampleFormControlSelect1" >Durum :</label>
@@ -109,7 +97,7 @@
                                     </div>
                                     <div class="offset-xl-3 offset-sm-4">
                                         <button type="submit" class="btn btn-primary">Güncelle</button>
-                                        <a href="{{route('categories.index')}}" type="button" class="btn btn-light">Vazgeç</a>
+                                        <a href="{{route('sliders.index')}}" type="button" class="btn btn-light">Vazgeç</a>
                                     </div>
                                 </form>
                             </div>

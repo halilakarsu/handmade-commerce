@@ -11,8 +11,8 @@ class PagesController extends Controller
 {
 
     public function index()
-    {
-        return view('backend.pages.index');
+    { $pages=Pages::all()->sortBy('page_must');
+        return view('backend.pages.index',compact('pages'));
     }
 
 
@@ -60,17 +60,18 @@ class PagesController extends Controller
     }
 
     public function update(Request $request,$id)
-    {
-        if(strlen($request->page_slug>3))
+    {    if(strlen($request->page_slug)>3)
         {
-            $slug=Str::slug($request->page_slug);
+            $slug = Str::slug($request->page_slug);
         }
         else{
-            $slug=Str::slug($request->page_title);
+            $slug = Str::slug($request->page_title);
         }
+
         $request->validate([
             'page_title'=>'required',
             'page_description'=>'required'
+
         ]);
         if($request->hasFile('page_file')){
             $request->validate(['page_file'=>'required|image|mimes:jpg,jpeg,png|max:2048']);
@@ -90,9 +91,7 @@ class PagesController extends Controller
                 "page_description"=>$request->page_description,
                 "page_status"=>$request->page_status
             ]);
-
         }
-
         if($pages){
             $path='backend/images/pages/'.$request->oldFile;
             if(file_exists($path)){
@@ -100,8 +99,7 @@ class PagesController extends Controller
             }
             return redirect(route('pages.index'))->with('success','İşlem Başarılı');
         }
-        return back();
-    }
+        return back()->with('error','islem basırısız');    }
 
 
     public function destroy($id)
