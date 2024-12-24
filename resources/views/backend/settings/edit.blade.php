@@ -10,7 +10,7 @@
                     <div class="col-lg-6">
                         <div class="page-header-left">
                             <h3>Sİte Ayarları
-                                <small>Genel Ayarlar</small>
+                                <small><a href="{{route('settings.index')}}"><- Geri Dön</a></small>
                             </h3>
                         </div>
                     </div>

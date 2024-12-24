@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Categories;
+use App\Models\Products;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -30,7 +31,7 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        if(strlen($request->categori_slug>3)){
+        if(strlen($request->categori_slug)>3){
             $slug=Str::slug($request->categori_slug);
         }
         else{
@@ -146,5 +147,15 @@ class CategoriesController extends Controller
             $categories->save();
         }
         return true;
+    }
+    public function switch(Request $request, $id){
+        $status = Categories::where('id', intval($id))->update([
+            'categori_status' => $request->sts // Status bilgisini request üzerinden alıyoruz.
+        ]);
+        if($status){
+            return response()->json(['success' => true, 'message' => "İşlem Başarılı"]);
+        } else {
+            return response()->json(['error' => false, 'message' => "İşlem Başarısız"]);
+        }
     }
 }

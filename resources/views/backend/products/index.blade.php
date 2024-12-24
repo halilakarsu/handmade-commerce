@@ -1,5 +1,5 @@
 @extends('backend.layouts.index')'
-@section('title','Kategoriler Sayfası')
+@section('title','Alt Kategoriler Sayfası')
 @section('content')
     <div class="page-body">
         <!-- Container-fluid starts-->
@@ -8,17 +8,17 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="page-header-left">
-                            <h3 style="text-transform:none">Kategoriler
-                            <small><a href="{{route('categories.index')}}" class="btn btn-danger btn-xs">X Vazgeç</a>
-                                <a href="{{route('categories.create')}}" class="btn btn-success btn-xs" > +Ekle</a></small>
+                            <h3 style="text-transform:none">Ürün İşlemleri
+                              <
+                                <small><a href="{{route('backend.home')}}"><-Geri Dön</a>    </small>
                             </h3>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <ol class="breadcrumb pull-right">
                             <li class="breadcrumb-item"><a href="{{route('backend.home')}}"><i data-feather="home"></i></a></li>
-                            <li class="breadcrumb-item">Kategoriler</li>
-                            <li class="breadcrumb-item active">Kategori Ayarları</li>
+                            <li class="breadcrumb-item">Ürünler</li>
+                            <li class="breadcrumb-item">Ürün Ekle</li>
                         </ol>
                     </div>
                 </div>
@@ -30,31 +30,37 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body vendor-table">
+                    <a href="{{route('products.create')}}" class="btn btn-success">+ Ekle</a>
                     <table class="table table-striped">
                         <thead>
                         <tr>
                             <th>Görsel</th>
+                            <th>Ürün Adı</th>
+                            <th>Fiyatı</th>
                             <th>Kategori</th>
                             <th>Durum</th>
                             <th></th>
                             </tr>
                         </thead>
                         <tbody id="sortable">
-                        @foreach($categories as $item)
+                        @foreach($products as $item)
+
                         <tr id="item-{{$item->id}}">
                               <td  class="sortable">
-                                <img width="90px" src="/backend/images/categories/{{$item->categori_file}}">
+                                <img width="90px" src="/backend/images/products/{{$item->product_file}}">
                             </td>
-                            <td>{{$item->categori_title}}</td>
+                            <td>{{$item->product_title}}</td>
+                            <td>{{$item->product_price }}</td>
+                            <td>{{$item->types->type_title }}</td>
                             <td ><div style="margin-left:-40px;margin-top:10px" class="form-check form-switch text-lg-left ">
                                     <label class="custom-switch">
-                                        <input data-id="{{$item->id}}" type="checkbox" class="custom-switch-input" {{$item->categori_status==1 ? "checked": ""}}>
+                                        <input data-id="{{$item->id}}" type="checkbox" class="custom-switch-input" {{$item->product_status==1 ? "checked": ""}}>
                                         <span class="custom-switch-slider"></span>
                                     </label>
                                 </div></td>
                               <td>
                                 <div>
-                                    <a href="{{ route('categories.edit', $item->id)}}">
+                                    <a href="{{ route('products.edit', $item->id)}}">
                                     <i class="fa fa-edit me-2 font-success"></i></a>
                                      <i id="{{$item->id}}" class="fa fa-trash font-danger"></i>
 
@@ -88,7 +94,7 @@
                     $.ajax({
                         type: "POST",
                         data: data,
-                        url: "{{ route('categories.sortable') }}",
+                        url: "{{ route('products.sortable') }}",
                         success: function(msg) {
                             if (msg) {
                                 alertify.success("Sıralama Değişti");
@@ -108,7 +114,7 @@
 
             $.ajax({
                 type: "POST",
-                url: 'categories/switch/' + itemId,
+                url: 'products/switch/' + itemId,
                 data: {sts: switchStatus}
             });
         });
@@ -118,7 +124,7 @@
                function (){
                $.ajax({
                    type:"DELETE",
-                   url:"categories/"+delete_id,
+                   url:"products/"+delete_id,
                    success:function(msg) {
                        if (msg) {
                            $("#item-"+delete_id).remove();
@@ -128,15 +134,11 @@
                        }
                    }
                });
-
             },
             function (){
             alertify.error('Silme işlemi iptal edildi')
             });
         });
-
     </script>
-
-
 @endsection
 

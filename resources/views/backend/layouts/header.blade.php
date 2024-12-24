@@ -42,6 +42,7 @@
     <link rel="stylesheet" type="text/css" href="/backend/assets/css/vector-map.css">
     <!-- Bootstrap css-->
     <link rel="stylesheet" type="text/css" href="/backend/assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/backend/assets/custom/custom.css">
     <!-- App css-->
     <link rel="stylesheet" type="text/css" href="/backend/assets/css/admin.css">
     <link rel="stylesheet" type="text/css" href="/backend/assets/css/datatables.css">

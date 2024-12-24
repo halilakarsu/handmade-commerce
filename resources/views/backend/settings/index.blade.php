@@ -8,10 +8,9 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="page-header-left">
-                            <h3>Sİte Ayarları
-                                <small>Genel Ayarlar</small>
-                            </h3>
-                        </div>
+                            <h3>Sİte Ayarları</h3>
+                                <small><a href="{{route('home.index')}}"><- Geri Dön</a></small>
+                            </h3>                        </div>
                     </div>
                     <div class="col-lg-6">
                         <ol class="breadcrumb pull-right">
