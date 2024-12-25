@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
-use App\Models\Users;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 class UsersController extends Controller
 {
      public function index()
     {
-        $users=Users::all()->sortBy('user_must');
+        $users=User::all()->sortBy('user_must');
         return view('backend.users.index',compact('users'));
     }
     public function create()
@@ -30,7 +30,7 @@ class UsersController extends Controller
         }
         $file_name='profile'.rand(1,10000).'.'.$request->user_file->getClientOriginalExtension();
         $request->user_file->move(public_path('backend/images/users'),$file_name);
-        $users=Users::insert([
+        $users=User::insert([
             'name'=>$request->name,
             'email'=>$request->email,
             'user_file'=>$file_name,
@@ -47,7 +47,7 @@ class UsersController extends Controller
 
     public function edit(string $id)
     {
-        $users=Users::where('id',$id)->first();
+        $users=User::where('id',$id)->first();
 
         return view('backend.users.edit',compact('users'));
     }
@@ -69,7 +69,7 @@ class UsersController extends Controller
                 $request->validate([
                     'password'=>'required|min:8'
                 ]);
-                $users=Users::where('id',$id)->update([
+                $users=User::where('id',$id)->update([
                     'name'=>$request->name,
                     'email'=>$request->email,
                     'user_file'=>$file_name,
@@ -78,7 +78,7 @@ class UsersController extends Controller
                     'user_status'=>$request->user_status
                 ]);
             }else {
-                $users=Users::where('id',$id)->update([
+                $users=User::where('id',$id)->update([
                     'name'=>$request->name,
                     'email'=>$request->email,
                     'user_file'=>$file_name,
@@ -93,7 +93,7 @@ class UsersController extends Controller
                 $request->validate([
                     'password'=>'required|min:8'
                 ]);
-                $users=Users::where('id',$id)->update([
+                $users=User::where('id',$id)->update([
                     'name'=>$request->name,
                     'email'=>$request->email,
                     'password'=>Hash::make($request->password),
@@ -101,7 +101,7 @@ class UsersController extends Controller
                     'user_status'=>$request->user_status
                 ]);
             }else {
-                $users=Users::where('id',$id)->update([
+                $users=User::where('id',$id)->update([
                     'name'=>$request->name,
                     'email'=>$request->email,
                     'user_role'=>$request->user_role,
@@ -119,7 +119,7 @@ class UsersController extends Controller
 
     public function destroy($id)
     {
-        $destroyType=Users::find(intval($id));
+        $destroyType=User::find(intval($id));
         if($destroyType->delete())
         {
             echo 1;
@@ -132,14 +132,14 @@ class UsersController extends Controller
     public function sortable()
     {
         foreach ($_POST['item'] as $key => $value) {
-            $users = Users::find(intval($value));
+            $users = User::find(intval($value));
             $users->user_must = intval($key);
             $users->save();
         }
         return true;
     }
     public function switch(Request $request, $id){
-        $status = Users::where('id', intval($id))->update([
+        $status = User::where('id', intval($id))->update([
             'user_status' => $request->sts // Status bilgisini request üzerinden alıyoruz.
         ]);
         if($status){

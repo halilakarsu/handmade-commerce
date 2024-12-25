@@ -17,7 +17,9 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-
+    public function login(){
+        return view('backend.home.login');
+    }
     use AuthenticatesUsers;
 
     /**
@@ -37,4 +39,5 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
         $this->middleware('auth')->only('logout');
     }
+
 }

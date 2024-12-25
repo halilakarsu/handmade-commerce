@@ -74,7 +74,7 @@
                         <li><a href="profile.html"><i class="fa fa-circle"></i>Profil</a></li>
                     </ul>
                 </li>
-                <li><a class="sidebar-header" href="login.html"><i data-feather="log-out"></i><span>Çıkış</span></a>
+                <li><a class="sidebar-header" href="{{route('backend.logout')}}"><i data-feather="log-out"></i><span>Çıkış</span></a>
                 </li>
             </ul>
         </div>

@@ -10,7 +10,7 @@
                         <div class="page-header-left">
                             <h3 style="text-transform:none">Ürün İşlemleri
                               <
-                                <small><a href="{{route('backend.')}}"><-Geri Dön</a>    </small>
+                                <small><a href="{{route('backend.home')}}"><-Geri Dön</a>    </small>
                             </h3>
                         </div>
                     </div>
