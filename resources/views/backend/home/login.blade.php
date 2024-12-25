@@ -141,8 +141,9 @@
                         <div class="single-item">
                             <div>
                                 <div>
-                                    <h3>Let Yazılım</h3>
-                                    <p>İçerik yönetim sistemlerimizle e-ticaret yönetim işlemleri artık çok kolay! </p>
+
+                                    <h3>Tiwasoft Yazılım</h3>
+                                    <p>Bilgi Teknolojiler ve e-ticaret içerik yönetim sistemleri  giriş paneli! </p>
                                 </div>
                             </div>
                             <div>
@@ -154,7 +155,8 @@
                             <div>
                                 <div>
                                     <h3>Bize Ulaşın</h3>
-                                    <p>Her hangi bir sorunla karşılaşmanız halinde bize ulaşabilirsiniz..</p>
+                                    <p>Her hangi bir sorunla karşılaşmanız halinde bize ulaşabilirsiniz..
+                                    https://tiwasoft.com</p>
                                 </div>
                             </div>
                         </div>
@@ -174,6 +176,7 @@
 
 
                             <div class="tab-content" id="top-tabContent">
+
                                 <div class="tab-pane fade show active" id="top-profile" role="tabpanel" aria-labelledby="top-profile-tab">
                                     <form action="{{route('backend.authenticate')}}" method="post" class="form-horizontal auth-form">
                                         <div class="form-group">

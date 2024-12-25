@@ -5,10 +5,10 @@
     <div class="page-sidebar">
         <div class="sidebar custom-scrollbar">
             <div class="sidebar-user text-center">
-                <div><img class="img-60 rounded-circle lazyloaded blur-up" src="/backend/assets/images/dashboard/man.png" alt="#">
+                <div><img class="img-60 rounded-circle lazyloaded blur-up" src="/backend/images/users/{{Auth::user()->user_file}}" alt="#">
                 </div>
-                <h6 class="mt-3 f-14">JOHN</h6>
-                <p>Ux Designer</p>
+                <h6 style="text-transform:none" class="mt-3 f-14">{{Auth::user()->name}}</h6>
+                <p style="text-transform:capitalize;">{{Auth::user()->usertype}}</p>
             </div>
             <ul class="sidebar-menu">
                 <li><a class="sidebar-header" href="{{route('backend.home')}}"><i data-feather="home"></i><span>Anasayfa</span></a></li>
@@ -37,19 +37,8 @@
                         <li><a href="transactions.html"><i class="fa fa-circle"></i>Transactions</a></li>
                     </ul>
                 </li>
-                <li><a class="sidebar-header" href="javascript:void(0)"><i data-feather="clipboard"></i><span>Sayfalar</span><i class="fa fa-angle-right pull-right"></i></a>
-                    <ul class="sidebar-submenu">
-                        <li><a href="{{route('pages.index')}}"><i class="fa fa-circle"></i>Sayfa Listesi</a></li>
-                        <li><a href="{{route('pages.create')}}"><i class="fa fa-circle"></i>Sayfa Oluştur</a></li>
-                    </ul>
-                </li>
+
                 <li><a class="sidebar-header" href="{{route('sliders.index')}}"><i data-feather="camera"></i><span>Slider</span></a></li>
-                <li><a class="sidebar-header" href="javascript:void(0)"><i data-feather="align-left"></i><span>Menüler</span><i class="fa fa-angle-right pull-right"></i></a>
-                    <ul class="sidebar-submenu">
-                        <li><a href="menu-list.html"><i class="fa fa-circle"></i>Menu Lists</a></li>
-                        <li><a href="create-menu.html"><i class="fa fa-circle"></i>Create Menu</a></li>
-                    </ul>
-                </li>
                 <li><a class="sidebar-header" href=""><i data-feather="user-plus"></i><span>Kullanıcılar</span><i class="fa fa-angle-right pull-right"></i></a>
                     <ul class="sidebar-submenu">
                         <li><a href="{{route('users.index')}}"><i class="fa fa-circle"></i>Kullancı Listesi</a></li>

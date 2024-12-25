@@ -54,7 +54,7 @@
     <!-- Page Header Start-->
     <div class="page-main-header">
         <div class="main-header-left">
-            <div class="logo-wrapper"><a href="index.html"><img class="blur-up lazyloaded" src="/backend/assets/images/layout-2/logo/logo.png" alt=""></a></div>
+            <div style="margin-left:-23px;margin-bottom:-15px"  class="logo-wrapper"><a  href="index.html"><img class="blur-up lazyloaded" src="/backend/assets/images/layout-2/logo/logo.jpg" alt=""></a></div>
         </div>
         <div class="main-header-right ">
             <div class="mobile-sidebar">
@@ -69,16 +69,15 @@
                     <li>
                         <form class="form-inline search-form">
                             <div class="form-group">
-                                <input class="form-control-plaintext" type="search" placeholder="Search.."><span class="d-sm-none mobile-search"><i data-feather="search"></i></span>
+                                <input class="form-control-plaintext" type="search" placeholder="Ne aramıştınız.."><span class="d-sm-none mobile-search"><i data-feather="search"></i></span>
                             </div>
                         </form>
                     </li>
                     <li class="onhover-dropdown"><a class="txt-dark" href="javascript:void(0)">
-                            <h6>EN</h6></a>
+                            <h6>TR <i class="flag-icon flag-icon-tr"></i> </h6></a>
                         <ul class="language-dropdown onhover-show-div p-20">
-                            <li><a href="javascript:void(0)" data-lng="pt"><i class="flag-icon flag-icon-uy"></i> Portuguese</a></li>
-                            <li><a href="javascript:void(0)" data-lng="es"><i class="flag-icon flag-icon-um"></i> Spanish</a></li>
                             <li><a href="javascript:void(0)" data-lng="en"><i class="flag-icon flag-icon-is"></i> English</a></li>
+                            <li><a href="javascript:void(0)" data-lng="es"><i class="flag-icon flag-icon-um"></i> Spanish</a></li>
                             <li><a href="javascript:void(0)" data-lng="fr"><i class="flag-icon flag-icon-nz"></i> French</a></li>
                         </ul>
                     </li>
@@ -150,7 +149,7 @@
                     </li>
                     <li><a href="javascript:void(0)"><i class="right_side_toggle" data-feather="message-square"></i><span class="dot"></span></a></li>
                     <li class="onhover-dropdown">
-                        <div class="media align-items-center"><img class="align-self-center pull-right img-50 rounded-circle blur-up lazyloaded" src="/backend/assets/images/dashboard/man.png" alt="header-user">
+                        <div class="media align-items-center"><img class="align-self-center pull-right img-50 rounded-circle blur-up lazyloaded" src="/backend/images/users/{{Auth::user()->user_file}}" alt="header-user">
                             <div class="dotted-animation"><span class="animate-circle"></span><span class="main-circle"></span></div>
                         </div>
                         <ul class="profile-dropdown onhover-show-div p-20 profile-dropdown-hover">
