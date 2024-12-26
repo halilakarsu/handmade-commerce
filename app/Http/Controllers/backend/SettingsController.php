@@ -34,18 +34,22 @@ class SettingsController extends Controller
         return view('backend.settings.edit')->with('editSettings',$editSettings);
     }
     public function update(Request $request,$id){
-        if($request->hasFile('settings_value'));
-        $request->validate([
-          'settings_value'=>'required|image|mimes:jpg,jpeg,png|max:2048'
-        ]);
-        $file_name='image'.rand(1,3000).'.'.$request->settings_value->getClientOriginalExtension();
-        $request->settings_value->move(public_path('backend/images/settings'),$file_name);
-        $request->settings_value=$file_name;
-        $updateSetinngs=Settings::where('id',$id)->update(
-            [
-                'settings_value'=>$request->settings_value
-            ]
-        );
+        if($request->hasFile('settings_value')) {
+            $request->validate([
+                'settings_value' => 'required|image|mimes:jpg,jpeg,png|max:2048'
+            ]);
+            $file_name = 'image' . rand(1, 3000) . '.' . $request->settings_value->getClientOriginalExtension();
+            $request->settings_value->move(public_path('backend/images/settings'), $file_name);
+            $request->settings_value = $file_name;
+            $updateSetinngs=Settings::where('id',$id)->update(
+                ['settings_value'=>$request->settings_value]);
+            }else {
+            $updateSetinngs=Settings::where('id',$id)->update(
+                [
+                    'settings_value'=>$request->settings_value
+                ]);
+               }
+
              if($updateSetinngs){
 
                  $path='backend/images/settings/'.$request->oldFile;

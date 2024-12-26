@@ -11,7 +11,7 @@ class PagesController extends Controller
 {
 
     public function index()
-    { $pages=Pages::all()->sortBy('page_must');
+    {  $pages=Pages::all()->sortBy('page_must');
         return view('backend.pages.index',compact('pages'));
     }
 

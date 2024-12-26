@@ -8,6 +8,7 @@ use App\Http\Controllers\backend\PagesController;
 use App\Http\Controllers\backend\SlidersController;
 use App\Http\Controllers\backend\ProductsController;
 use App\Http\Controllers\backend\UsersController;
+use App\Http\Controllers\frontend\DefaultController;
 
 Route::prefix('letmin')->group(function (){
     Route::get('/login',[HomeController::class,'login'])->name('login');
@@ -53,6 +54,9 @@ Route::prefix('letmin')->group(function(){
     Route::post('users/switch/{id}', [UsersController::class, 'switch']);
 });
 });
+
+Route::get('/',[DefaultController::class,'index'])->name('frontend.home');
+Route::get('/temu',[DefaultController::class,'temu'])->name('temu.home');
 
 
 

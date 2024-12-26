@@ -63,7 +63,8 @@ class ProductsController extends Controller
 
     public function edit($id)
     {   $products=Products::where('id',$id)->first();
-        return view('backend.products.edit')->with('products',$products);
+        $types=Types::all()->sortBy('type_must');
+        return view('backend.products.edit',compact('types'))->with('products',$products);
     }
 
 

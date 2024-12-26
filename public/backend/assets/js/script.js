@@ -812,7 +812,7 @@
           infinite: true
         }
       },
-      
+
     ]
   });
   $('.services-slide6').slick({
@@ -855,7 +855,7 @@
           infinite: true
         }
       },
-      
+
     ]
   });
   $('.testimonial-slide3').slick({
@@ -978,7 +978,7 @@
                 slidesToScroll: 1
             }
         },
-       
+
     ]
 });
 
@@ -994,7 +994,7 @@
 $('.testimonial-bottom-slide').slick({
   slidesToShow: 3,
   slidesToScroll: 1,
-  asNavFor: '.testimonial-top-slide', 
+  asNavFor: '.testimonial-top-slide',
   focusOnSelect: true,
   centerPadding: '50px',
 });
@@ -1129,7 +1129,7 @@ $('.brand-slide3').slick({
       },
     ]
   });
-  
+
 
 $('.hotdeal-slide3').slick({
     dots: false,
@@ -1185,7 +1185,7 @@ $('.pro-bottom-slide').slick({
   slidesToShow: 4,
   slidesToScroll: 1,
   asNavFor: '.pro-top-slide',
-  dots: false,  
+  dots: false,
   focusOnSelect: true
 });
 
@@ -1197,7 +1197,7 @@ $('.feature-slide').slick({
     slidesToShow: 10,
     slidesToScroll: 2,
     responsive: [
-      
+
       {
         breakpoint: 1470,
         settings: {
@@ -1221,8 +1221,8 @@ $('.feature-slide').slick({
           slidesToScroll: 2
         }
       },
-      
-      
+
+
       {
         breakpoint: 576,
         settings: {
@@ -1236,7 +1236,7 @@ $('.feature-slide').slick({
           slidesToShow: 5,
           slidesToScroll: 2
         }
-      } ,  
+      } ,
       ]
   });
 
@@ -1277,7 +1277,7 @@ $('.feature-slide').slick({
   // $('.category-toggle').on('click', function(e) {
   //     $(this).siblings().toggleClass("hide");
   // });
- 
+
   $('.mobilecat-toggle').on('click', function(e) {
     $('.collapse-category').toggleClass('open')
       });
@@ -1294,7 +1294,7 @@ $('.feature-slide').slick({
     $('.search-overlay').show();
   });
 
-  
+
   $('.mobile-search').on('click', function (){
     $('.searchbar-input').addClass('open');
   });
@@ -1303,12 +1303,12 @@ $('.feature-slide').slick({
     $('.searchbar-input').removeClass('open');
   });
 
-  
+
 
 
   // sticky header //
   // $(window).scroll(function() {
-  // if ($(this).scrollTop() > 400){  
+  // if ($(this).scrollTop() > 400){
   //     // $('header').addClass("sticky");
   //     $('.product-top-sticky').addClass("sticky");
   //   }
@@ -1346,10 +1346,10 @@ $('.feature-slide').slick({
         jQuery(this).next().slideDown('normal');
       }
     });
-    
+
     jQuery('.sub-collapse').hide();
     jQuery('.collapse-mega').hide();
-  } 
+  }
   $('span.sub-arrow').on('click',function(){
     $('.categoryone .collapse-mega .mega-box ul').removeClass('open');
     $(this).parent().next().toggleClass('open');
@@ -1561,12 +1561,12 @@ $('.feature-slide').slick({
    $('.show-offer').on('click', function(e) {
     $(".offer-sider").slideToggle();
     $(".more-offer").fadeToggle();
-    $(".less-offer").fadeToggle();   
+    $(".less-offer").fadeToggle();
   });
 
 
 
-   $('.size-box ul li').on('click', function(e) {   
+   $('.size-box ul li').on('click', function(e) {
     $(".size-box ul li").removeClass("active");
     $('#selectSize').removeClass('cartMove');
     $(this).addClass("active");
@@ -1727,7 +1727,7 @@ $('.feature-slide').slick({
 
 
 
-  
+
 
   /*=====================
   12. Filter js
@@ -2538,48 +2538,8 @@ $('.feature-slide').slick({
   });
 
 
-  /*=====================
-   14. RTL & Dark Light
-   ==========================*/
 
-  $('<div class="theme-pannel-main"><ul><li id="rtl_btn"><a href="javascript:void(0)" class="btn setting_btn"><span class="rtl-txt">Rtl</span></a></li><li id="ltr_btn"><a href="javascript:void(0)" class="btn setting_btn"><span class="rtl-txt">Ltr</span></a></li><li class="sidebar-btn dark-light-btn"><a href="javascript:void(0)" class="dark-light"><span class="theme-layout-version">Dark</span></a></li></ul></div><div class="color-picker"> <a href="#" class="handle title"> <img src="../assets/images/paint.png"/> </a> <div> <h4>Choose color</h4> <ul class="colors"> <li class="color1"></li><li class="color2"></li><li class="color3"></li><li class="color4"></li><li class="color5"></li><li class="color6"></li><li class="color7"></li><li class="color8"></li><li class="color9"></li><li class="color10"></li><li class="color11"></li><li class="color12"></li><li class="color13"></li><li class="color14"></li><li class="color15"></li></ul> </div></div>').appendTo($('body'));
-  (function() {
-  })();
-  $('#ltr_btn').hide();
-  $("#ltr_btn").on('click', function (){
-    $('body').addClass('ltr');
-    $('body').removeClass('rtl');
-    $('#ltr_btn').hide();
-    $('#rtl_btn').show();
-  });
-  $("#rtl_btn").on('click', function (){
-    $('body').addClass('rtl');
-    $('body').removeClass('ltr');
-    $('#rtl_btn').hide();
-    $('#ltr_btn').show();
-  });
-  $(".setting_buttons li").on('click', function (){
-    $(this).addClass('active').siblings().removeClass('active');
-  });
-  $(".color-picker li").on('click', function (){
-    $(this).addClass('active').siblings().removeClass('active');
-  });
 
-// dark layout //
-  var body_event = $("body");
-  body_event.on("click", ".theme-layout-version" , function(){
-    $(this).toggleClass('dark');
-    $('body').removeClass('dark');
-    if($('.theme-layout-version').hasClass('dark')){
-      $('.theme-layout-version').text('Light');
-      $('body').addClass('dark');
-    }else{
-      $('#theme-dark').remove();
-      $('.theme-layout-version').text('Dark');
-    }
-
-    return false;
-  });
 
   /*=====================
    15. Add to cart
@@ -2842,12 +2802,12 @@ $('.tap-top').on('click', function() {
     /*================================
      22. counter js
     ===================================*/
-    
+
     $('.counter-count').each(function () {
       $(this).prop('Counter',0).animate({
           Counter: $(this).text()
       }, {
-        
+
         //chnage count up speed here
           duration: 4000 ,
           easing: 'swing',
