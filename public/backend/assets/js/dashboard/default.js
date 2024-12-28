@@ -314,7 +314,7 @@ var optionsearningchart = {
         dashArray: 4
     },
     series: [8*10],
-    labels: ['Customer Ratio'],
+    labels: ['Customers Ratio'],
 
 
 

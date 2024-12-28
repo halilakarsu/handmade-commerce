@@ -55,7 +55,7 @@
 
                                         <div class="form-group mb-3  row">
                                             <div class="col-xl-3 col-sm-4 mb-0">
-                                                <label for="validationCustom01" >Alt Kategori :</label>
+                                                <label for="validationCustom01" >Ürün Adı:</label>
                                             </div>
                                             <div class="col-xl-8 col-sm-7">
                                                 <input class="form-control" id="validationCustom01" type="text" name="product_title"  value="{{$products->product_title}}" required="">
@@ -65,10 +65,10 @@
 
                                         <div class="form-group mb-3 row">
                                             <div class="col-xl-3 col-sm-4 mb-0">
-                                                <label for="validationCustom02" >Seo Link :</label>
+                                                <label for="validationCustom02" >Fiyatı:</label>
                                             </div>
                                             <div class="col-xl-8 col-sm-7">
-                                                <input name="product_slug" value="{{$products->product_slug}}" class="form-control " id="validationCustom02" type="text" required="">
+                                                <input name="product_price" value="{{$products->product_price}}" class="form-control " id="validationCustom02" type="number" required="">
 
                                             </div>
                                         </div>
@@ -80,7 +80,7 @@
                                                 <label for="exampleFormControlSelect1" >Kategorisi :</label>
                                             </div>
                                             <div class="col-xl-8 col-sm-7">
-                                                <select class="form-control digits" name="product_categori_id" id="exampleFormControlSelect1">
+                                                <select class="form-control digits" name="product_type_id" id="exampleFormControlSelect1">
                                                     @foreach($types as $type)
                                                     <option value="{{$type->id}}" {{$type->id==$products->product_type_id ? "selected" : "" }}>
                                                         {{$type->type_title}}</option>

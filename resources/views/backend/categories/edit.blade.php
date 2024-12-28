@@ -71,15 +71,7 @@
 
                                             </div>
                                         </div>
-                                        <div class="form-group mb-3 row">
-                                            <div class="col-xl-3 col-sm-4 mb-0">
-                                                <label for="validationCustom02" >Seo Link :</label>
-                                            </div>
-                                            <div class="col-xl-8 col-sm-7">
-                                                <input name="categori_slug" value="{{$categories->categori_slug}}" class="form-control " id="validationCustom02" type="text" required="">
 
-                                            </div>
-                                        </div>
 
                                     </div>
                                     <div class="form">

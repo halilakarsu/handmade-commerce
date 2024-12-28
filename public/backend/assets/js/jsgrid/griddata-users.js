@@ -38,7 +38,7 @@
             "Last Name": "Torres",
             "Email": "Rowan.torres@gmail.com",
             "Last Login": "6 Days ago",
-            "Role": "Customer",
+            "Role": "Customers",
         },
         {
             "Avatar": "../assets/images/dashboard/user3.jpg",
@@ -46,7 +46,7 @@
             "Last Name": "Perez",
             "Email": "Perez.Alonzo@gmail.com",
             "Last Login": "2 Days ago",
-            "Role": "Customer",
+            "Role": "Customers",
         },
         {
             "Avatar": "../assets/images/dashboard/user1.jpg",
@@ -54,7 +54,7 @@
             "Last Name": "Lane",
             "Email": "Lane.Skylar@gmail.com",
             "Last Login": "1 Days ago",
-            "Role": "Customer",
+            "Role": "Customers",
         },
         {
             "Avatar": "../assets/images/dashboard/boy-2.png",
@@ -70,7 +70,7 @@
             "Last Name": "Clay",
             "Email": "Colton.Clay@gmail.com",
             "Last Login": "1 Days ago",
-            "Role": "Customer",
+            "Role": "Customers",
         },
         {
             "Avatar": "../assets/images/dashboard/user.png",
@@ -78,7 +78,7 @@
             "Last Name": "Woters",
             "Email": "woters.maxine@gmail.com",
             "Last Login": "10 Days ago",
-            "Role": "Customer",
+            "Role": "Customers",
         },
         {
             "Avatar": "../assets/images/dashboard/user3.jpg",
@@ -86,7 +86,7 @@
             "Last Name": "Perez",
             "Email": "Perez.Alonzo@gmail.com",
             "Last Login": "2 Days ago",
-            "Role": "Customer",
+            "Role": "Customers",
         },
         {
             "Avatar": "../assets/images/dashboard/user1.jpg",
@@ -94,7 +94,7 @@
             "Last Name": "Lane",
             "Email": "Lane.Skylar@gmail.com",
             "Last Login": "1 Days ago",
-            "Role": "Customer",
+            "Role": "Customers",
         },
         {
             "Avatar": "../assets/images/dashboard/boy-2.png",
@@ -102,7 +102,7 @@
             "Last Name": "Gray",
             "Email": "Gray.Brody@gmail.com",
             "Last Login": "3 Days ago",
-            "Role": "Customer",
+            "Role": "Customers",
         },
         {
             "Avatar": "../assets/images/dashboard/designer.jpg",
@@ -118,7 +118,7 @@
             "Last Name": "Woters",
             "Email": "woters.maxine@gmail.com",
             "Last Login": "10 Days ago",
-            "Role": "Customer",
+            "Role": "Customers",
         },
         {
             "Avatar": "../assets/images/dashboard/user3.jpg",
@@ -126,7 +126,7 @@
             "Last Name": "Perez",
             "Email": "Perez.Alonzo@gmail.com",
             "Last Login": "2 Days ago",
-            "Role": "Customer",
+            "Role": "Customers",
         },
         {
             "Avatar": "../assets/images/dashboard/user1.jpg",
@@ -134,7 +134,7 @@
             "Last Name": "Lane",
             "Email": "Lane.Skylar@gmail.com",
             "Last Login": "1 Days ago",
-            "Role": "Customer",
+            "Role": "Customers",
         },
         {
             "Avatar": "../assets/images/dashboard/boy-2.png",
@@ -142,7 +142,7 @@
             "Last Name": "Gray",
             "Email": "Gray.Brody@gmail.com",
             "Last Login": "3 Days ago",
-            "Role": "Customer",
+            "Role": "Customers",
         },
         {
             "Avatar": "../assets/images/dashboard/designer.jpg",
@@ -150,7 +150,7 @@
             "Last Name": "Clay",
             "Email": "Colton.Clay@gmail.com",
             "Last Login": "1 Days ago",
-            "Role": "Customer",
+            "Role": "Customers",
         },
         {
             "Avatar": "../assets/images/dashboard/user5.jpg",
@@ -158,7 +158,7 @@
             "Last Name": "Torres",
             "Email": "Rowan.torres@gmail.com",
             "Last Login": "6 Days ago",
-            "Role": "Customer",
+            "Role": "Customers",
         },
         {
             "Avatar": "../assets/images/dashboard/user3.jpg",
@@ -174,7 +174,7 @@
             "Last Name": "Lane",
             "Email": "Lane.Skylar@gmail.com",
             "Last Login": "1 Days ago",
-            "Role": "Customer",
+            "Role": "Customers",
         },
         {
             "Avatar": "../assets/images/dashboard/boy-2.png",
@@ -190,7 +190,7 @@
             "Last Name": "Clay",
             "Email": "Colton.Clay@gmail.com",
             "Last Login": "1 Days ago",
-            "Role": "Customer",
+            "Role": "Customers",
         },
         {
             "Avatar": "../assets/images/dashboard/user.png",
@@ -198,7 +198,7 @@
             "Last Name": "Woters",
             "Email": "woters.maxine@gmail.com",
             "Last Login": "10 Days ago",
-            "Role": "Customer",
+            "Role": "Customers",
         },
         {
             "Avatar": "../assets/images/dashboard/user3.jpg",
@@ -206,7 +206,7 @@
             "Last Name": "Perez",
             "Email": "Perez.Alonzo@gmail.com",
             "Last Login": "2 Days ago",
-            "Role": "Customer",
+            "Role": "Customers",
         },
 
     ];

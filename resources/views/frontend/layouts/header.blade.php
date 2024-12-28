@@ -19,7 +19,7 @@
     <link rel="stylesheet" type="text/css" href="/backend/assets/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="/backend/assets/css/themify.css">
 
-
+    <script src="/backend/assets/js/jquery-ui/jquery-ui.min.js"></script>
     <!--Slick slider css-->
     <link rel="stylesheet" type="text/css" href="/backend/assets/css/slick.css">
     <link rel="stylesheet" type="text/css" href="/backend/assets/css/slick-theme.css">
@@ -31,6 +31,15 @@
 
     <!-- Theme css -->
     <link rel="stylesheet" type="text/css" href="/backend/assets/css/color2.css" media="screen" id="color">
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/default.min.css"/>
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/semantic.min.css"/>
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/bootstrap.min.css"/>
 </head>
 <body class="bg-light">
 
@@ -74,9 +83,9 @@
 
                         <div class="app-link ml-5">
                             <ul>
-                                <li><a onclick="openAccount()" class="text-white"><i class="fa fa-sign-in"></i> Giriş Yap |</a></li>
-                                <li><a class="text-white"><i class="fa fa-user-plus" ></i> Kayıt Ol |</a></li>
-                                <li><a class="text-white"><i class="fa fa-phone-square" ></i> İletişim</a></li>
+                                <li><a style="cursor:pointer" onclick="openAccount()" class="text-white"><i class="fa fa-sign-in"></i> Giriş Yap |</a></li>
+                                <li><a href="{{route('frontend.register')}}" style="cursor:pointer" class="text-white"><i class="fa fa-user-plus" ></i> Kayıt Ol |</a></li>
+                                <li><a style="cursor:pointer" class="text-white"><i class="fa fa-phone-square" ></i> İletişim</a></li>
                             </ul>
                         </div>
                     </div>
@@ -274,7 +283,7 @@
                                         <li>
                                             <ul class="mor-slide-open">
                                                 <li> <a href="category-page(left-sidebar).html"><img src="/backend/assets/images/layout-1/nav-img/08.png" alt="category-product"> Sports</a></li>
-                                               
+
                                             </ul>
                                         </li>
                                         <li>

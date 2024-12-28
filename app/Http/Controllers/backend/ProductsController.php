@@ -23,14 +23,8 @@ class ProductsController extends Controller
 
     public function store(Request $request)
     {
+        $slug=Str::slug($request->product_title);
 
-        if(strlen($request->product_slug>3))
-        {
-            $slug=Str::slug($request->product_slug);
-        }
-        else{
-            $slug=Str::slug($request->product_title);
-        }
 
         if($request->hasFile('product_file')){
             $request->validate([
@@ -70,7 +64,46 @@ class ProductsController extends Controller
 
     public function update(Request $request, string $id)
     {
-        //
+        $slug=Str::slug($request->product_title);
+        $request->validate([
+            'product_title'=>'required',
+            'product_description'=>'required',
+            'product_type_id'=>'required'
+        ]);
+        if($request->hasFile('product_file')){
+            $slug=Str::slug($request->product_title);
+            $request->validate([
+                'product_file'=>'required|image|mimes:jpg,jpeg,png|max:2048',
+            ]);
+            $file_name=$slug.rand(1,10).'.'.$request->product_file->getClientOriginalExtension();
+            $request->product_file->move(public_path('backend/images/products'),$file_name);
+            $products=Products::where('id',$id)->update([
+                "product_title"=>$request->product_title,
+                "product_slug"=>$slug,
+                "product_file"=>$file_name,
+                "product_price"=>$request->product_price,
+                "product_status"=>$request->product_status,
+                "product_description"=>$request->product_description,
+                "product_type_id"=>$request->product_type_id
+            ]);
+
+        }else {
+
+            $products=Products::where('id',$id)->update([
+                "product_title"=>$request->product_title,
+                "product_slug"=>$slug,
+                "product_price"=>$request->product_price,
+                "product_status"=>$request->product_status,
+                "product_description"=>$request->product_description,
+                "product_type_id"=>$request->product_type_id
+            ]);
+
+        }
+        if($products) {
+            return redirect(route('products.index'))->with('success', 'Kayıt Başarılı');
+        }
+            return back()->with('error','Kayıt Başarısız');
+
     }
     public function sortable()
     {
