@@ -10,7 +10,7 @@ use App\Http\Controllers\backend\ProductsController;
 use App\Http\Controllers\backend\UsersController;
 use App\Http\Controllers\frontend\DefaultController;
 use App\Http\Controllers\frontend\RegisterController;
-
+use App\Http\Controllers\frontend\ShopController;
 
 Route::prefix('letmin')->group(function (){
     Route::get('/login',[HomeController::class,'login'])->name('login');
@@ -65,7 +65,8 @@ Route::get('/sisteme-giris-yap',[DefaultController::class,'login'])->name('front
 Route::get('/temu',[DefaultController::class,'temu'])->name('temu.home');
 
 Route::post('/registers/login', [RegisterController::class, 'login'])->name('frontend.login');
-Route::post('/add-cart', [CartController::class, 'addCart'])->name('addCart');
+Route::post('/add-cart', [ShopController::class, 'addCart'])->name('addCart');
+Route::post('/fetch', [ShopController::class, 'fetch'])->name('fetch');
 Route::post('/registers/logout', [RegisterController::class, 'logout']);
 
 
