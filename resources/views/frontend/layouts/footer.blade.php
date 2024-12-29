@@ -148,9 +148,9 @@ Newsletter Modal popup end-->
         </a>
       </div>
     </div>
-    <div class="cart_media">
+    <div id="cart_details" class="cart_media">
       <ul class="cart_product">
-        <li>
+      <!--  <li>
           <div class="media">
             <a href="product-page(left-sidebar).html">
               <img alt="megastore1" class="me-3" src="/backend/assets/images/layout-2/product/1.jpg">
@@ -159,9 +159,7 @@ Newsletter Modal popup end-->
               <a href="product-page(left-sidebar).html">
                 <h4>redmi not 3</h4>
               </a>
-              <h6>
- $80.00 <span>$120.00</span>
-              </h6>
+              <h6> $80.00 <span>$120.00</span>  </h6>
               <div class="addit-box">
                 <div class="qty-box">
                   <div class="input-group">
@@ -170,41 +168,21 @@ Newsletter Modal popup end-->
                     <button class="qty-plus"></button>
                   </div>
                 </div>
-                <div class="pro-add">
-                  <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#edit-product" >
-                    <i data-feather="edit"></i>
-                  </a>
-                  <a href="javascript:void(0)">
-                    <i  data-feather="trash-2"></i>
-                  </a>
-                </div>
               </div>
             </div>
           </div>
-        </li>
+        </li>!-->
 
       </ul>
       <ul class="cart_total">
-        <li>
-subtotal : <span>$1050.00</span>
-        </li>
-        <li>
-shpping <span>free</span>
-        </li>
-        <li>
-taxes <span>$0.00</span>
-        </li>
-        <li>
-          <div class="total">
-total<span>$1050.00</span>
-          </div>
-        </li>
-        <li>
-          <div class="buttons">
+        <li>subtotal : <span>$1050.00</span> </li>
+          <li>shpping <span>free</span> </li>
+        <li>taxes <span>$0.00</span></li>
+        <li> <div class="total">total<span>$1050.00</span> </div></li>
+        <li> <div class="buttons">
             <a href="cart.html" class="btn btn-solid btn-sm">Sepet</a>
             <a href="checkout.html" class="btn btn-solid btn-sm ">Devam Et</a>
-          </div>
-        </li>
+          </div> </li>
       </ul>
     </div>
   </div>
@@ -316,5 +294,6 @@ notification product -->
         alertify.error('{{$error}}');
     </script>
     @endforeach
+        @yield('js')
     </body>
 </html

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Controller;
+use App\Models\Products;
 use App\Models\Register;
 use App\Models\Settings;
 use Illuminate\Http\Request;
@@ -14,7 +15,8 @@ class DefaultController extends Controller
 {
    public function index(){
        $settings=Settings::all();
-       return view('frontend.home.index',compact('settings'));
+       $products = Products::orderBy('product_must')->take(5)->get();
+       return view('frontend.home.index',compact('settings','products'));
    }
     public function register(){
 

@@ -72,6 +72,15 @@
 
                                             </div>
                                         </div>
+                                        <div class="form-group mb-3 row">
+                                            <div class="col-xl-3 col-sm-4 mb-0">
+                                                <label for="validationCustom02" >İndirimli Fiyatı:</label>
+                                            </div>
+                                            <div class="col-xl-8 col-sm-7">
+                                                <input name="product_discount" value="{{$products->product_discount}}" class="form-control " id="validationCustom02" type="number" required="">
+
+                                            </div>
+                                        </div>
 
                                     </div>
                                     <div class="form">

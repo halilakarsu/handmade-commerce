@@ -158,5 +158,105 @@
     </section>
     <!--discount banner end-->
 
+    <!--product start-->
+    <section class="product section-big-pb-space">
+        <div class="custom-container">
+            <div class="row ">
+                <div class="col pr-0">
+                    <div class="product-slide-5  no-arrow">
+                        @foreach($products as $product)
+                        <div>
+                            <div class="product-box ">
+                                <div class="product-imgbox">
+                                    <div class="product-front">
+                                        <a href="product-page(left-sidebar).html">
+                                            <img src="/backend/images/products/{{$product->product_file}}" class="img-fluid  " alt="product">
+                                            <input name="product_file" type="hidden" id="image{{ $product->id }}" value="{{ $product->product_file }}">
+                                        </a>
+                                    </div>
+                                    <div class="product-back">
+                                        <a href="product-page(left-sidebar).html">
+                                            <img src="/backend/images/tools/product/15.jpg" class="img-fluid  " alt="product">
+                                        </a>
+                                    </div>
+                                    <button id="{{$product->id}}" type="button" class="btn btn-outline btn-cart add_to_cart tooltip-top add-cartnoty" > Sepete Ekle </button>
+                                    <div class="new-label">
+                                        <div>Yeni</div>
+                                        <input name="quantity" type="hidden" id="quantity{{$product->id}}" value="1" min="1" />
+                                    </div>
+                                </div>
+                                <div class="product-detail product-detail2 ">
+                                    <a href="product-page(left-sidebar).html">
+                                        <h3 id="name{{$product->id}}">{{$product->product_title}}</h3>
+                                    </a>
+                                    <h5>
 
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--product end-->
+@endsection
+@section('js')
+ <script>
+     $(document).ready(function(){
+         $.ajaxSetup({
+             headers: {
+                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+             }
+         });
+     load_cart_data();
+     function load_cart_data()
+     {
+     $.ajax({
+     url:"fetch_cart.php",
+     method:"POST",
+     dataType:"json",
+     success:function(data)
+     {	$('#cart_details').html(data.cart_details);
+        }
+     });
+     }
+
+     $(document).on('click', '.add_to_cart', function(){
+     var product_id = $(this).attr("id");
+     var product_name = $('#name'+product_id+'').val();
+     var product_image = $('#image'+product_id+'').val();
+     var product_quantity = $('#quantity'+product_id).val();
+     var action = "add";
+     if(product_quantity > 0)
+     {
+     $.ajax({
+     url:"action.php",
+     method:"POST",
+     data:{product_id:product_id,
+         product_name:product_name,
+         product_image:product_image,
+         product_quantity:product_quantity,
+         action:action},
+     success:function(data)
+     {
+
+     load_cart_data();
+     $('.cart-plus-minus-box').val('0');
+     $('#add_to_cart_modal').modal('show');
+     }
+     });
+     }
+     else
+     {
+     alert("Please","Lease Enter Number of Quantity","warning");
+     }
+     });
+     });
+
+
+ </script>
 @endsection

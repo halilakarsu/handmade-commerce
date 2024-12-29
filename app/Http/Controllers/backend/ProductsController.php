@@ -24,14 +24,13 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
         $slug=Str::slug($request->product_title);
-
-
         if($request->hasFile('product_file')){
             $request->validate([
                 'product_file'=>'required|image|mimes:jpg,jpeg,png|max:2048',
                 'product_title'=>'required',
                 'product_description'=>'required',
-                'product_type_id'=>'required'
+                'product_type_id'=>'required',
+                  'product_price'=>'required'
             ]);
             $file_name=$slug.rand(1,10).'.'.$request->product_file->getClientOriginalExtension();
             $request->product_file->move(public_path('backend/images/products'),$file_name);
@@ -82,6 +81,7 @@ class ProductsController extends Controller
                 "product_slug"=>$slug,
                 "product_file"=>$file_name,
                 "product_price"=>$request->product_price,
+                "product_discount"=>$request->product_discount,
                 "product_status"=>$request->product_status,
                 "product_description"=>$request->product_description,
                 "product_type_id"=>$request->product_type_id
@@ -93,6 +93,7 @@ class ProductsController extends Controller
                 "product_title"=>$request->product_title,
                 "product_slug"=>$slug,
                 "product_price"=>$request->product_price,
+                "product_discount"=>$request->product_discount,
                 "product_status"=>$request->product_status,
                 "product_description"=>$request->product_description,
                 "product_type_id"=>$request->product_type_id
