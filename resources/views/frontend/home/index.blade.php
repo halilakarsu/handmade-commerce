@@ -74,7 +74,7 @@
         </div>
     </section>
     <!--slider end-->
-
+    <div id="cart_details"></div>
     <!--collection banner start-->
     <section class="collection-banner section-pt-space b-g-white ">
         <div class="custom-container">
@@ -176,11 +176,11 @@
                                     </div>
                                     <div class="product-back">
                                         <a href="product-page(left-sidebar).html">
-                                            <img src="/backend/images/tools/product/15.jpg" class="img-fluid  " alt="product">
+                                            <img src="/backend/images/products/{{$product->product_file}}" class="img-fluid  " alt="product">
                                         </a>
                                     </div>
                                     <!-- ... -->
-                                    <button id="{{$product->id}}" type="button" class="btn btn-outline btn-cart add_to_cart tooltip-top add-cartnoty" data-product-name="{{ $product->product_title }}" data-product-image="{{ asset('backend/images/products/'.$product->product_file) }}" > Sepete Ekle </button>
+                                    <button id="{{$product->id}}" type="button" class="btn btn-outline btn-cart add_to_cart tooltip-top add-cartnoty"  > Sepete Ekle </button>
                                     <!-- ... -->
 
                                     <div class="new-label">
@@ -205,59 +205,58 @@
             </div>
         </div>
     </section>
+    <meta name="csrf-token" content="{{csrf_token()}}">
     <!--product end-->
 @endsection
 @section('js')
- <script>
-     $(document).ready(function(){
-         $.ajaxSetup({
-             headers: {
-                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-             }
-         });
 
-         load_cart_data();
+<script>
+    $(document).ready(function(){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
 
-         // Sepet verilerini yüklemek için AJAX
-         function load_cart_data() {
-             $.ajax({
-                 url: "{{ route('fetch') }}",
-                 method: "POST",
-                 dataType: "json",
-                 success: function(data) {
-                     $('#cart_details').html(data.cart_details);
-                 }
-             });
-         }
+        load_cart_data();
 
-         // Sepete ürün eklemek için AJAX
-         $(document).on('click', '.add_to_cart', function(){
-             var product_id = $(this).attr("id");
-             var product_name = $(this).data('product-name');  // data-* özelliğinden ürün adı alındı
-             var product_image = $(this).data('product-image');  // data-* özelliğinden ürün resmi alındı
-             var product_quantity = $('#quantity' + product_id).val();
-             var action = "add";
+        // Sepet verilerini yüklemek için AJAX
+        function load_cart_data() {
+            $.ajax({
+                url: "{{ route('fetch') }}",
+                method: "POST",
+                dataType: "json",
+                success: function(data) {
+                    $('#cart_details').html(data.cart_details);
+                }
+            });
+        }
 
-             if (product_quantity > 0) {
-                 $.ajax({
-                     url: "{{ route('addCart') }}",
-                     method: "POST",
-                     data: {
-                         product_id: product_id,
-                         product_name: product_name,
-                         product_image: product_image,
-                         product_quantity: product_quantity,
-                         action: action
-                     },
-                     success: function(data) {
-                         load_cart_data();  // Sepet güncelleniyor
-                     }
-                 });
-             } else {
-                 alert("Please Enter Quantity");  // Hata mesajı düzeltildi
-             }
-         });
-     });
+        // Sepete ürün eklemek için AJAX
+        $(document).on('click', '.add_to_cart', function(){
+            var product_id = $(this).attr("id");
+            var product_name= $('#name' + product_id).val();   // data-* özelliğinden ürün adı alındı
+            var product_image = $('#image' + product_id).val();  // data-* özelliğinden ürün resmi alındı
+            var product_quantity = $('#quantity' + product_id).val();
+            if (product_quantity > 0) {
+                $.ajax({
+                    url: "{{ route('addCart') }}",
+                    method: "POST",
+                    data: {
+                        product_id: product_id,
+                        product_name: product_name,
+                        product_image: product_image,
+                        product_quantity: product_quantity
+                    },
+                    success: function(data) {
+                        load_cart_data();  // Sepet güncelleniyor
+                    }
+                });
+            } else {
+                alert("Please Enter Quantity");  // Hata mesajı düzeltildi
+            }
+        });
+    });
 
- </script>
+</script>
 @endsection

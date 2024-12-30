@@ -22,7 +22,7 @@
     <link rel="stylesheet" type="text/css" href="/backend/assets/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="/backend/assets/css/themify.css">
 
-    <script src="/backend/assets/js/jquery-ui/jquery-ui.min.js"></script>
+
     <!--Slick slider css-->
     <link rel="stylesheet" type="text/css" href="/backend/assets/css/slick.css">
     <link rel="stylesheet" type="text/css" href="/backend/assets/css/slick-theme.css">
@@ -45,7 +45,8 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/bootstrap.min.css"/>
 </head>
 <body class="bg-light">
-
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <!-- loader start -->
 <div class="loader-wrapper">
     <div>

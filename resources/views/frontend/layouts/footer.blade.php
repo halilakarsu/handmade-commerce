@@ -17,7 +17,6 @@
                   </a>
                 </div>
                 <p>Her ürünümüz, kaliteli malzemelerden üretilmiş ve titizlikle seçilmiştir. Popyohobi.com, müşteri memnuniyetini her zaman ön planda tutarak, kaliteli ürünleri uygun fiyatlarla sizlere sunar.</p>
-
               </div>
             </div>
             <div class="footer-box">
@@ -250,9 +249,8 @@ Cras sit amet nibh libero, in gravida nulla.
   </div>
 </div>
 notification product -->
-
+>
 <!-- latest jquery-->
-<script src="/backend/assets/js/jquery-3.3.1.min.js"></script>
 
 <!-- slick js-->
 <script src="/backend/assets/js/slick.js"></script>
@@ -294,6 +292,7 @@ notification product -->
         alertify.error('{{$error}}');
     </script>
     @endforeach
-        @yield('js')
+
     </body>
+
 </html

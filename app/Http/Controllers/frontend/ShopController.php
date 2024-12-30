@@ -9,8 +9,8 @@ public function addCart(Request $request)
 {
 // Laravel session kullanımı
 $cart = session()->get('shopping_cart', []);
-
-if ($request->has('action') && $request->input('action') == 'add') {
+    dd($cart);
+if ($request->has('action') && $request->input('action') == 'add')
 $productId = $request->input('product_id');
 $productName = $request->input('product_name');
 $productImage = $request->input('product_image');
@@ -40,7 +40,6 @@ $cart[] = [
 
 // Sepeti session'a kaydet
 session()->put('shopping_cart', $cart);
-}
 
 return response()->json([
 'message' => 'Product added to cart successfully',
