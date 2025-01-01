@@ -1,6 +1,5 @@
 @extends('frontend.layouts.index')
 @section('title','Hobi Malzemeleri | Hobi Sitesi | popyohobi.com ')
-
 @section('content')
     <!--slider start-->
     <section class="theme-slider home-slide b-g-white " id="home-slide">
@@ -228,6 +227,7 @@
                     success: function (response) {
                         alertify.set('notifier','position','top-right');
                         alertify.success(response.status);
+                        cartload();
                     },
                 });
             });

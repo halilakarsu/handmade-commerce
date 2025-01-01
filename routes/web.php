@@ -71,6 +71,7 @@ Route::post('/registers/logout', [RegisterController::class, 'logout']);
 
 
 Route::post('/add-to-cart',[CartController::class,'addtocart'])->name('addtocart');
-Route::post('/load-cart-data',[CartController::class,'cartloadbyajax']);
+Route::get('/cart',[CartController::class,'cart'])->name('cart');
+Route::get('/load-cart-data',[CartController::class,'cartloadbyajax']);
 
 

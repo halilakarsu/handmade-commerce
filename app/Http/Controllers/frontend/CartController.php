@@ -1,21 +1,25 @@
 <?php
-
 namespace App\Http\Controllers\frontend;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use App\Models\Products;
+use function Pest\Laravel\json;
 
-
-        class CartController extends Controller
+class CartController extends Controller
         {
-            public function addtocart(Request $request)
+
+    public function cart()
+    {        $cookie_data = stripslashes(Cookie::get('shopping_cart'));
+        $cart_data=json_decode($cookie_data,true);
+        return view('frontend.home.cart',compact('cart_data'));
+    }
+
+    public function addtocart(Request $request)
             {
 
                 $prod_id = $request->input('product_id');
                 $quantity = $request->input('quantity');
-
                 if(Cookie::get('shopping_cart'))
                 {
                     $cookie_data = stripslashes(Cookie::get('shopping_cart'));
@@ -27,7 +31,6 @@ use App\Models\Products;
                 }
 
                 $item_id_list = array_column($cart_data, 'item_id');
-
                 $prod_id_is_there = $prod_id;
                 if(in_array($prod_id_is_there, $item_id_list))
                 {
@@ -38,7 +41,7 @@ use App\Models\Products;
                             $item_data = json_encode($cart_data);
                             $minutes = 60;
                             Cookie::queue(Cookie::make('shopping_cart', $item_data, $minutes));
-                            return response()->json(['status'=>'"'.$cart_data[$keys]["item_name"].'" Already Added to Cart','status2'=>'2']);
+                            return response()->json(['status'=>'Bu ürün zaten daha önce sepetinize eklenmiş','status2'=>'2']);
                         }
                     }
                 } else  {
@@ -46,6 +49,7 @@ use App\Models\Products;
                     $prod_name = $products->product_title;
                     $prod_image = $products->product_file;
                     $priceval = $products->product_price;
+                    $pridisc = $products->product_discount;
                     if($products)
                     {
                         $item_array = array(
@@ -53,13 +57,14 @@ use App\Models\Products;
                             'item_name' => $prod_name,
                             'item_quantity' => $quantity,
                             'item_price' => $priceval,
-                            'item_image' => $prod_image
+                            'item_image' => $prod_image,
+                            'item_disc' => $pridisc
                         );
                         $cart_data[] = $item_array;
                         $item_data = json_encode($cart_data);
                         $minutes = 60;
                         Cookie::queue(Cookie::make('shopping_cart', $item_data, $minutes));
-
+                        return response()->json(['status'=>'"'.$prod_name.'" adlı ürün sepetinize eklendi.']);
                     }
                 }
 
@@ -67,23 +72,36 @@ use App\Models\Products;
             }
 
 
-        public function cartloadbyajax()
+    public function cartloadbyajax()
     {
-        if(Cookie::get('shopping_cart'))
-        {
+        if (Cookie::get('shopping_cart')) {
             $cookie_data = stripslashes(Cookie::get('shopping_cart'));
             $cart_data = json_decode($cookie_data, true);
             $totalcart = count($cart_data);
 
-            echo json_encode(array('totalcart' => $totalcart)); die;
-            return;
-        }
-        else
-        {
-            $totalcart = "0";
-            echo json_encode(array('totalcart' => $totalcart)); die;
-            return;
+            $products = [];
+            foreach ($cart_data as $item) {
+                $product = Products::find($item['item_id']);
+                $products[] = [
+                    'product_name' => $product->product_title,
+                    'product_image' => $product->product_file,
+                    'product_quantity' => $item['item_quantity']
+                ];
+            }
+
+            echo json_encode([
+                'totalcart' => $totalcart,
+                'products' => $products
+            ]);
+            die;
+        } else {
+            echo json_encode([
+                'totalcart' => "0",
+                'products' => []
+            ]);
+            die;
         }
     }
+
 
 }
