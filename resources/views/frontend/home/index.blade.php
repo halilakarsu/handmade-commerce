@@ -180,12 +180,12 @@
                                         </a>
                                     </div>
                                     <!-- ... -->
-                                    <button id="{{$product->id}}" type="button" class="btn btn-outline btn-cart add_to_cart tooltip-top add-cartnoty"  > Sepete Ekle </button>
+                                    <button id="{{$product->id}}" type="button" class="btn btn-outline btn-cart add-to-cart-btn tooltip-top add-cartnoty"  > Sepete Ekle </button>
                                     <!-- ... -->
 
                                     <div class="new-label">
                                         <div>Yeni</div>
-                                        <input name="quantity" type="hidden" id="quantity{{$product->id}}" value="1" min="1" />
+                                        <input id="quantity" name="quantity" type="hidden"  value="1" min="1" />
                                     </div>
                                 </div>
                                 <div class="product-detail product-detail2 ">
@@ -205,58 +205,34 @@
             </div>
         </div>
     </section>
-    <meta name="csrf-token" content="{{csrf_token()}}">
+
     <!--product end-->
-@endsection
-@section('js')
-
-<script>
-    $(document).ready(function(){
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-        load_cart_data();
-
-        // Sepet verilerini yüklemek için AJAX
-        function load_cart_data() {
-            $.ajax({
-                url: "{{ route('fetch') }}",
-                method: "POST",
-                dataType: "json",
-                success: function(data) {
-                    $('#cart_details').html(data.cart_details);
-                }
-            });
-        }
-
-        // Sepete ürün eklemek için AJAX
-        $(document).on('click', '.add_to_cart', function(){
-            var product_id = $(this).attr("id");
-            var product_name= $('#name' + product_id).val();   // data-* özelliğinden ürün adı alındı
-            var product_image = $('#image' + product_id).val();  // data-* özelliğinden ürün resmi alındı
-            var product_quantity = $('#quantity' + product_id).val();
-            if (product_quantity > 0) {
-                $.ajax({
-                    url: "{{ route('addCart') }}",
-                    method: "POST",
-                    data: {
-                        product_id: product_id,
-                        product_name: product_name,
-                        product_image: product_image,
-                        product_quantity: product_quantity
-                    },
-                    success: function(data) {
-                        load_cart_data();  // Sepet güncelleniyor
+    <script>
+        $(document).ready(function () {
+            $('.add-to-cart-btn').click(function (e) {
+                e.preventDefault();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
                 });
-            } else {
-                alert("Please Enter Quantity");  // Hata mesajı düzeltildi
-            }
+                var product_id = $(this).attr('id');
+                var quantity = $("#quantity").val();
+                $.ajax({
+                    url: "add-to-cart",
+                    method: "POST",
+                    data: {
+                        'quantity': quantity,
+                        'product_id': product_id,
+                    },
+                    success: function (response) {
+                        alertify.set('notifier','position','top-right');
+                        alertify.success(response.status);
+                    },
+                });
+            });
         });
-    });
-
-</script>
+    </script>
 @endsection
+
+
