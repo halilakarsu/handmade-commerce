@@ -21,7 +21,6 @@
             </div>
         </div>
         <!-- Container-fluid Ends-->
-
         <!-- Container-fluid starts-->
         <div class="container-fluid">
             <div class="card">
@@ -31,7 +30,6 @@
                         <thead>
                         <tr>
                             <th>Görsel</th>
-                            <th>Slider Başlık 1</th>
                             <th>Durum</th>
                             <th></th>
                             </tr>
@@ -42,7 +40,6 @@
                               <td  class="sortable">
                                 <img width="90px" src="/backend/images/sliders/{{$item->slider_file}}">
                             </td>
-                            <td>{{$item->slider_title}}</td>
                             <td ><div style="margin-left:-40px;margin-top:10px" class="form-check form-switch text-lg-left ">
                                     <label class="custom-switch">
                                         <input data-id="{{$item->id}}" type="checkbox" class="custom-switch-input" {{$item->slider_status==1 ? "checked": ""}}>
@@ -65,8 +62,6 @@
                 </div>
             </div>
         </div>
-
-
     </div>
     <script type="text/javascript">
         $(document).ready(function() {
@@ -125,15 +120,11 @@
                        }
                    }
                });
-
             },
             function (){
             alertify.error('Silme işlemi iptal edildi')
             });
         });
-
     </script>
-
-
 @endsection
 

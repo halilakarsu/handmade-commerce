@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Products;
 use App\Models\Register;
 use App\Models\Settings;
+use App\Models\Sliders;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -15,8 +16,9 @@ class DefaultController extends Controller
 {
    public function index(){
        $settings=Settings::all();
+       $sliders=Sliders::all();
        $products = Products::orderBy('product_must')->take(5)->get();
-       return view('frontend.home.index',compact('settings','products'));
+       return view('frontend.home.index',compact('settings','products','sliders'));
    }
     public function register(){
 

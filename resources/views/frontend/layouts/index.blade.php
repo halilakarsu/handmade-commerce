@@ -235,7 +235,7 @@
                                     </a>
                                     <div class="basket-item-count">
                                         <div class="item-count-contain">
-                                            3
+                                            0
                                         </div>
                                            </div>
                                 </li>
@@ -590,27 +590,6 @@
     </div>
 </header>
 <!--header end-->
-<!--top brand panel start-->
-<section class="brand-panel">
-    <div class="brand-panel-box">
-        <div class="brand-panel-contain ">
-            <ul>
-                <li><a href="javascript:void(0)">top brand</a></li>
-                <li><a>:</a></li>
-                <li><a href="category-page(left-sidebar).html">aerie</a></li>
-                <li><a href="category-page(left-sidebar).html">baci lingrie</a></li>
-                <li><a href="category-page(left-sidebar).html">gerbe</a></li>
-                <li><a href="category-page(left-sidebar).html">jolidon</a></li>
-                <li><a href="category-page(left-sidebar).html">Wonderbra</a></li>
-                <li><a href="category-page(left-sidebar).html">Ultimo</a></li>
-                <li><a href="category-page(left-sidebar).html">Vassarette </a></li>
-                <li><a href="category-page(left-sidebar).html">Oysho</a></li>
-            </ul>
-        </div>
-    </div>
-</section>
-<!--top brand panel end-->
-
 @yield('content')
 
 <!-- footer start -->
@@ -910,7 +889,8 @@ notification product -->
     $(document).ready(function () {
         cartload();
     });
-    function cartload() {
+      function cartload()
+    {
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -920,45 +900,11 @@ notification product -->
         $.ajax({
             url: '/load-cart-data',
             method: "GET",
-            success: function(response) {
+            success: function (response) {
                 $('.basket-item-count').html('');
-                let productList = '';
-
-                if (response.products && response.products.length > 0) {
-                    for (let i = 0; i < response.products.length; i++) {
-                        let product = response.products[i];
-                        productList += `
-                        <li>
-                            <div class="media">
-                                <a href="product-page(left-sidebar).html">
-                                    <img alt="${product.product_name}" class="me-3" src="${product.product_image}">
-                                </a>
-                                <div class="media-body">
-                                    <a href="product-page(left-sidebar).html">
-                                        <h4>${product.product_name}</h4>
-                                    </a>
-                                    <h6>${product.product_price} <span>${product.product_discount}</span></h6>
-                                    <div class="addit-box">
-                                        <div class="qty-box">
-                                            <div class="input-group">
-                                                <button class="qty-minus"></button>
-                                                <input class="qty-adj form-control" type="number" value="${product.product_quantity}" />
-                                                <button class="qty-plus"></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>`;
-                    }
-                } else {
-                    productList = '<li>Sepetiniz boş.</li>';
-                }
-
-                $('#product_list').html(productList);  // Ürünleri listeye ekle
-            },
-            error: function(err) {
-                console.error('Error:', err);
+                var parsed = jQuery.parseJSON(response)
+                var value = parsed; //Single Data Viewing
+                $('.basket-item-count').append($('<div class="item-count-contain">'+ value['totalcart'] +'</div>'));
             }
         });
     }

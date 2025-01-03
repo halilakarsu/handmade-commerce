@@ -50,32 +50,7 @@
                                 </div>
                             </div>
                             <div class="col-xl-7">
-
                                     <div class="form">
-
-                                        <div class="form-group mb-3  row">
-                                            <div class="col-xl-3 col-sm-4 mb-0">
-                                                <label for="validationCustom01" >Başlık:</label>
-                                            </div>
-                                            <div class="col-xl-8 col-sm-7">
-                                                <input class="form-control" id="validationCustom01" type="text" name="slider_title"  value="{{$sliders->slider_title}}" required="">
-
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group mb-3 row">
-                                            <div class="col-xl-3 col-sm-4 mb-0">
-                                                <label for="validationCustom02" >Seo Link :</label>
-                                            </div>
-                                            <div class="col-xl-8 col-sm-7">
-                                                <input name="slider_slug" value="{{$sliders->slider_slug}}" class="form-control " id="validationCustom02" type="text" required="">
-
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="form">
-
                                         <div class="form-group row">
                                             <div class="col-xl-3 col-sm-4 mb-0">
                                                 <label for="exampleFormControlSelect1" >Durum :</label>
@@ -88,12 +63,6 @@
                                             </div>
                                         </div>
                                         <input name="oldFile" type="hidden" value="{{$sliders->slider_file}}">
-                                        <div class="form-group row">
-                                            <label class="col-xl-3 col-sm-4">Açıklama :</label>
-                                            <div class="col-xl-8 col-sm-7 pl-0 description-sm">
-                                                <textarea name="slider_description" id="editor1"  cols="10" rows="4">{{$sliders->slider_description}}</textarea>
-                                            </div>
-                                        </div>
                                     </div>
                                     <div class="offset-xl-3 offset-sm-4">
                                         <button type="submit" class="btn btn-primary">Güncelle</button>
@@ -108,8 +77,6 @@
         </div>
     </div>
     <!-- Container-fluid Ends-->
-
-
 @endsection
 
 @section('js')
