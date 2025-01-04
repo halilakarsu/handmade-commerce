@@ -8,12 +8,22 @@
                 <div class="col">
                     <div class="slide-1 no-arrow">
                       @foreach($sliders as $key)
-                        <div>
-                            <div class="slider-banner p-center slide-banner-1">
-                                <img src="/backend/images/sliders/{{$key->slider_file}}">
-                            </div>
-                        </div>
+                            <section  class="collection-banner section-pt-space b-g-white ">
+                                <div  class="custom-container">
+                                    <div class="row collection2">
+                                        <div  class="col-md-12">
+                                            <div  class="collection-banner-main banner-1  p-right">
+                                                <div class="collection-img">
+                                                    <img src="/backend/images/sliders/{{$key->slider_file}}" class="img-fluid bg-img  " alt="banner">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </section>
                        @endforeach
+
                     </div>
                 </div>
             </div>

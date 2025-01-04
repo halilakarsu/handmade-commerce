@@ -8,6 +8,7 @@ use App\Http\Controllers\backend\CategoriesController;
 use App\Http\Controllers\backend\TypesController;
 use App\Http\Controllers\backend\PagesController;
 use App\Http\Controllers\backend\SlidersController;
+use App\Http\Controllers\backend\BannersController;
 use App\Http\Controllers\backend\ProductsController;
 use App\Http\Controllers\backend\UsersController;
 use App\Http\Controllers\frontend\DefaultController;
@@ -48,6 +49,10 @@ Route::prefix('letmin')->group(function(){
     Route::resource('sliders',SlidersController::class);
     Route::post('sliders/sortable',[SlidersController::class,'sortable'])->name('sliders.sortable');
     Route::post('sliders/switch/{id}', [SlidersController::class, 'switch']);
+
+    Route::resource('banners',BannersController::class);
+    Route::post('banners/sortable',[BannersController::class,'sortable'])->name('banners.sortable');
+    Route::post('banners/switch/{id}', [BannersController::class, 'switch']);
 
     Route::resource('pages',PagesController::class);
     Route::post('pages/sortable',[PagesController::class,'sortable'])->name('pages.sortable');
