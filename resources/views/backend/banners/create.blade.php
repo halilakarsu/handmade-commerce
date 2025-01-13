@@ -49,8 +49,40 @@
                                     </div>
                                 </div>
                                 <div class="col-xl-7">
+
+
+
+                                            <div class="col-xl-3 col-sm-4 mb-0">
+                                                <label for="validationCustom01" >Ürün Adı :</label>
+                                            </div>
+                                            <div class="col-xl-8 col-sm-7">
+                                                <input class="form-control" placeholder="Ürün giriniz." id="validationCustom01" type="text" name="product_title"  value="" required="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-3 row">
+                                            <div class="col-xl-3 col-sm-4 mb-0">
+                                                <label for="validationCustom02" >Ürün Fiyatı :</label>
+                                            </div>
+                                            <div class="col-xl-8 col-sm-7">
+                                                <input name="product_price" placeholder="Ürün Fiyatı giriniz."  min="0" max="1000" step="0.01" class="form-control " id="validationCustom02" type="number" required="">
+                                            </div>
+
                                     <div class="form">
                                         <div class="form-group row">
+                                            <div class="col-xl-3 col-sm-4 mb-0">
+                                                <label for="validationCustom01" >Banner Başlık :</label>
+                                            </div>
+                                            <div class="col-xl-8 col-sm-7">
+                                                <input class="form-control" placeholder="Başlık giriniz" id="validationCustom01" type="text" name="banner_title"  value="" required="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-3 row">
+                                            <div class="col-xl-3 col-sm-4 mb-0">
+                                                <label for="validationCustom02" >Slug :</label>
+                                            </div>
+                                            <div class="col-xl-8 col-sm-7">
+                                                <input name="banner_slug" placeholder="Başlık slug" class="form-control " id="validationCustom02" type="text" required="">
+                                            </div>
                                             <div class="col-xl-3 col-sm-4 mb-0">
                                                 <label for="exampleFormControlSelect1" >Durum :</label>
                                             </div>

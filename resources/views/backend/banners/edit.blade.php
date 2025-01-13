@@ -53,6 +53,22 @@
                                     <div class="form">
                                         <div class="form-group row">
                                             <div class="col-xl-3 col-sm-4 mb-0">
+                                                <label for="validationCustom01" >Banner Başlık :</label>
+                                            </div>
+                                            <div class="col-xl-8 col-sm-7">
+                                                <input class="form-control" value="{{$banners->banner_title}}" id="validationCustom01" type="text" name="banner_title"  required="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-xl-3 col-sm-4 mb-0">
+                                                <label for="validationCustom01" >Banner Link :</label>
+                                            </div>
+                                            <div class="col-xl-8 col-sm-7">
+                                                <input class="form-control"  id="validationCustom01" type="text" name="banner_title"  value="{{$banners->banner_slug}}" required="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-xl-3 col-sm-4 mb-0">
                                                 <label for="exampleFormControlSelect1" >Durum :</label>
                                             </div>
                                             <div class="col-xl-8 col-sm-7">

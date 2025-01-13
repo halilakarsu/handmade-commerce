@@ -14,7 +14,7 @@ use App\Http\Controllers\backend\UsersController;
 use App\Http\Controllers\frontend\DefaultController;
 use App\Http\Controllers\frontend\RegisterController;
 use App\Http\Controllers\frontend\CartController;
-
+use App\Http\Controllers\frontend\ProductController;
 Route::prefix('letmin')->group(function (){
     Route::get('/login',[HomeController::class,'login'])->name('login');
     Route::get('/logout',[HomeController::class,'logout'])->name('backend.logout');
@@ -65,6 +65,9 @@ Route::prefix('letmin')->group(function(){
 });
 
 Route::get('/',[DefaultController::class,'index'])->name('frontend.home');
+Route::get('/kurumsal/{slug}',[DefaultController::class,'page'])->name('frontend.page');
+Route::get('/iletisim',[DefaultController::class,'contact'])->name('frontend.contact');
+Route::post('/gonderildi',[DefaultController::class,'send'])->name('frontend.send');
 Route::get('/kayit-ol',[DefaultController::class,'register'])->name('frontend.register');
 Route::post('/register',[DefaultController::class,'registerStore'])->name('frontend.registerStore');
 Route::post('/singed',[DefaultController::class,'singed'])->name('frontend.singed');
@@ -73,7 +76,7 @@ Route::get('/temu',[DefaultController::class,'temu'])->name('temu.home');
 
 Route::post('/registers/login', [RegisterController::class, 'login'])->name('frontend.login');
 Route::post('/registers/logout', [RegisterController::class, 'logout']);
-
+Route::get('/urunler/{slug}', [ProductController::class, 'index'])->name('frontend.products');
 
 Route::post('/add-to-cart',[CartController::class,'addtocart'])->name('addtocart');
 Route::get('/cart',[CartController::class,'cart'])->name('cart');

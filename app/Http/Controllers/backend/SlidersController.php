@@ -21,6 +21,10 @@ class SlidersController extends Controller
 
     public function store(Request $request)
     {
+
+
+            $slug=Str::slug($request->slider_title);
+
         if($request->hasFile('slider_file')){
             $request->validate([
                 'slider_file'=>'required|image|mimes:jpg,jpeg,png|max:2048',
@@ -30,8 +34,8 @@ class SlidersController extends Controller
         $request->slider_file->move(public_path('backend/images/sliders'),$file_name);
         $sliders=Sliders::insert([
             "slider_file"=>$file_name,
-            "slider_status"=>$request->slider_status
-        ]);
+            "slider_status"=>$request->slider_status,
+            "slider_slug"=>$slug]);
         if($sliders){
             return redirect(route('sliders.index'))->with('success','İşlem Başarılı');
         }
@@ -50,19 +54,26 @@ class SlidersController extends Controller
 
     public function update(Request $request,$id)
     {
-
+        $slug=Str::slug($request->slider_title);
         if($request->hasFile('slider_file')){
-            $request->validate(['slider_file'=>'required|image|mimes:jpg,jpeg,png|max:2048']);
+            $request->validate([
+                'slider_file'=>'required|image|mimes:jpg,jpeg,png|max:2048',
+                'slider_title'=>'required'
+            ]);
             $file_name='image'.rand(1,2000).'.'.$request->slider_file->getClientOriginalExtension();
             $request->slider_file->move(public_path('backend/images/sliders'),$file_name);
             $sliders=Sliders::where('id',$id)->update([
 
                 "slider_file"=>$file_name,
+                "slider_title"=>$request->slider_title,
+                "slider_slug"=>$slug,
                 "slider_status"=>$request->slider_status
             ]);
         } else {
             $sliders=Sliders::where('id',$id)->update([
-               "slider_status"=>$request->slider_status
+               "slider_status"=>$request->slider_status,
+                "slider_title"=>$request->slider_title,
+                 "slider_slug"=>$slug
             ]);
 
         }

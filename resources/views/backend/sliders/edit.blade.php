@@ -53,6 +53,23 @@
                                     <div class="form">
                                         <div class="form-group row">
                                             <div class="col-xl-3 col-sm-4 mb-0">
+                                                <label for="validationCustom01" >Slider Başlık :</label>
+                                            </div>
+                                            <div class="col-xl-8 col-sm-7">
+                                                <input class="form-control" value="{{$sliders->slider_title}}" id="validationCustom01" type="text" name="slider_title"  required="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-xl-3 col-sm-4 mb-0">
+                                                <label for="validationCustom01" >Slider Link:</label>
+                                            </div>
+                                            <div class="col-xl-8 col-sm-7">
+                                                <input class="form-control" value="{{$sliders->slider_slug}}" id="validationCustom01" type="text" name="slider_slug"  required="">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-xl-3 col-sm-4 mb-0">
                                                 <label for="exampleFormControlSelect1" >Durum :</label>
                                             </div>
                                             <div class="col-xl-8 col-sm-7">

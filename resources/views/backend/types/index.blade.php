@@ -47,7 +47,7 @@
                                 <img width="90px" src="/backend/images/types/{{$item->type_file}}">
                             </td>
                             <td>{{$item->type_title}}</td>
-                            <td>{{$item->categories->categori_title }}</td>
+                            <td>{{ $item->categories->categori_title ?? 'kategori yok' }}</td>
                             <td ><div style="margin-left:-40px;margin-top:10px" class="form-check form-switch text-lg-left ">
                                     <label class="custom-switch">
                                         <input data-id="{{$item->id}}" type="checkbox" class="custom-switch-input" {{$item->type_status==1 ? "checked": ""}}>

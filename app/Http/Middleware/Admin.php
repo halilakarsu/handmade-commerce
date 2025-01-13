@@ -18,6 +18,7 @@ class Admin
     {
         // Kullanıcının giriş yapıp yapmadığını kontrol et
         $user = Auth::user();  // Kullanıcıyı al
+
         if (Auth::check() && $user && $user->usertype == 'admin') {
 
             return $next($request);

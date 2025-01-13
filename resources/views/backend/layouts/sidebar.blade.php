@@ -25,7 +25,7 @@
                                 <span>Kategori</span> <i class="fa fa-angle-right pull-right"></i>
                             </a>
                             <ul class="sidebar-submenu">
-                                <li><a href="{{route('categories.create')}}"><i class="fa fa-circle"></i>Kategoriler</a></li>
+                                <li><a href="{{route('categories.index')}}"><i class="fa fa-circle"></i>Kategoriler</a></li>
                                 <li><a href="{{route('types.index')}}"><i class="fa fa-circle"></i>Alt Kategoriler</a></li>
                             </ul>
                         </li>
@@ -41,6 +41,12 @@
                     <ul class="sidebar-submenu">
                         <li><a href="{{route('sliders.index')}}"><i class="fa fa-circle"></i>Slider</a></li>
                         <li><a href="{{route('banners.index')}}"><i class="fa fa-circle"></i>Banner</a></li>
+                    </ul>
+                </li>
+                <li><a class="sidebar-header" href=""><i data-feather="dollar-sign"></i><span>Sayfalar</span><i class="fa fa-angle-right pull-right"></i></a>
+                    <ul class="sidebar-submenu">
+                        <li><a href="{{route('pages.index')}}"><i class="fa fa-circle"></i>Sayfalar</a></li>
+                        <li><a href="{{route('pages.create')}}"><i class="fa fa-circle"></i>Ekle</a></li>
                     </ul>
                 </li>
 

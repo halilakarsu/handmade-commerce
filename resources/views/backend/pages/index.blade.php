@@ -43,7 +43,7 @@
                               <td  class="sortable">
                                 <img width="90px" src="/backend/images/pages/{{$item->page_file}}">
                             </td>
-                            <td>{{$item->type_title}}</td>
+                            <td>{{$item->page_title}}</td>
 
                             <td ><div style="margin-left:-40px;margin-top:10px" class="form-check form-switch text-lg-left ">
                                     <label class="custom-switch">

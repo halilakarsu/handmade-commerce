@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
+use App\Models\Categories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use App\Models\Products;
@@ -10,9 +11,10 @@ class CartController extends Controller
         {
 
     public function cart()
-    {        $cookie_data = stripslashes(Cookie::get('shopping_cart'));
+    {     $categories = Categories::with('types')->get();
+        $cookie_data = stripslashes(Cookie::get('shopping_cart'));
         $cart_data=json_decode($cookie_data,true);
-        return view('frontend.home.cart',compact('cart_data'));
+        return view('frontend.home.cart',compact('cart_data','categories'));
     }
 
     public function addtocart(Request $request)

@@ -21,16 +21,20 @@ class BannersController extends Controller
 
     public function store(Request $request)
     {
-        if($request->hasFile('banner_file')){
+        $slug=Str::slug($request->banner_title);
+          if($request->hasFile('banner_file')){
             $request->validate([
                 'banner_file'=>'required|image|mimes:jpg,jpeg,png|max:2048',
+                'banner_title'=>'required',
             ]);
         }
         $file_name='image'.rand(1,2000).'.'.$request->banner_file->getClientOriginalExtension();
         $request->banner_file->move(public_path('backend/images/banners'),$file_name);
         $banners=Banners::insert([
             "banner_file"=>$file_name,
-            "banner_status"=>$request->banner_status
+            "banner_status"=>$request->banner_status,
+            "banner_title"=>$request->banner_title,
+            "banner_slug"=>$slug,
         ]);
         if($banners){
             return redirect(route('banners.index'))->with('success','İşlem Başarılı');
@@ -50,17 +54,22 @@ class BannersController extends Controller
 
     public function update(Request $request,$id)
     {
-        if($request->hasFile('banner_file')){
+            $slug=Str::slug($request->banner_title);
+            if($request->hasFile('banner_file')){
             $request->validate(['banner_file'=>'required|image|mimes:jpg,jpeg,png|max:2048']);
             $file_name='image'.rand(1,200030).'.'.$request->banner_file->getClientOriginalExtension();
             $request->banner_file->move(public_path('backend/images/banners'),$file_name);
             $banners=Banners::where('id',$id)->update([
                 "banner_file"=>$file_name,
+                "banner_slug"=>$slug,
+                "banner_title"=>$request->banner_title,
                 "banner_status"=>$request->banner_status
             ]);
         } else {
             $banners=Banners::where('id',$id)->update([
-               "banner_status"=>$request->banner_status
+               "banner_status"=>$request->banner_status,
+                "banner_slug"=>$slug,
+                "banner_title"=>$request->banner_title,
             ]);
 
         }

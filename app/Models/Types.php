@@ -11,4 +11,8 @@ class Types extends Model
     {
         return $this->belongsTo(Categories::class, 'type_categori_id'); // kategori_id ile ilişkili
     }
+    public function products()
+    {
+        return $this->hasMany(Products::class, 'product_type_id', 'id'); // Kategorinin id'si ile ilişki kuruyoruz
+    }
 }

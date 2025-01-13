@@ -8,14 +8,12 @@
     <meta http-equiv="Content-Language" content="tr">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-
     <meta name="description" content="{{$description}}">
     <meta name="keywords" content="{{$description}}">
-
     <meta name="author" content="halilakarsu.com">
     <meta name="robots" content="index, follow">
     <link rel="icon" href="/backend/images/settings/{{$icon}}" type="image/x-icon">
-    <link rel="shortcut icon" href="backend/images/settings/{{$icon}}" type="image/x-icon">
+    <link rel="shortcut icon" href="/backend/images/settings/{{$icon}}" type="image/x-icon">
 
     <!--Google font-->
     <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&display=swap" rel="stylesheet">
@@ -24,7 +22,6 @@
     <!--icon css-->
     <link rel="stylesheet" type="text/css" href="/backend/assets/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="/backend/assets/css/themify.css">
-
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <!--Slick slider css-->
@@ -48,6 +45,19 @@
     <!-- Bootstrap theme -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/bootstrap.min.css"/>
 </head>
+<style>
+    .image-container img {
+        transition: transform 0.3s ease !important;;
+    }
+
+    .image-container img:hover {
+        transform: scale(1.2) !important ;
+    }
+    .image-container:hover {
+        transform: none !important ;
+        transition: none !important ;
+    }
+</style>
 <body class="bg-light">
 
 <!-- loader start -->
@@ -146,7 +156,7 @@
                         </div>
                         <div class="brand-logo logo-sm-center">
                             <a href="/">
-                                <img width="150px" src="/backend/images/settings/{{$logo}}" class="img-fluid  " alt="logo">
+                                <img width="150px" src="/backend/images/settings/{{$logo}}" class="img-fluid" alt="logo">
                             </a>
                         </div>
                     </div>
@@ -155,10 +165,9 @@
                             <form class="theme-form">
                                 <div class="input-group ">
                                     <div class="input-group-text">
-
                                     </div>
                                     <input type="search" class="form-control" placeholder="Bir şey mi aramıştınız ?" >
-                                    <button class="btn btn-solid">Ara</button>
+                                    <button class="btn btn-solid"><i class="fa fa-search"></i> Ara</button>
                                 </div>
                             </form>
                         </div>
@@ -218,18 +227,15 @@
 
                                     </a>
                                 </li>
-                                <li class="mobile-cart item-count" onclick="openCart()">
-                                    <a href="javascript:void(0)">
+                                <li>
+                                    <a href="{{route('cart')}}">
                                         <div class="cart-block">
                                             <div class="cart-icon">
                                                 <svg  enable-background="new 0 0 512 512"  viewBox="0 0 512 512"  xmlns="http://www.w3.org/2000/svg"><g><path d="m497 401.667c-415.684 0-397.149.077-397.175-.139-4.556-36.483-4.373-34.149-4.076-34.193 199.47-1.037-277.492.065 368.071.065 26.896 0 47.18-20.377 47.18-47.4v-203.25c0-19.7-16.025-35.755-35.725-35.79l-124.179-.214v-31.746c0-17.645-14.355-32-32-32h-29.972c-17.64 0-31.99 14.351-31.99 31.99v31.594l-133.21-.232-9.985-54.992c-2.667-14.694-15.443-25.36-30.378-25.36h-68.561c-8.284 0-15 6.716-15 15s6.716 15 15 15c72.595 0 69.219-.399 69.422.719 16.275 89.632 5.917 26.988 49.58 306.416l-38.389.2c-18.027.069-32.06 15.893-29.81 33.899l4.252 34.016c1.883 15.06 14.748 26.417 29.925 26.417h26.62c-18.8 36.504 7.827 80.333 49.067 80.333 41.221 0 67.876-43.813 49.067-80.333h142.866c-18.801 36.504 7.827 80.333 49.067 80.333 41.22 0 67.875-43.811 49.066-80.333h31.267c8.284 0 15-6.716 15-15s-6.716-15-15-15zm-209.865-352.677c0-1.097.893-1.99 1.99-1.99h29.972c1.103 0 2 .897 2 2v111c0 8.284 6.716 15 15 15h22.276l-46.75 46.779c-4.149 4.151-10.866 4.151-15.015 0l-46.751-46.779h22.277c8.284 0 15-6.716 15-15v-111.01zm-30 61.594v34.416h-25.039c-20.126 0-30.252 24.394-16.014 38.644l59.308 59.342c15.874 15.883 41.576 15.885 57.452 0l59.307-59.342c14.229-14.237 4.13-38.644-16.013-38.644h-25.039v-34.254l124.127.214c3.186.005 5.776 2.603 5.776 5.79v203.25c0 10.407-6.904 17.4-17.18 17.4h-299.412l-35.477-227.039zm-56.302 346.249c0 13.877-11.29 25.167-25.167 25.167s-25.166-11.29-25.166-25.167 11.29-25.167 25.167-25.167 25.166 11.291 25.166 25.167zm241 0c0 13.877-11.289 25.167-25.166 25.167s-25.167-11.29-25.167-25.167 11.29-25.167 25.167-25.167 25.166 11.291 25.166 25.167z"/></g></svg>
                                             </div>
                                             <div class="cart-item">
-
                                                 <h5>Alışveriş</h5>
                                                 <h5>Sepetiniz</h5>
-
-
                                             </div>
                                         </div>
                                     </a>
@@ -282,7 +288,7 @@
                                     <button class="navbar-toggler" type="button">
                                         <span class="navbar-icon"><i class="fa fa-arrow-down"></i></span>
                                     </button>
-                                    <h5 class="mb-0  text-white title-font">KATEGORİLERİMİZ</h5>
+                                    <h5 class="mb-0  text-white title-font">ÜRÜN ÇEŞİTLERİMİZ</h5>
                                 </nav>
                                 <div class="collapse  nav-desk" id="navbarToggleExternalContent">
                                     <ul class="nav-cat title-font">
@@ -304,269 +310,30 @@
                             <nav id="main-nav">
                                 <div class="toggle-nav"><i class="fa fa-bars sidebar-bar"></i></div>
                                 <ul id="main-menu" class="sm pixelstrap sm-horizontal">
-                                    <li>
-                                        <div class="mobile-back text-right">Back<i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
-                                    </li>
-                                    <!--HOME-->
-                                    <li>
-                                        <a  class="dark-menu-item " href="javascript:void(0)">İP ÇEŞİTLERİ</a>
-                                        <ul>
-                                            <li><a  href="index.html">Ahşap Dikişler</a></li>
-                                            <li><a  href="index.html">Harf Boncuklar</a></li>
-                                        </ul>
-                                    </li>
-                                    <!--HOME-END-->
-
-                                    <!--product-meu start-->
-                                    <li class="mega"><a  class="dark-menu-item" href="javascript:void(0)">TUHAFİYE
-                                        </a>
-                                        <ul class="mega-menu full-mega-menu ">
-                                            <li>
-                                                <div class="container">
-                                                    <div class="row">
-                                                        <div class="col mega-box">
-                                                            <div class="link-section">
-                                                                <div class="menu-title">
-                                                                    <h5>sidebar</h5>
-                                                                </div>
-                                                                <div class="menu-content">
-                                                                    <ul>
-                                                                        <li><a href="product-page(left-sidebar).html">left sidebar</a></li>
-                                                                        <li><a href="product-page(right-sidebar).html">right sidebar</a></li>
-                                                                        <li><a href="product-page(no-sidebar).html">non sidebar</a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col mega-box">
-                                                            <div class="link-section">
-                                                                <div class="menu-title">
-                                                                    <h5>bonus layout</h5>
-                                                                </div>
-                                                                <div class="menu-content">
-                                                                    <ul>
-                                                                        <li><a href="product-page(bundle).html">bundle</a></li>
-                                                                        <li><a href="product-page(video-thumbnail).html">video thumbnail</a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col mega-box">
-                                                            <div class="link-section">
-                                                                <div class="menu-title">
-                                                                    <h5>product layout </h5>
-                                                                </div>
-                                                                <div class="menu-content">
-                                                                    <ul>
-                                                                        <li><a href="product-page(4-image).html">4 image </a></li>
-                                                                        <li><a href="product-page(sticky).html">sticky</a></li>
-                                                                        <li><a href="product-page(accordian).html">accordian</a></li>
-                                                                        <li><a href="product-page(360-view).html">360 view</a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col mega-box">
-                                                            <div class="link-section">
-                                                                <div class="menu-title">
-                                                                    <h5>thumbnail image</h5>
-                                                                </div>
-                                                                <div class="menu-content">
-                                                                    <ul>
-                                                                        <li><a href="product-page(left-image).html">left image</a></li>
-                                                                        <li><a href="product-page(right-image).html">right image</a></li>
-                                                                        <li><a href="product-page(image-outside).html">image outside</a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col mega-box">
-                                                            <div class="link-section">
-                                                                <div class="menu-title">
-                                                                    <h5>3 column</h5>
-                                                                </div>
-                                                                <div class="menu-content">
-                                                                    <ul>
-                                                                        <li><a href="product-page(3-col-left).html">thumbnail left</a></li>
-                                                                        <li><a href="product-page(3-col-right).html">thumbnail right</a></li>
-                                                                        <li><a href="product-page(3-column).html">thubnail bottom</a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col mega-box">
-                                                            <div class="link-section">
-                                                                <div class="menu-title">
-                                                                    <h5>product element</h5>
-                                                                </div>
-                                                                <div class="menu-content">
-                                                                    <ul>
-                                                                        <li><a href="element-productbox.html">product box</a></li>
-                                                                        <li><a href="element-product-slider.html">product slider</a></li>
-                                                                        <li><a href="element-no_slider.html">no slider</a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row menu-banner">
-                                                        <div class="col-lg-6">
-                                                            <div>
-                                                                <img src="/backend/assets/images/menu-banner1.jpg" alt="menu-banner" class="img-fluid">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <div>
-                                                                <img src="/backend/assets/images/menu-banner2.jpg" alt="menu-banner" class="img-fluid">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <!--product-meu end-->
-
+                                    @foreach($categories as $categori)
                                     <!--mega-meu start-->
                                     <li class="mega" >
-                                        <a   class="dark-menu-item text-capitalize" href="javascript:void(0)">AMİGURUMİ MALZEMELERİ</a>
+                                        <a   class="dark-menu-item" href="javascript:void(0)">{{$categori->categori_title}}</a>
                                         <ul class="mega-menu full-mega-menu ratio_landscape">
-                                            <li>
+                                    <li>
                                                 <div class="container">
                                                     <div class="row">
+                                                        @foreach($categori->types as $type)
                                                         <div class="col mega-box">
                                                             <div class="link-section">
                                                                 <div class="menu-title">
-                                                                    <h5>portfolio</h5></div>
-                                                                <div class="menu-content">
-                                                                    <ul>
-                                                                        <li><a href="grid-2-col.html">portfolio grid 2</a></li>
-                                                                        <li><a href="grid-3-col.html">portfolio grid 3</a></li>
-                                                                        <li><a href="grid-4-col.html">portfolio grid 4</a></li>
-                                                                        <li><a href="grid-6-col.html">portfolio grid 6</a></li><li><a href="masonary-2-grid.html">mesonary grid 2</a></li>
-                                                                        <li><a href="masonary-3-grid.html">mesonary grid 3</a></li>
-                                                                        <li><a href="masonary-4-grid.html">mesonary grid 4</a></li>
-                                                                        <li><a href="masonary-fullwidth.html">mesonary full width</a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col mega-box">
-                                                            <div class="link-section">
-                                                                <div class="menu-title">
-                                                                    <h5>add to cart</h5></div>
-                                                                <div class="menu-content">
-                                                                    <ul>
-                                                                        <li><a href="layout-5.html">cart modal popup</a></li>
-                                                                        <li><a href="layout-6.html">qty. counter </a></li>
-                                                                        <li><a href="index.html">cart top</a></li>
-                                                                        <li><a href="layout-2.html">cart bottom</a></li>
-                                                                        <li><a href="layout-3.html">cart left</a></li>
-                                                                        <li><a href="layout-4.html">cart right</a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col mega-box">
-                                                            <div class="link-section">
-                                                                <div class="menu-title">
-                                                                    <h5>shortcodes</h5></div>
-                                                                <div class="menu-content">
-                                                                    <ul>
-                                                                        <li><a href="element-title.html">title</a></li>
-                                                                        <li><a href="element-banner.html">collection banner</a></li>
-                                                                        <li><a href="element-category.html">category</a></li>
-                                                                        <li><a href="element-service.html">service</a></li>
-                                                                        <li><a href="element-image-ratio.html">image size ratio</a></li>
-                                                                        <li><a href="element-tab.html">tab</a></li>
-                                                                        <li><a href="element-counter.html">counter</a></li>
-                                                                        <li><a href="element-pricingtable.html">pricing table</a></li>
-                                                                        <li><a href="element-team.html">team</a></li>
-                                                                        <li><a href="element-testimonial.html">testimonial</a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col mega-box">
-                                                            <div class="link-section">
-                                                                <div class="menu-title">
-                                                                    <h5>email template</h5>
-                                                                </div>
-                                                                <div class="menu-content">
-                                                                    <ul>
-                                                                        <li><a href="../email-template/email-order-success.html">order success</a></li>
-                                                                        <li><a href="../email-template/email-order-success-tow.html">order success 2</a></li>
-                                                                        <li><a href="../email-template/email-template.html">email template</a></li>
-                                                                        <li><a href="../email-template/email-template-tow.html">email template 2</a></li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="menu-title menu-secon-title">
-                                                                    <h5>Easy to use</h5>
-                                                                </div>
-                                                                <div class="menu-content">
-                                                                    <ul>
-                                                                        <li><a href="button.html">element button</a></li>
-                                                                        <li><a href="instagram.html">element instagram</a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                                    <h5>{{$type->type_title}}</button></h5></div>
 
-                                                        <div class="col mega-box product ">
-                                                            <div class="mega-img">
-                                                                <img src="/backend/assets/images/mega-banner.jpg" alt="menu-banner" class="img-fluid">
                                                             </div>
                                                         </div>
+                                                        @endforeach
                                                     </div>
                                                 </div>
                                             </li>
                                         </ul>
                                     </li>
                                     <!--mega-meu end-->
-                                    <!--HOME-->
-                                    <li>
-                                        <a  class="dark-menu-item " href="javascript:void(0)">Düğme ve BoncuklaR</a>
-                                        <ul>
-                                            <li><a  href="index.html">Ahşap Dikişler</a></li>
-                                            <li><a  href="index.html">Harf Boncuklar</a></li>
-                                            <li><a  href="index.html">Ahşap Boncuklar</a></li>
-                                            <li><a  href="index.html">Emzik Zincirleri</a></li>
-                                            <li><a  href="index.html">Amigurumi Standları</a></li>
-                                            <li><a  href="index.html">Göz ve Burun</a></li>
-                                            <li><a  href="index.html">Aksesuarlar</a></li>
-                                            <li><a  href="index.html">Hareketli ve Sesli Aparatlar</a></li>
-                                        </ul>
-                                    </li>
-                                    <!--HOME-END-->
-                                    <!--HOME-->
-                                    <li>
-                                        <a  class="dark-menu-item " href="javascript:void(0)">METAL VE DERİ</a>
-                                        <ul>
-                                            <li><a  href="index.html">Anahtarlıklar</a></li>
-                                            <li><a  href="index.html">Kancalar</a></li>
-                                            <li><a  href="index.html">Takılar</a></li>
-                                            <li><a  href="index.html">Tokalar</a></li>
-                                            <li><a  href="index.html">Keçe Taban</a></li>
-                                        </ul>
-                                    </li>
-                                    <!--HOME-END-->
-
-                                    <!--HOME-->
-                                    <li>
-                                        <a  class="dark-menu-item " href="javascript:void(0)">Düğüme ve Boncuk</a>
-
-                                    </li>
-
-                                    <li>
-                                        <a  class="dark-menu-item " href="javascript:void(0)">ŞÖNİL</a>
-
-                                    </li>
-                                    <li>
-                                        <a  class="dark-menu-item " href="javascript:void(0)">ŞİŞLER</a>
-
-                                    </li>
-                                    <!--HOME-END-->
-
+                                    @endforeach
                                 </ul>
                             </nav>
                         </div>
@@ -601,7 +368,7 @@
                     <div class="footer-main">
                         <div class="footer-box">
                             <div class="footer-title mobile-title">
-                                <h5>about</h5>
+                                <h5>Hakkımızda</h5>
                             </div>
                             <div class="footer-contant">
                                 <div class="footer-logo">
@@ -614,15 +381,17 @@
                         </div>
                         <div class="footer-box">
                             <div class="footer-title">
-                                <h5 style="text-transform:none">Kategorilerimiz</h5>
+                                <h5 style="text-transform:none">Hızlı Erişim</h5>
                             </div>
                             <div class="footer-contant">
                                 <ul>
-                                    <li><a href="javascript:void(0)">Hakkımızda</a></li>
-                                    <li><a href="javascript:void(0)">contact us</a></li>
-                                    <li><a href="javascript:void(0)">terms &amp; conditions</a></li>
-                                    <li><a href="javascript:void(0)">returns &amp; exchanges</a></li>
-                                    <li><a href="javascript:void(0)">shipping &amp; delivery</a></li>
+                                    <li><a href="{{ route('frontend.page', ['slug' => 'hakkimizda']) }}">Hakkımızda</a></li>
+                                    <li><a href="{{ route('frontend.contact')}}">İletişim</a></li>
+                                    <li><a href="{{ route('frontend.page', ['slug' => 'gizlilik-politikasi']) }}">Gizlilik Politikası</a></li>
+                                    <li><a href="{{ route('frontend.page', ['slug' => 'mesafeli-satis-sozlesmesi']) }}">Satış Sözleşmesi</a></li>
+                                    <li><a href="{{ route('frontend.page', ['slug' => 'kvkk-aydinlatma-metni']) }}">KVKK Aydınlatma Metni</a></li>
+                                    <li><a href="{{ route('frontend.page', ['slug' => 'teslimat-ve-iade-kosullari']) }}">Teslimat ve İade</a></li>
+
                                 </ul>
                             </div>
                         </div>
@@ -638,6 +407,7 @@
                                 </ul>
                             </div>
                         </div>
+
                         <div class="footer-box">
                             <div class="footer-title">
                                 <h5 style="text-transform:none">Bülten Aboneliği</h5>
@@ -658,7 +428,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group mb-0">
-                                        <a href="javascript:void(0)" class="btn btn-solid btn-sm">Abone Ol</a>
+                                        <button href="javascript:void(0)" class="btn btn-solid btn-sm">Abone Ol</button>
                                     </div>
                                 </div>
                             </div>
@@ -678,13 +448,17 @@
                 </div>
                 <div class="col-xl-6 col-md-4 col-sm-12">
                     <div class="footer-right">
-                        <ul class="sosyal">
-                            <li><a href="javascript:void(0)"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="javascript:void(0)"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="javascript:void(0)"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="javascript:void(0)"><i class="fa fa-instagram"></i></a></li>
-                            <li><a href="javascript:void(0)"><i class="fa fa-rss"></i></a></li>
-                        </ul>
+                        <div class="col-xl-6 col-md-4 col-sm-12">
+                            <div class="footer-right">
+                                <ul class="sosiyal">
+                                    <li><a href="https://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="https://www.google.com"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a href="https://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="https://www.instagram.com/popyo_hobi_malzeme/"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="javascript:void(0)"><i class="fa fa-pinterest"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -822,13 +596,13 @@ Newsletter Modal popup end-->
 <!-- Add to account bar end-->
 
 
-<!-- cookie bar start -->
+<!-- cookie bar start
 <div class="cookie-bar">
     <p>We use cookies to improve our site and your shopping experience. By continuing to browse our site you accept our cookie policy.</p>
     <a href="javascript:void(0)" class="btn btn-solid btn-xs">Onayla</a>
     <a href="javascript:void(0)" class="btn btn-solid btn-xs">İptal</a>
 </div>
-<!-- cookie bar end -->
+ cookie bar end -->
 
 <!-- notification product
 <div class="product-notification" id="dismiss">
@@ -911,6 +685,7 @@ notification product -->
 
 
 </script>
+
 </body>
 
 </html>

@@ -30,6 +30,7 @@
                         <thead>
                         <tr>
                             <th>Görsel</th>
+                            <th>Başlık</th>
                             <th>Durum</th>
                             <th></th>
                             </tr>
@@ -37,9 +38,10 @@
                         <tbody id="sortable">
                         @foreach($banners as $item)
                         <tr id="item-{{$item->id}}">
-                              <td  class="sortable">
+                              <td>
                                 <img width="90px" src="/backend/images/banners/{{$item->banner_file}}">
                             </td>
+                            <td>{{$item->banner_title}}</td>
                             <td ><div style="margin-left:-40px;margin-top:10px" class="form-check form-switch text-lg-left ">
                                     <label class="custom-switch">
                                         <input data-id="{{$item->id}}" type="checkbox" class="custom-switch-input" {{$item->banner_status==1 ? "checked": ""}}>

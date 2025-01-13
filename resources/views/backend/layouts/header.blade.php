@@ -149,7 +149,16 @@
                     </li>
                     <li><a href="javascript:void(0)"><i class="right_side_toggle" data-feather="message-square"></i><span class="dot"></span></a></li>
                     <li class="onhover-dropdown">
-                        <div class="media align-items-center"><img class="align-self-center pull-right img-50 rounded-circle blur-up lazyloaded" src="/backend/images/users/{{Auth::user()->user_file}}" alt="header-user">
+                        <div class="media align-items-center">
+
+                            @if(Auth::user() && Auth::user()->user_file)
+                                <img class="align-self-center pull-right img-50 rounded-circle blur-up lazyloaded"
+                                     src="/backend/images/users/{{ Auth::user()->user_file }}" alt="header-user">
+                            @else
+                                <img class="align-self-center pull-right img-50 rounded-circle blur-up lazyloaded"
+                                     src="/path/to/default/image.jpg" alt="default-user-image">
+                            @endif
+
                             <div class="dotted-animation"><span class="animate-circle"></span><span class="main-circle"></span></div>
                         </div>
                         <ul class="profile-dropdown onhover-show-div p-20 profile-dropdown-hover">
