@@ -13,6 +13,6 @@ class Types extends Model
     }
     public function products()
     {
-        return $this->hasMany(Products::class, 'product_type_id', 'id'); // Kategorinin id'si ile ilişki kuruyoruz
+        return $this->hasMany(Products::class, 'product_type_id', 'id');
     }
 }

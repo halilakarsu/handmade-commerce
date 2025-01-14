@@ -93,9 +93,11 @@ class PagesController extends Controller
             ]);
         }
         if($pages){
-            $path='backend/images/pages/'.$request->oldFile;
-            if(file_exists($path)){
-                @unlink(public_path($path));
+            if ($request->hasFile('page_file')) {
+                $path = 'backend/images/pages/' . $request->oldFile;
+                if (file_exists(public_path($path))) {
+                    @unlink(public_path($path));
+                }
             }
             return redirect(route('pages.index'))->with('success','İşlem Başarılı');
         }

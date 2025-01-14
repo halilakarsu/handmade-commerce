@@ -8,9 +8,11 @@
                 <div class="col">
                     <div class="slide-1">
                       @foreach($sliders as $key)
+                            <a href="products/">
                             <div class="creative-card">
                             <img src="/backend/images/sliders/{{$key->slider_file}}" class="img-fluid w-100 " alt="blog">
                             </div>
+                            </a>
                        @endforeach
 
                     </div>
@@ -23,24 +25,21 @@
     <!--collection banner start-->
     <section class="collection-banner section-pt-space b-g-white ">
         <div class="custom-container">
-            <div class="row ">
-
-                @php( $a=0)
+            <div class="row">
                 @foreach($banners as $row)
                 <div class="col-md-4">
+                    <a href="{{ route('frontend.products', ['id' => $row->id]) }}">
                     <div class="collection-banner-main banner-1  p-right">
                         <div class="collection-img mt-2">
                             <img  src="/backend/images/banners/{{$row->banner_file}}" class="img-fluid bg-img" alt="banner">
                         </div>
                     </div>
+                    </a>
                 </div>
                 @endforeach
             </div>
         </div>
     </section>
-
-
-
     <!--collection banner end-->
 
     <!--discount banner start-->

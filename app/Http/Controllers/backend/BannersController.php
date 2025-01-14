@@ -74,9 +74,11 @@ class BannersController extends Controller
 
         }
         if($banners){
-            $path='backend/images/banners/'.$request->oldFile;
-            if(file_exists($path)){
-                @unlink(public_path($path));
+            if ($request->hasFile('banner_file')) {
+                $path = 'backend/images/banners/' . $request->oldFile;
+                if (file_exists(public_path($path))) {
+                    @unlink(public_path($path));
+                }
             }
             return redirect(route('banners.index'))->with('success','İşlem Başarılı');
         }

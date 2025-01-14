@@ -114,9 +114,11 @@ class CategoriesController extends Controller
         }
 
         if($categories){
-            $path='backend/images/categories/'.$request->oldFile;
-            if(file_exists($path)){
-                @unlink(public_path($path));
+            if ($request->hasFile('categori_file')) {
+                $path = 'backend/images/categories/' . $request->oldFile;
+                if (file_exists(public_path($path))) {
+                    @unlink(public_path($path));
+                }
             }
             return redirect(route('categories.index'))->with('success','İşlem Başarılı');
         }

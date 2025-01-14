@@ -78,9 +78,11 @@ class SlidersController extends Controller
 
         }
         if($sliders){
-            $path='backend/images/sliders/'.$request->oldFile;
-            if(file_exists($path)){
-                @unlink(public_path($path));
+            if ($request->hasFile('slider_file')) {
+                $path = 'backend/images/sliders/' . $request->oldFile;
+                if (file_exists(public_path($path))) {
+                    @unlink(public_path($path));
+                }
             }
             return redirect(route('sliders.index'))->with('success','İşlem Başarılı');
         }

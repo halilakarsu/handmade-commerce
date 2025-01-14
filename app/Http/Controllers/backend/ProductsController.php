@@ -101,6 +101,12 @@ class ProductsController extends Controller
 
         }
         if($products) {
+            if ($request->hasFile('product_file')) {
+                $path = 'backend/images/products/' . $request->oldFile;
+                if (file_exists(public_path($path))) {
+                    @unlink(public_path($path));
+                }
+            }
             return redirect(route('products.index'))->with('success', 'Kayıt Başarılı');
         }
             return back()->with('error','Kayıt Başarısız');

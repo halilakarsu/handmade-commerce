@@ -121,6 +121,12 @@ class TypesController extends Controller
            ]);
         }
         if($types){
+            if ($request->hasFile('type_file')) {
+                $path = 'backend/images/types/' . $request->oldFile;
+                if (file_exists(public_path($path))) {
+                    @unlink(public_path($path));
+                }
+            }
             return redirect(route('types.index'))->with('success','Kayıtlar Güncellendi');
             }
              return back()->with('error','Kayıtlar Güncellenemedi.');

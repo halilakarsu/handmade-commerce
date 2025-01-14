@@ -10,10 +10,10 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index($slug){
-        $products = Types::where('slug',$slug)->orderBy('type_must')->get();
+    public function index($id)
+    {
         $categories = Categories::with('types')->get();
-        $types = Types::all();
-        return view('frontend.products.index',compact('categories','products','types'));
+        $types = Types::with('products')->where('id', $id)->get();
+        return view('frontend.products.index', compact('categories', 'types'));
     }
 }

@@ -76,7 +76,8 @@ Route::get('/temu',[DefaultController::class,'temu'])->name('temu.home');
 
 Route::post('/registers/login', [RegisterController::class, 'login'])->name('frontend.login');
 Route::post('/registers/logout', [RegisterController::class, 'logout']);
-Route::get('/urunler/{slug}', [ProductController::class, 'index'])->name('frontend.products');
+Route::get('/urunler/{id}', [ProductController::class, 'index'])->name('frontend.products');
+
 
 Route::post('/add-to-cart',[CartController::class,'addtocart'])->name('addtocart');
 Route::get('/cart',[CartController::class,'cart'])->name('cart');
