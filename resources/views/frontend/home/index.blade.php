@@ -2,6 +2,7 @@
 @section('title','Hobi Malzemeleri | Hobi Sitesi | popyohobi.com ')
 @section('content')
     <!--slider start-->
+
     <section class="theme-slider home-slide b-g-white " id="home-slide">
         <div class="custom-container">
             <div class="row">
@@ -9,7 +10,7 @@
                     <div class="slide-1">
                       @foreach($sliders as $key)
                             <a href="products/">
-                            <div class="creative-card">
+                                <div class="collection-img mt-2">
                             <img src="/backend/images/sliders/{{$key->slider_file}}" class="img-fluid w-100 " alt="blog">
                             </div>
                             </a>
@@ -21,26 +22,8 @@
         </div>
     </section>
     <!--slider end-->
+    <!--title start-->
 
-    <!--collection banner start-->
-    <section class="collection-banner section-pt-space b-g-white ">
-        <div class="custom-container">
-            <div class="row">
-                @foreach($banners as $row)
-                <div class="col-md-4">
-                    <a href="{{ route('frontend.products', ['id' => $row->id]) }}">
-                    <div class="collection-banner-main banner-1  p-right">
-                        <div class="collection-img mt-2">
-                            <img  src="/backend/images/banners/{{$row->banner_file}}" class="img-fluid bg-img" alt="banner">
-                        </div>
-                    </div>
-                    </a>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
-    <!--collection banner end-->
 
     <!--discount banner start-->
     <section class="discount-banner">
@@ -52,7 +35,7 @@
                         <h1 style="text-transform:none"><span>Kaliteli ve ucuzluğu adresi</span> <span>popyohobi.com!</span></h1>
                         <div class="rounded-contain rounded-inverse">
                             <div  class="rounded-subcontain">
-                              KOŞULSUZ İADE ETME SEÇENEĞİMİZLE BEĞENMEDİĞİNİZ ÜRÜNLERİ GERİ ALIYORUZ...
+                                KOŞULSUZ İADE ETME SEÇENEĞİMİZLE BEĞENMEDİĞİNİZ ÜRÜNLERİ GERİ ALIYORUZ...
                             </div>
                         </div>
                     </div>
@@ -62,55 +45,75 @@
     </section>
     <!--discount banner end-->
 
-    <!--product start-->
-    <section class="product section-big-pb-space">
+    <!--collection banner start-->
+    <section class="collection-banner section-pt-space b-g-white ">
         <div class="custom-container">
             <div class="row ">
-                <div class="col pr-0">
-                    <div class="product-slide-5  no-arrow">
-                        @foreach($products as $product)
+                @foreach($type1 as $row)
+                <div class="col-md-4">
+                    <a href="{{ route('frontend.products', ['slug' => $row->type_slug]) }}">
+                    <div class="collection-banner-main banner-1  p-right">
+                        <div class="collection-img mt-2">
+                            <img  src="/backend/images/types/{{$row->type_file}}" class="img-fluid bg-img" alt="banner">
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+   <!--collection banner end-->
+
+    <!--rounded category start-->
+    <section class="rounded-category  rounded-category-inverse">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="slide-6 no-arrow">
+
+                        @foreach($banners as $row)
                         <div>
-                            <div class="product-box ">
-                                <div class="product-imgbox">
-                                    <div class="product-front">
-                                        <a href="product-page(left-sidebar).html">
-                                            <img src="/backend/images/products/{{$product->product_file}}" class="img-fluid  " alt="product">
-                                            <input name="product_file" type="hidden" id="image{{ $product->id }}" value="{{ $product->product_file }}">
-                                        </a>
+                            <div class="category-contain">
+                                <a href="javascript:void(0)">
+                                    <div class="img-wrapper">
+                                        <img   src="/backend/images/banners/{{$row->banner_file}}" class="img-fluid" alt="category">
                                     </div>
-                                    <div class="product-back">
-                                        <a href="product-page(left-sidebar).html">
-                                            <img src="/backend/images/products/{{$product->product_file}}" class="img-fluid  " alt="product">
-                                        </a>
+                                    <div>
+                                        <div  class="btn-rounded text-capitalize">
+                                            {{$row->banner_title}}
+                                        </div>
                                     </div>
-                                    <!-- ... -->
-                                    <button id="{{$product->id}}" type="button" class="btn btn-outline btn-cart add-to-cart-btn tooltip-top add-cartnoty"  > Sepete Ekle </button>
-                                    <!-- ... -->
-
-                                    <div class="new-label">
-                                        <div>Yeni</div>
-                                        <input id="quantity" name="quantity" type="hidden"  value="1" min="1" />
-                                    </div>
-                                </div>
-                                <div class="product-detail product-detail2 ">
-                                    <a href="product-page(left-sidebar).html">
-                                        <h3 id="name{{$product->id}}">{{$product->product_title}}</h3>
-                                    </a>
-                                    <h5>
-
-                                    </h5>
-                                </div>
+                                </a>
                             </div>
                         </div>
                         @endforeach
                     </div>
-
                 </div>
             </div>
         </div>
     </section>
+    <!--rounded category end-->
 
-    <!--product end-->
+    <!--collection banner start-->
+    <section class="collection-banner section-pt-space b-g-white ">
+        <div class="custom-container">
+            <div class="row ">
+                @foreach($type2 as $row)
+                    <div class="col-md-4">
+                        <a href="{{ route('frontend.products', ['slug' => $row->type_slug]) }}">
+                            <div class="collection-banner-main banner-1  p-right">
+                                <div class="collection-img mt-2">
+                                    <img  src="/backend/images/types/{{$row->type_file}}" class="img-fluid bg-img" alt="banner">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+    <!--collection banner end-->
     <script>
         $(document).ready(function () {
             $('.add-to-cart-btn').click(function (e) {

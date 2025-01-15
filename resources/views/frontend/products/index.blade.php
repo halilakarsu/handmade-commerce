@@ -182,83 +182,11 @@
                                                     <div class="filter-main-btn"><span class="filter-btn btn btn-theme"><i class="fa fa-filter" aria-hidden="true"></i> Filter</span></div>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <div class="product-filter-content">
-                                                        <div class="search-count">
-                                                            <h5>Showing Products 1-24 of 10 Result</h5></div>
-                                                        <div class="collection-view">
-                                                            <ul>
-                                                                <li><i class="fa fa-th grid-layout-view"></i></li>
-                                                                <li><i class="fa fa-list-ul list-layout-view"></i></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="collection-grid-view">
-                                                            <ul>
-                                                                <li><img src="../assets/images/category/icon/2.png" alt="" class="product-2-layout-view"></li>
-                                                                <li><img src="../assets/images/category/icon/3.png" alt="" class="product-3-layout-view"></li>
-                                                                <li><img src="../assets/images/category/icon/4.png" alt="" class="product-4-layout-view"></li>
-                                                                <li><img src="../assets/images/category/icon/6.png" alt="" class="product-6-layout-view"></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="product-page-per-view">
-                                                            <select>
-                                                                <option value="High to low">24 Products Par Page</option>
-                                                                <option value="Low to High">50 Products Par Page</option>
-                                                                <option value="Low to High">100 Products Par Page</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="product-page-filter">
-                                                            <select>
-                                                                <option value="High to low">Sorting items</option>
-                                                                <option value="Low to High">50 Products</option>
-                                                                <option value="Low to High">100 Products</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+
                                         </div>
                                         <div class="product-wrapper-grid product-load-more product">
                                             <div class="row">
-                                                <div class="col-xl-3 col-md-4 col-6 col-grid-box">
-                                                    <div class="product-box">
-                                                        <div class="product-imgbox">
-                                                            <div class="product-front">
-                                                                <a href="product-page(left-sidebar).html"> <img src="../assets/images/layout-4/product/1.jpg" class="img-fluid  " alt="product"> </a>
-                                                            </div>
-                                                            <div class="product-back">
-                                                                <a href="product-page(left-sidebar).html"> <img src="../assets/images/layout-4/product/a1.jpg" class="img-fluid  " alt="product"> </a>
-                                                            </div>
 
-
-                                                        </div>
-                                                        <div class="product-detail detail-center detail-inverse">
-                                                            <div class="detail-title">
-                                                                <div class="detail-left">
-                                                                    <div class="rating-star"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-                                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
-                                                                    <a href="product-page(left-sidebar).html">
-                                                                        <h6 class="price-title">
-                                                                            realme not 7
-                                                                        </h6> </a>
-                                                                </div>
-                                                                <div class="detail-right">
-                                                                    <div class="check-price"> $60.21 </div>
-                                                                    <div class="price">
-                                                                        <div class="price"> $50.05 </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="icon-detail">
-                                                                <button class="tooltip-top add-cartnoty" data-tippy-content="Add to cart"> <i  data-feather="shopping-cart"></i> </button>
-                                                                <a href="javascript:void(0)"  class="add-to-wish tooltip-top"  data-tippy-content="Add to Wishlist" > <i  data-feather="heart"></i> </a>
-                                                                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#quick-view" class="tooltip-top"  data-tippy-content="Quick View"> <i  data-feather="eye"></i> </a>
-                                                                <a href="compare.html" class="tooltip-top" data-tippy-content="Compare"> <i  data-feather="refresh-cw"></i> </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                                 @foreach($types as $type)
                                                     @foreach($type->products as $product)
                                                         <div class="col-xl-3 col-md-4 col-6 col-grid-box">
@@ -278,24 +206,17 @@
                                                                 <div class="product-detail detail-center detail-inverse">
                                                                     <div class="detail-title">
                                                                         <div class="detail-left">
-                                                                            <div class="rating-star">
-                                                                                <i class="fa fa-star"></i>
-                                                                                <i class="fa fa-star"></i>
-                                                                                <i class="fa fa-star"></i>
-                                                                                <i class="fa fa-star"></i>
-                                                                                <i class="fa fa-star"></i>
-                                                                            </div>
-                                                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
+                                                                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
                                                                             <a href="product-page(left-sidebar).html">
                                                                                 <h6 class="price-title">
-                                                                                    wireless speaker
+                                                                                    {{$product->product_title}}
                                                                                 </h6>
                                                                             </a>
                                                                         </div>
                                                                         <div class="detail-right">
-                                                                            <div class="check-price"> $56.21 </div>
+                                                                            <div class="check-price"> {{$product->product_price}} </div>
                                                                             <div class="price">
-                                                                                <div class="price"> $24.05 </div>
+                                                                                <div class="price"> {{$product->product_price}} </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -321,7 +242,7 @@
 
                                             </div>
                                         </div>
-                                        <div class="load-more-sec"><a href="javascript:void(0)" class="loadMore">load more</a></div>
+                                        <div class="load-more-sec"><a href="javascript:void(0)" class="loadMore">Daha Fazla Ürün</a></div>
                                     </div>
                                 </div>
                             </div>

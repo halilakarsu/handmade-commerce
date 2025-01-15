@@ -64,7 +64,7 @@
                                                 <label for="validationCustom01" >Banner Link :</label>
                                             </div>
                                             <div class="col-xl-8 col-sm-7">
-                                                <input class="form-control"  id="validationCustom01" type="text" name="banner_title"  value="{{$banners->banner_slug}}" required="">
+                                                <input class="form-control"  id="validationCustom01" type="text" name="banner_slug"  value="{{$banners->banner_slug}}" required="">
                                             </div>
                                         </div>
                                         <div class="form-group row">

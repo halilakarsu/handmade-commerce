@@ -51,8 +51,8 @@
                             </td>
                             <td>{{$item->product_title}}</td>
                             <td>{{$item->product_price }}</td>
-                            <td>{{$item->types->type_title }}</td>
-                            <td ><div style="margin-left:-40px;margin-top:10px" class="form-check form-switch text-lg-left ">
+                            <td>{{$item->types->type_title ?? 'kategori yok' }}</td>
+                            <td><div style="margin-left:-40px;margin-top:10px" class="form-check form-switch text-lg-left ">
                                     <label class="custom-switch">
                                         <input data-id="{{$item->id}}" type="checkbox" class="custom-switch-input" {{$item->product_status==1 ? "checked": ""}}>
                                         <span class="custom-switch-slider"></span>

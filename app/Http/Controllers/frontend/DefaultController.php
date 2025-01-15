@@ -5,7 +5,6 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Controller;
 use App\Models\Categories;
-use App\Models\Products;
 use App\Models\Register;
 use App\Models\Settings;
 use App\Models\Sliders;
@@ -22,10 +21,11 @@ class DefaultController extends Controller
            $settings=Settings::all();
            $pages=Pages::all();
            $sliders=Sliders::all()->sortBy('slider_must');
-           $banners=Banners::all();
+           $banners=Banners::all()->sortBy('banner_title');
+           $type1 = Types::orderBy('type_must')->take(15)->get();
+           $type2 = Types::orderBy('type_must')->skip(15)->take(15)->get();
            $categories = Categories::with('types')->get();
-           $products = Products::orderBy('product_must')->take(5)->get();
-           return view('frontend.home.index',compact('settings','products','sliders','banners','categories','pages'));
+           return view('frontend.home.index',compact('settings','sliders','banners','categories','pages','type1','type2'));
        }
     public function register(){
 
