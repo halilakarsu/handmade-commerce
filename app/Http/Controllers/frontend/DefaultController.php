@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers\frontend;
-
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Controller;
 use App\Models\Categories;
@@ -19,13 +17,15 @@ class DefaultController extends Controller
 {
        public function index(){
            $settings=Settings::all();
+           $types=Types::all();
            $pages=Pages::all();
            $sliders=Sliders::all()->sortBy('slider_must');
            $banners=Banners::all()->sortBy('banner_title');
-           $type1 = Types::orderBy('type_must')->take(15)->get();
-           $type2 = Types::orderBy('type_must')->skip(15)->take(15)->get();
+           $type1 = Types::orderBy('type_must')->take(20)->get();
+           $type2 = Types::orderBy('type_must')->skip(20)->take(20)->get();
            $categories = Categories::with('types')->get();
-           return view('frontend.home.index',compact('settings','sliders','banners','categories','pages','type1','type2'));
+
+           return view('frontend.home.index',compact('settings','sliders','banners','categories','pages','type1','type2','types'));
        }
     public function register(){
 

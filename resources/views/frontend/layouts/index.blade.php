@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="description" content="{{$description}}">
-    <meta name="keywords" content="{{$description}}">
+    <meta name="keywords" content="{{$keywords}}">
     <meta name="author" content="halilakarsu.com">
     <meta name="robots" content="index, follow">
     <link rel="icon" href="/backend/images/settings/{{$icon}}" type="image/x-icon">
@@ -27,12 +27,10 @@
     <!--Slick slider css-->
     <link rel="stylesheet" type="text/css" href="/backend/assets/css/slick.css">
     <link rel="stylesheet" type="text/css" href="/backend/assets/css/slick-theme.css">
-
     <!--Animate css-->
     <link rel="stylesheet" type="text/css" href="/backend/assets/css/animate.css">
     <!-- Bootstrap css -->
     <link rel="stylesheet" type="text/css" href="/backend/assets/css/bootstrap.css">
-
     <!-- Theme css -->
     <link rel="stylesheet" type="text/css" href="/backend/assets/css/color2.css" media="screen" id="color">
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
@@ -57,6 +55,12 @@
         transform: none !important ;
         transition: none !important ;
     }
+
+     .border{
+         border: 3px solid #670098; /* Sınırın kalınlığı, türü ve rengi */
+         background-color:#670098;
+     }
+
 </style>
 <body class="bg-light">
 
@@ -122,36 +126,12 @@
                             <ul class="nav-slide">
                                 <li>
                                     <div class="nav-sm-back">
-                                        back <i class="fa fa-angle-right ps-2"></i>
+                                        kapat<i class="fa fa-angle-right ps-2"></i>
                                     </div>
                                 </li>
-                                <li><a href="category-page(left-sidebar).html">western ware</a></li>
-                                <li><a href="category-page(left-sidebar).html">TV, Appliances</a></li>
-                                <li><a href="category-page(left-sidebar).html">Pets Products</a></li>
-                                <li><a href="category-page(left-sidebar).html">Car, Motorbike</a></li>
-                                <li><a href="category-page(left-sidebar).html">Industrial Products</a></li>
-                                <li><a href="category-page(left-sidebar).html">Beauty, Health Products</a></li>
-                                <li><a href="category-page(left-sidebar).html">Grocery Products </a></li>
-                                <li><a href="category-page(left-sidebar).html">Sports</a></li>
-                                <li><a href="category-page(left-sidebar).html">Bags, Luggage</a></li>
-                                <li><a href="category-page(left-sidebar).html">Movies, Music </a></li>
-                                <li><a href="category-page(left-sidebar).html">Video Games</a></li>
-                                <li><a href="category-page(left-sidebar).html">Toys, Baby Products</a></li>
-                                <li class="mor-slide-open">
-                                    <ul>
-                                        <li><a href="category-page(left-sidebar).html">Bags, Luggage</a></li>
-                                        <li><a href="category-page(left-sidebar).html">Movies, Music </a></li>
-                                        <li><a href="category-page(left-sidebar).html">Video Games</a></li>
-                                        <li><a href="category-page(left-sidebar).html">Toys, Baby Products</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a class="mor-slide-click">
-                                        mor category
-                                        <i class="fa fa-angle-down pro-down" ></i>
-                                        <i class="fa fa-angle-up pro-up" ></i>
-                                    </a>
-                                </li>
+                                @foreach($types as $type)
+                                <li><a href="{{route('frontend.products',['slug'=>$type->type_slug])}}">{{$type->type_title}}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                         <div class="brand-logo logo-sm-center">
@@ -162,12 +142,13 @@
                     </div>
                     <div class="input-block">
                         <div class="input-box">
-                            <form class="theme-form">
+                            <form action="{{route('frontend.search')}}" method="GET" class="theme-form">
+                                @csrf
                                 <div class="input-group ">
-                                    <div class="input-group-text">
+                                   <div class="input-group-text">
                                     </div>
-                                    <input type="search" class="form-control" placeholder="Bir şey mi aramıştınız ?" >
-                                    <button class="btn btn-solid"><i class="fa fa-search"></i> Ara</button>
+                                    <input required type="search" name="search_term" class="form-control" placeholder="Bir şey mi aramıştınız ?">
+                                    <button type="submit" class="btn btn-solid"><i class="fa fa-search"></i> Ara</button>
                                 </div>
                             </form>
                         </div>
@@ -234,8 +215,8 @@
                                                 <svg  enable-background="new 0 0 512 512"  viewBox="0 0 512 512"  xmlns="http://www.w3.org/2000/svg"><g><path d="m497 401.667c-415.684 0-397.149.077-397.175-.139-4.556-36.483-4.373-34.149-4.076-34.193 199.47-1.037-277.492.065 368.071.065 26.896 0 47.18-20.377 47.18-47.4v-203.25c0-19.7-16.025-35.755-35.725-35.79l-124.179-.214v-31.746c0-17.645-14.355-32-32-32h-29.972c-17.64 0-31.99 14.351-31.99 31.99v31.594l-133.21-.232-9.985-54.992c-2.667-14.694-15.443-25.36-30.378-25.36h-68.561c-8.284 0-15 6.716-15 15s6.716 15 15 15c72.595 0 69.219-.399 69.422.719 16.275 89.632 5.917 26.988 49.58 306.416l-38.389.2c-18.027.069-32.06 15.893-29.81 33.899l4.252 34.016c1.883 15.06 14.748 26.417 29.925 26.417h26.62c-18.8 36.504 7.827 80.333 49.067 80.333 41.221 0 67.876-43.813 49.067-80.333h142.866c-18.801 36.504 7.827 80.333 49.067 80.333 41.22 0 67.875-43.811 49.066-80.333h31.267c8.284 0 15-6.716 15-15s-6.716-15-15-15zm-209.865-352.677c0-1.097.893-1.99 1.99-1.99h29.972c1.103 0 2 .897 2 2v111c0 8.284 6.716 15 15 15h22.276l-46.75 46.779c-4.149 4.151-10.866 4.151-15.015 0l-46.751-46.779h22.277c8.284 0 15-6.716 15-15v-111.01zm-30 61.594v34.416h-25.039c-20.126 0-30.252 24.394-16.014 38.644l59.308 59.342c15.874 15.883 41.576 15.885 57.452 0l59.307-59.342c14.229-14.237 4.13-38.644-16.013-38.644h-25.039v-34.254l124.127.214c3.186.005 5.776 2.603 5.776 5.79v203.25c0 10.407-6.904 17.4-17.18 17.4h-299.412l-35.477-227.039zm-56.302 346.249c0 13.877-11.29 25.167-25.167 25.167s-25.166-11.29-25.166-25.167 11.29-25.167 25.167-25.167 25.166 11.291 25.166 25.167zm241 0c0 13.877-11.289 25.167-25.166 25.167s-25.167-11.29-25.167-25.167 11.29-25.167 25.167-25.167 25.166 11.291 25.166 25.167z"/></g></svg>
                                             </div>
                                             <div class="cart-item">
-                                                <h5>Alışveriş</h5>
-                                                <h5>Sepetiniz</h5>
+                                                <h5>ALIŞVERİŞ</h5>
+                                                <h5>SEPETİNİZ</h5>
                                             </div>
                                         </div>
                                     </a>
@@ -292,16 +273,9 @@
                                 </nav>
                                 <div class="collapse  nav-desk" id="navbarToggleExternalContent">
                                     <ul class="nav-cat title-font">
-                                        <li> <a href="category-page(left-sidebar).html"><img src="/backend/assets/images/layout-1/nav-img/01.png" alt="category-product"> western ware</a></li>
-                                        <li>
-                                            <ul class="mor-slide-open">
-                                                <li> <a href="category-page(left-sidebar).html"><img src="/backend/assets/images/layout-1/nav-img/08.png" alt="category-product"> Sports</a></li>
-
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a class="mor-slide-click">mor category <i class="fa fa-angle-down pro-down"></i><i class="fa fa-angle-up pro-up"></i></a>
-                                        </li>
+                                        @foreach($banners as $banner)
+                                        <li> <a href="/urunler/{{$banner->banner_slug}}"><img height="30px" width="30px" src="/backend/images/banners/{{$banner->banner_file}}" alt="category-product">{{$banner->banner_title}}</a></li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
@@ -310,30 +284,379 @@
                             <nav id="main-nav">
                                 <div class="toggle-nav"><i class="fa fa-bars sidebar-bar"></i></div>
                                 <ul id="main-menu" class="sm pixelstrap sm-horizontal">
-                                    @foreach($categories as $categori)
+                                    <li>
+                                        <div class="mobile-back text-right">Geri<i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
+                                    </li>
+                                    <!--HOME-->
+
+                                    <li>
+                                        <a  class="dark-menu-item" href="javascript:void(0)"><p style="font-size:13px">TUHAFİYE</p></a>
+                                        <ul>
+                                            <li><a  href="/urunler/igne-cesitleri">İğne Çeşitleri</a></li>
+                                            <li><a  href="/urunler/makaslar">Makas Çeşitleri</a></li>
+                                            <li><a  href="/urunler/dantel-ve-kurdela">Dantel-Kurdele</a></li>
+                                            <li><a  href="/urunler/yapistirici-malzemeleri">Yapıştırıcılar</a></li>
+                                            <li><a  href="/urunler/dikis-malzemeleri">Dikiş Malzemeleri</a></li>
+                                            <li><a  href="/urunler/tufahiye">Diğer Malzemeler</a></li>
+                                            <li><a  href="/kategori/tuhafiye">Tümü</a></li>
+                                        </ul>
+                                    </li>
                                     <!--mega-meu start-->
                                     <li class="mega" >
-                                        <a   class="dark-menu-item" href="javascript:void(0)">{{$categori->categori_title}}</a>
+                                        <a  class="dark-menu-item" href="javascript:void(0)"><p style="font-size:13px">AMİGURUMİ </p></a>
                                         <ul class="mega-menu full-mega-menu ratio_landscape">
-                                    <li>
+                                               <li>
                                                 <div class="container">
                                                     <div class="row">
-                                                        @foreach($categori->types as $type)
+
                                                         <div class="col mega-box">
-                                                            <div class="link-section">
+                                                            <div  class="link-section p-1 border">
+                                                                <a href="/urunler/ahsap-dislikler">
                                                                 <div class="menu-title">
-                                                                    <h5>{{$type->type_title}}</button></h5></div>
+
+                                                                    <small class="text-light text-capitalize"><b>Ahşap Dişlikler</b></small> </div> </a>
+
+                                                            </div>
+
+                                                            <div  class="link-section p-1 border ">
+                                                                <a href="/urunler/ahsap-dislikler">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Halka Diş Kaşıyıcılar</b></small> </div></a>
+
+                                                            </div>
+                                                            <div  class="link-section p-1 border">
+                                                                <a href="/urunler/ahsap-dislikler">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Diş Kaşıyıcı Setleri</b></small> </div></a>
+
+                                                            </div>
+                                                            <div  class="link-section p-1 border">
+                                                                <a href="/urunler/ahsap-dislikler">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Figürlü Diş Kaşıyıcılar</b></small> </div></a>
 
                                                             </div>
                                                         </div>
-                                                        @endforeach
+                                                        <div class="col mega-box">
+                                                            <div  class="link-section p-1 border">
+                                                                <div class="menu-title">
+                                                                   <a href="/urunler/amigurumi">
+                                                                    <small class="text-light text-capitalize"><b>Amigurumi Standları</b></small> </div></a>
+
+                                                            </div>
+                                                            <div  class="link-section p-1 border">
+                                                                <a href="/urunler/amigurumi">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Amigurumi Kirpikler</b></small> </div></a>
+
+                                                            </div>
+                                                            <div  class="link-section p-1 border">
+                                                                <a href="/urunler/amigurumi">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Eklem Aparatları</b></small> </div></a>
+
+                                                            </div>
+                                                            <div  class="link-section p-1 border">
+                                                                <a href="/urunler/amigurumi">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Hayvan Sesleri</b></small> </div></a>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col mega-box">
+                                                            <div  class="link-section p-1 border">
+                                                                <a href="/urunler/harf-boncuklari">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Harf Bonucklar</b></small> </div></a>
+
+                                                            </div>
+                                                            <div  class="link-section p-1 border">
+                                                                <a href="/urunler/ahsap-boncuklar">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Ahşap Boncuklar</b></small> </div></a>
+
+                                                            </div>
+                                                            <div  class="link-section p-1 border">
+                                                                <a href="/urunler/sonil">
+                                                                      <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Şönil</b></small> </div></a>
+
+                                                            </div>
+                                                            <div  class="link-section p-1 border">
+                                                                <a href="/urunler/goz-ve-burun">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Oyuncak Gözler</b></small> </div></a>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col mega-box">
+                                                            <div  class="link-section p-1 border">
+                                                                <a href="/urunler/goz-ve-burun">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Oyuncak Burunlar</b></small> </div></a>
+
+                                                            </div>
+                                                            <div  class="link-section p-1 border">
+                                                                <a href="/urunler/emzik-zinciri-malzemeleri">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Emzik Malzemeleri</b></small> </div></a>
+
+                                                            </div>
+                                                            <div  class="link-section p-1 border">
+                                                                <a href="/urunler/amigurumi">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Çıngırak Zilleri</b></small> </div></a>
+
+                                                            </div>
+                                                            <div  class="link-section p-1 border">
+                                                                <a href="/urunler/amigurumi">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Kilitli Poşetler</b></small> </div></a>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col mega-box">
+                                                            <div  class="link-section p-1 border">
+                                                                <a href="/urunler/emzik-zinciri-malzemeleri">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Mantar Klipsler</b></small> </div></a>
+
+                                                            </div>
+                                                            <div  class="link-section p-1 border">
+                                                                <a href="/urunler/dugme-cesitleri">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Renkli Düğmeler</b></small> </div></a>
+
+                                                            </div>
+                                                            <div  class="link-section p-1 border">
+                                                                <a href="/urunler/boncuk-cesitleri">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Nazar Boncukları</b></small> </div></a>
+
+                                                            </div>
+                                                            <div  class="link-section p-1 border">
+                                                                <a href="/urunler/emzik-zinciri-malzemeleri">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Paraşüt İpler</b></small> </div></a>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col mega-box">
+                                                            <div  class="link-section p-1 border">
+                                                                <a href="/urunler/amigurumi">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Vik Vik Çeşitleri</b></small> </div></a>
+
+                                                            </div>
+                                                            <div  class="link-section p-1 border">
+                                                                <a href="/urunler/amigurumi">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Müzik Kutuları</b></small> </div></a>
+
+                                                            </div>
+                                                            <div  class="link-section p-1 border">
+                                                                <a href="/urunler/amigurumi">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Pileksi Etiketler</b></small> </div></a>
+
+                                                            </div>
+                                                            <div  class="link-section p-1 border">
+                                                                <a href="/urunler/amigurumi">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Metal Çıt Çıtlar</b></small> </div></a>
+
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </li>
                                         </ul>
                                     </li>
                                     <!--mega-meu end-->
-                                    @endforeach
+                                    <li>
+                                        <a  class="dark-menu-item" href="javascript:void(0)"><p style="font-size:13px">İP ÇEŞİTLERİ</p></a>
+                                        <ul>
+                                            <li><a  href="/urunler/cotton-gold-iplikler">Alize Cotton Gold</a></li>
+                                            <li><a  href="/urunler/patiklik-iplik">Patiklik İp</a></li>
+                                            <li><a  href="/urunler/patiklik-iplik">Kristal Lif İpleri</a></li>
+                                            <li><a  href="/urunler/patiklik-iplik">Kadife İpler</a></li>
+                                            <li><a  href="/urunler/rafya-ipleri">Rafya İpleri</a></li>
+                                            <li><a  href="/urunler/patiklik-iplik">Tümü</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a  class="dark-menu-item" href="javascript:void(0)"><p style="font-size:13px">DÜĞME VE BONCUKLAR</p></a>
+                                        <ul>
+                                            <li><a  href="/urunler/dugme-cesitleri">Düğme Çeşitleri</a></li>
+                                            <li><a  href="/urunler/boncuk-cesitleri">Boncuk Çeşitleri</a></li>
+                                            <li><a  href="/kategori/dugme-ve-boncuk-cesitleri">Tümü</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a  class="dark-menu-item" href="javascript:void(0)"><p style="font-size:13px">KASNAK VE MAKROME</p></a>
+                                        <ul>
+                                            <li><a  href="/urunler/kasnak-cesitleri">Kasnak Çeşitleri</a></li>
+                                            <li><a  href="/urunler/makrome-cesitleri">Makrome Çeşitleri</a></li>
+                                            <li><a  href="/kategori/kasnak-ve-makrome">Tümü</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a  class="dark-menu-item" href="javascript:void(0)"><p style="font-size:13px">ŞİŞLER VE TIĞLAR</p></a>
+                                        <ul>
+                                            <li><a  href="/urunler/sisler-tiglar">Örgü Şişleri</a></li>
+                                            <li><a  href="/urunler/sisler-tiglar">Tığ Çeşitleri</a></li>
+                                            <li><a  href="/kategori/sisler-ve-tiglar">Tümü</a></li>
+                                        </ul>
+                                    </li>
+                                    <!--mega-meu start-->
+                                    <li class="mega" >
+                                        <a  class="dark-menu-item" href="javascript:void(0)"><p style="font-size:13px">ÇANTA MALZEMELERİ </p></a>
+                                        <ul class="mega-menu full-mega-menu ratio_landscape">
+                                            <li>
+                                                <div class="container">
+                                                    <div class="row">
+
+                                                        <div class="col mega-box">
+                                                            <div  class="link-section p-1 border">
+                                                                <a  href="/urunler/canta-askilari">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Çanta Askıları</b></small> </div></a>
+
+                                                            </div>
+                                                            <div  class="link-section p-1 border ">
+                                                                <a  href="/urunler/canta-askilari">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Çanta Setleri</b></small> </div></a>
+
+                                                            </div>
+                                                            <div  class="link-section p-1 border">
+                                                                <a  href="/urunler/canta-zincileri">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Çanta Zincirleri</b></small> </div></a>
+
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col mega-box">
+
+                                                            <div  class="link-section p-1 border">
+                                                                <a  href="/urunler/canta-saplari">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Çanta Sapları</b></small> </div></a>
+
+                                                            </div>
+                                                            <div  class="link-section p-1 border">
+                                                                <a  href="/urunler/canta-tabanlari">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Çanta Tabanları</b></small> </div></a>
+
+                                                            </div>
+                                                            <div  class="link-section p-1 border">
+                                                                <a  href="/urunler/canta-askilari">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Çanta Kanvaları</b></small> </div></a>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col mega-box">
+                                                            <div  class="link-section p-1 border">
+                                                                <a  href="/urunler/canta-tabanlari">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Deri Tabanlar</b></small> </div></a>
+
+                                                            </div>
+                                                            <div  class="link-section p-1 border">
+                                                                <a  href="/urunler/canta-malzemeleri">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Çanta Yayları</b></small> </div></a>
+
+                                                            </div>
+                                                            <div  class="link-section p-1 border">
+                                                                <a  href="/urunler/canta-malzemeleri">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Çanta Halkaları</b></small> </div></a>
+
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col mega-box">
+                                                            <div  class="link-section p-1 border">
+                                                                <a  href="/urunler/canta-malzemeleri">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Parça Deriler </b></small> </div></a>
+
+                                                            </div>
+                                                            <div  class="link-section p-1 border">
+                                                                <a  href="/urunler/canta-malzemeleri">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Çanta Bursları</b></small> </div></a>
+
+                                                            </div>
+                                                            <div  class="link-section p-1 border">
+                                                                <a  href="/urunler/canta-saplari">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Çanta Sapları</b></small> </div></a>
+
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col mega-box">
+                                                            <div  class="link-section p-1 border">
+                                                                <a  href="/urunler/canta-malzemeleri">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Mantar Klipsler</b></small> </div></a>
+
+                                                            </div>
+
+                                                            <div  class="link-section p-1 border">
+                                                                <a  href="/urunler/canta-malzemeleri">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Çanta Kaplamaları</b></small> </div></a>
+
+                                                            </div>
+                                                            <div  class="link-section p-1 border">
+                                                                <a  href="/urunler/canta-malzemeleri">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Çanta Kilitleri</b></small> </div></a>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col mega-box">
+                                                            <div  class="link-section p-1 border">
+                                                                <a  href="/urunler/canta-malzemeleri">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Çanta Fermuarları</b></small> </div></a>
+
+                                                            </div>
+                                                            <div  class="link-section p-1 border">
+                                                                <a  href="/urunler/canta-malzemeleri">
+                                                                <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Telefon Çantaları</b></small> </div></a>
+
+                                                            </div>
+                                                            <div  class="link-section p-1 border">
+                                                                <a  href="/urunler/canta-malzemeleri">
+                                                                   <div class="menu-title">
+                                                                    <small class="text-light text-capitalize"><b>Çanta Kancaları</b></small> </div></a>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <!--mega-meu end-->
+                                    <li>
+                                        <a  class="dark-menu-item" href="javascript:void(0)"><p style="font-size:13px">METAL VE DERİ</p></a>
+                                        <ul>
+                                            <li>    <a  href="/urunler/anahtarlik-cesitleri">Anahtarlık ve Kanca</a></li>
+                                            <li><a  href="/urunler/toka-cesitleri">Takı ve Toka Çeşitleri</a></li>
+                                            <li><a  href="/urunler/kece-tabanlar">Keçe Tabanları</a></li>
+                                            <li><a  href="/kategori/metal-ve-deri">Tümü</a></li>
+                                        </ul>
+                                    </li>
+                                    <!--mega-meu end-->
                                 </ul>
                             </nav>
                         </div>

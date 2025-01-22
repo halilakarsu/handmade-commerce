@@ -66,7 +66,7 @@
    <!--collection banner end-->
 
     <!--rounded category start-->
-    <section class="rounded-category  rounded-category-inverse">
+    <section class="rounded-category  rounded-category-inverse mt-3">
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -114,6 +114,8 @@
         </div>
     </section>
     <!--collection banner end-->
+
+
     <script>
         $(document).ready(function () {
             $('.add-to-cart-btn').click(function (e) {

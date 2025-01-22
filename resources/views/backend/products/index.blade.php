@@ -34,6 +34,7 @@
                     <table class="table table-striped">
                         <thead>
                         <tr>
+                            <th>No</th>
                             <th>Görsel</th>
                             <th>Ürün Adı</th>
                             <th>Fiyatı</th>
@@ -43,9 +44,11 @@
                             </tr>
                         </thead>
                         <tbody id="sortable">
+                        @php($a=0)
                         @foreach($products as $item)
 
                         <tr id="item-{{$item->id}}">
+                            <td>{{++$a}}</td>
                               <td  class="sortable">
                                 <img width="90px" src="/backend/images/products/{{$item->product_file}}">
                             </td>
