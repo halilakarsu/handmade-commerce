@@ -30,16 +30,47 @@ class ProductController extends Controller
     public function search(Request $request)
     {
         $searchTerm = $request->input('search_term');
-        $types = Types::with('products')->get();
-        $banners = Banners::all()->sortBy('banner_title');
-        $categories = Categories::with('types')->get();
-             $categoriPro = Categories::with('types.products')
-             ->WhereHas('types.products', function ($query) use ($searchTerm) {
-                $query->where('product_title', 'like', '%' . $searchTerm . '%');
-            })
+        $types = Types::all();
+        $categories = Categories::with('types')->get(); // Kategoriler ile ilişkileri çekiyoruz
+        $banners = Banners::all()->sortBy('banner_title'); // Bannerları alıyoruz
+        $products = Products::where('product_title', 'like', "%$searchTerm%")
             ->get();
-        // Arama sonuçlarını view'e gönderiyoruz
-        return view('frontend.products.search', compact('categoriPro', 'banners', 'types', 'categories'));
+        return view('frontend.products.search', compact('products', 'banners','types', 'categories'));
     }
+
+    public function fetch(Request $request)
+    {
+        if ($request->get('query')) {
+            $query = $request->get('query');
+
+            // Sadece 3 sonuç almak için `take(3)` kullanılıyor
+            $data = Products::select("product_title", "product_file")
+                ->where("product_title", "LIKE", "%{$query}%")
+                ->take(10)
+                ->get();
+
+            $output = '<ul class="dropdown-menu" style="display:block;">';
+
+            // Ürünleri listeleme
+            foreach ($data as $row) {
+                $output .= ' <li class="product-item"><a href="#">';
+
+                // Resim dosyasının yolunu belirlerken asset() fonksiyonunu kullanmak iyi bir uygulamadır
+                $output .= '<div class="product-info"><h5>' . $row->product_title . '</h5></div>';
+
+                $output .= '</a></li> ';
+            }
+
+            // View All Results kısmı
+            $output .= '<li class="view-all text-center"><a href="#" id="viewAllResults">Daha Fazla Ürün</a></li></ul>';
+
+            return response($output);
+        }
+
+        return response('');
+    }
+
+
+
 
 }

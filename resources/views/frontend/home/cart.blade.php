@@ -23,7 +23,7 @@
                     </thead>
                     <tbody>
                     @foreach ($cart_data as $data)
-                    <tr>
+                    <tr class="cartpage">
                         <td>
                             <a href="javascript:void(0)"><img src="/backend/images/products/{{$data['item_image']}}" alt="cart"  class=" "></a>
                         </td>
@@ -36,25 +36,28 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xs-3">
-                                    <h2 class="td-color">{{$data['item_image']}}</h2></div>
-                                <div class="col-xs-3">
+                                   <div class="col-xs-3">
                                     <h2 class="td-color"><a href="javascript:void(0)" class="icon"><i class="ti-close"></i></a></h2></div>
                             </div>
                         </td>
-                        <td>
-                            <h2>{{$data['item_price']}}</h2></td>
-                        <td>
-                            <div class="qty-box">
-                                <div class="input-group">
-                                    <input type="number" name="quantity" class="form-control input-number" value="{{$data['item_quantity']}}">
+                        <td class="cart-product-sub-total">
+                            <h2 class="cart-sub-total-price">{{number_format($data['item_price'],0)}}</h2></td>
+                        <td class="cart-product-quantity">
+                            <div class="input-group quantity">
+                                <input type="hidden" class="product_id" value="{{ $data['item_id'] }}">
+                                    <div class="input-group-prepend decrement-btn changeQuantity" style="cursor: pointer">
+                                    <span class="input-group-text">-</span>
+                                </div>
+                                <input type="text" class="qty-input form-control" maxlength="2" max="10" value="{{ $data['item_quantity'] }}">
+                                <div class="input-group-append increment-btn changeQuantity" style="cursor: pointer">
+                                    <span class="input-group-text">+</span>
                                 </div>
                             </div>
                         </td>
 
-                        <td>
+                        <td class="cart-product-grand-total">
                             <h2 class="td-color">{{$data['item_price']*$data['item_quantity']}}</h2></td>
-                        <td><button type="button" class="btn btn-danger btn-xs"> <i class="fa fa-times-circle"></i></İ> Sil</button></td>
+                        <td><button type="button" class="btn btn-danger btn-xs"> <i class="fa fa-times-circle"></i> Sil</button></td>
                     </tr>
                     @endforeach
                     </tbody>
@@ -87,6 +90,66 @@
     </div>
 </section>
 <!--section end-->
+<script>
+    $(document).ready(function () {
+
+        $('.increment-btn').click(function (e) {
+            e.preventDefault();
+            var incre_value = $(this).parents('.quantity').find('.qty-input').val();
+            var value = parseInt(incre_value, 10);
+            value = isNaN(value) ? 0 : value;
+            if(value<10){
+                value++;
+                $(this).parents('.quantity').find('.qty-input').val(value);
+            }
+        });
+
+        $('.decrement-btn').click(function (e) {
+            e.preventDefault();
+            var decre_value = $(this).parents('.quantity').find('.qty-input').val();
+            var value = parseInt(decre_value, 10);
+            value = isNaN(value) ? 0 : value;
+            if(value>1){
+                value--;
+                $(this).parents('.quantity').find('.qty-input').val(value);
+            }
+        });
+
+    });
+
+// Update Cart Data
+
+    $(document).ready(function () {
+
+        $('.changeQuantity').click(function (e) {
+            e.preventDefault();
+            var thisClick=$(this);
+            var quantity = $(this).closest(".cartpage").find('.qty-input').val();
+            var product_id = $(this).closest(".cartpage").find('.product_id').val();
+
+            var data = {
+                '_token': $('input[name=_token]').val(),
+                'quantity':quantity,
+                'product_id':product_id,
+            };
+
+            $.ajax({
+                url: '/update-to-cart',
+                type: 'POST',
+                data: data,
+                success: function (response) {
+                    thisClick.closest(".cartpage").find(".cart-grand-total-price").text("i am here");
+                    //window.location.reload();
+                    alertify.set('notifier','position','top-right');
+                    alertify.success(response.status);
+                }
+            });
+        });
+
+    });
+
+
+</script>
 @endsection
 
 

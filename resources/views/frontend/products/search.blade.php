@@ -76,9 +76,8 @@
                                         </div>
                                         <div class="product-wrapper-grid  product">
                                             <div class="row items">
-                                                @foreach ($categoriPro as $category)
-                                                    @foreach ($category->types as $type)
-                                                        @foreach ($type->products as $product)
+
+                                                        @foreach ($products as $product)
                                                             <div class="col-xl-3 col-md-4 col-6 col-grid-box item">
                                                                 <div class="product-box">
                                                                     <div class="product-imgbox">
@@ -110,8 +109,6 @@
                                                                 </div>
                                                             </div>
                                                         @endforeach
-                                                    @endforeach
-                                                @endforeach
 
 
                                             </div>

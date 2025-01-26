@@ -1,20 +1,25 @@
 <?php
 namespace App\Http\Controllers\frontend;
+use App\Http\Controllers\backend\BannersController;
 use App\Http\Controllers\Controller;
+use App\Models\Banners;
 use App\Models\Categories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use App\Models\Products;
+use App\Models\Types;
 use function Pest\Laravel\json;
 
 class CartController extends Controller
         {
 
-    public function cart()
-    {     $categories = Categories::with('types')->get();
+    public function cart() {
+        $types =Types::all();
+        $banners =Banners::all();
+        $categories = Categories::with('types')->get();
         $cookie_data = stripslashes(Cookie::get('shopping_cart'));
         $cart_data=json_decode($cookie_data,true);
-        return view('frontend.home.cart',compact('cart_data','categories'));
+        return view('frontend.home.cart',compact('cart_data','categories','types','banners'));
     }
 
     public function addtocart(Request $request)
@@ -25,7 +30,7 @@ class CartController extends Controller
                 if(Cookie::get('shopping_cart'))
                 {
                     $cookie_data = stripslashes(Cookie::get('shopping_cart'));
-                    $cart_data = json_decode($cookie_data, true);
+                    $cart_data = json_decode(stripslashes($cookie_data), true);
                 }
                 else
                 {
@@ -72,6 +77,33 @@ class CartController extends Controller
 
 
             }
+
+    public function updatetocart(Request $request)
+    {
+        $prod_id = $request->input('product_id');
+        $quantity = $request->input('quantity');
+        if(Cookie::get('shopping_cart'))
+        {
+            $cookie_data = stripslashes(Cookie::get('shopping_cart'));
+            $cart_data = json_decode($cookie_data, true);
+            $item_id_list = array_column($cart_data, 'item_id');
+            $prod_id_is_there = $prod_id;
+            if(in_array($prod_id_is_there, $item_id_list))
+            {
+                foreach($cart_data as $keys => $values)
+                {
+                    if($cart_data[$keys]["item_id"] == $prod_id)
+                    {
+                        $cart_data[$keys]["item_quantity"] =  $quantity;
+                        $item_data = json_encode($cart_data);
+                        $minutes = 60;
+                        Cookie::queue(Cookie::make('shopping_cart', $item_data, $minutes));
+                        return response()->json(['status'=>'"'.$cart_data[$keys]["item_name"].'" miktarı güncellendi.']);
+                    }
+                }
+            }
+        }
+    }
 
 
     public function cartloadbyajax()

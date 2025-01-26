@@ -102,7 +102,8 @@
                                                                         {{$product->product_price}}
                                                                         <span>{{$product->product_price}}</span>
                                                                     </h5>
-                                                                    <button class="tooltip-top add-cartnoty" data-tippy-content="Beni Sepete Ekle">
+                                                                    <input type="hidden" value="1" id="quantity" name="quantity">
+                                                                    <button id="{{$product->id}}" class="add-to-cart-btn tooltip-top add-cartnoty" data-tippy-content="Beni Sepete Ekle">
                                                                      Sepete Ekle
                                                                     </button>
                                                                 </div>
@@ -110,7 +111,6 @@
                                                         </div>
                                                     @endforeach
                                                 @endforeach
-
                                             </div>
                                         </div>
 
@@ -124,7 +124,6 @@
         </div>
     </section>
     <!-- section End -->
-
     <script>
         $(document).ready(function () {
             $('.add-to-cart-btn').click(function (e) {
@@ -137,7 +136,7 @@
                 var product_id = $(this).attr('id');
                 var quantity = $("#quantity").val();
                 $.ajax({
-                    url: "add-to-cart",
+                    url: "/add-to-cart",
                     method: "POST",
                     data: {
                         'quantity': quantity,
@@ -151,6 +150,7 @@
                 });
             });
         });
+
     </script>
 @endsection
 

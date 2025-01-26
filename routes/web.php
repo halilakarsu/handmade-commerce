@@ -79,8 +79,10 @@ Route::post('/registers/logout', [RegisterController::class, 'logout']);
 Route::get('/urunler/{slug}', [ProductController::class, 'index'])->name('frontend.products');
 Route::get('/kategori/{slug}', [ProductController::class, 'category'])->name('frontend.categories');
 Route::get('/arama', [ProductController::class, 'search'])->name('frontend.search');
-
+Route::get('ara', [ProductController::class, 'ara'])->name('ara');
+Route::post('/autocomplete/fetch', [ProductController::class, 'fetch'])->name('autocomplete.fetch');
 Route::post('/add-to-cart',[CartController::class,'addtocart'])->name('addtocart');
+Route::post('update-to-cart',[CartController::class,'updatetocart'])->name('updatetocart');
 Route::get('/cart',[CartController::class,'cart'])->name('cart');
 Route::get('/load-cart-data',[CartController::class,'cartloadbyajax']);
 

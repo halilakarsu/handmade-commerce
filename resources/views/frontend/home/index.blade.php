@@ -25,7 +25,7 @@
     <!--title start-->
 
 
-    <!--discount banner start-->
+    <!--discount banner start
     <section class="discount-banner">
         <div class="container">
             <div class="row">
@@ -43,7 +43,7 @@
             </div>
         </div>
     </section>
-    <!--discount banner end-->
+    discount banner end-->
 
     <!--collection banner start-->
     <section class="collection-banner section-pt-space b-g-white ">
