@@ -1,8 +1,7 @@
 @extends('backend.layouts.index')
 @section('title','Anasayfa')
 @section('content')
-    <div class="page-body">
-
+<div class="page-body">
 <!-- Container-fluid starts-->
 <div class="container-fluid">
     <div class="page-header">
@@ -85,5 +84,4 @@
         </div>
 
     </div>
-
 @endsection

@@ -7,8 +7,19 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Banners;
+use App\Models\Categories;
+use App\Models\Types;
 class RegisterController extends Controller
 {
+
+    public function index()
+    {
+        $banners=Banners::all()->sortBy('banner_title');
+        $categories = Categories::with('types')->get();
+        $types =Types::all();
+        return view('frontend.account.index',compact('banners','types','categories'));
+    }
     // Register login
     public function login(Request $request)
     {
@@ -25,7 +36,7 @@ class RegisterController extends Controller
             return back()->with('error', 'Hatalı Giriş Yapıldı.');
         }
         Auth::guard('registers')->login($user);
-        return redirect()->route('frontend.home');
+        return redirect()->route('cart');
     }
 
     // Register logout

@@ -69,13 +69,7 @@
                     </form>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12 map">
-                    <div class="theme-card">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96255.23416499364!2d28.740948471747938!3d41.069515775380154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa5cd31c82bc5%3A0x31d4781c78a657b!2sPopyo%20Hobi!5e0!3m2!1str!2str!4v1736542607159!5m2!1str!2str" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                </div>
-            </div>
+           
         </div>
     </section>
     <!--Section ends-->

@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 class SlidersController extends Controller
 {
     public function index()
-    {    $sliders=Sliders::all()->sortBy('slider_must');
+    {    $sliders=Sliders::where('slider_status',1)->get()->sortBy('slider_must');
          return view('backend.sliders.index')->with('sliders', $sliders);
     }
 
@@ -21,21 +21,20 @@ class SlidersController extends Controller
 
     public function store(Request $request)
     {
-
-
-            $slug=Str::slug($request->slider_title);
-
         if($request->hasFile('slider_file')){
             $request->validate([
                 'slider_file'=>'required|image|mimes:jpg,jpeg,png|max:2048',
+                'slider_title'=>'required',
+                'slider_slug'=>'required'
             ]);
         }
         $file_name='image'.rand(1,2000).'.'.$request->slider_file->getClientOriginalExtension();
         $request->slider_file->move(public_path('backend/images/sliders'),$file_name);
         $sliders=Sliders::insert([
             "slider_file"=>$file_name,
-            "slider_status"=>$request->slider_status,
-            "slider_slug"=>$slug]);
+            "slider_title"=>$request->slider_title,
+            "slider_slug"=>$request->slider_slug,
+            "slider_status"=>$request->slider_status]);
         if($sliders){
             return redirect(route('sliders.index'))->with('success','İşlem Başarılı');
         }
@@ -58,7 +57,8 @@ class SlidersController extends Controller
         if($request->hasFile('slider_file')){
             $request->validate([
                 'slider_file'=>'required|image|mimes:jpg,jpeg,png|max:2048',
-                'slider_title'=>'required'
+                'slider_title'=>'required',
+                'slider_slug'=>'required'
             ]);
             $file_name='image'.rand(1,2000).'.'.$request->slider_file->getClientOriginalExtension();
             $request->slider_file->move(public_path('backend/images/sliders'),$file_name);
@@ -66,14 +66,14 @@ class SlidersController extends Controller
 
                 "slider_file"=>$file_name,
                 "slider_title"=>$request->slider_title,
-                "slider_slug"=>$slug,
+                "slider_slug"=>$request->slider_slug,
                 "slider_status"=>$request->slider_status
             ]);
         } else {
             $sliders=Sliders::where('id',$id)->update([
                "slider_status"=>$request->slider_status,
                 "slider_title"=>$request->slider_title,
-                 "slider_slug"=>$slug
+                 "slider_slug"=>$request->slider_slug
             ]);
 
         }

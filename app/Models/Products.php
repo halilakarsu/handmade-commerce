@@ -10,4 +10,13 @@ class Products extends Model
     {
         return $this->belongsTo(Types::class, 'product_type_id');
     }
+
+
+
+// Product Modeli
+public function orders()
+{
+    return $this->belongsTo(Orders::class, 'product_id');
+}
+
 }

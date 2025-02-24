@@ -27,11 +27,11 @@
                                 <label >Şifre</label>
                                 <input name="customer_password" type="password" class="form-control"  placeholder="Şifreniz" required="">
                             </div>
-                            <button type="submit" class="btn btn-normal">Giriş Yap</button>
-                            <a class="float-end txt-default mt-2" href="forget-pwd.html">Şifre mi Unuttum</a>
+                            <button type="submit" class="btn btn-solid bg-pink">Giriş Yap</button>
+                            <a class="float-end txt-default mt-2" href="{{route('frontend.forget')}}">Şifre mi Unuttum</a>
                         </form>
-                        <p class="mt-3">Sisteme ücretsiz bir şekilde kayıt olup siparişlerinizin daha hızlı ve güvenli bir şekilde size ulaşmasını sağlayabilirsiniz.</p>
-                        <a href="{{route('frontend.register')}}" class="txt-default pt-3 d-block">Kayıt Ol</a>
+                        <p class="mt-3">Yoksa hesabınız hala yok mu? Hemen kayıt ol buttonuna basarak hızlı bir şekilde sisteme kayıt olabilirsiniz.</p>
+                        <a href="{{route('frontend.register')}}" class="btn btn-secondary btn-sm">Kayıt Ol</a>
                     </div>
                 </div>
             </div>

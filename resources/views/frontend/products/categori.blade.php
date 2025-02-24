@@ -84,25 +84,25 @@
                                                                     <div class="product-imgbox">
                                                                         <div class="product-front">
                                                                             <!-- Ürün sayfasına yönlendirme -->
-                                                                            <a href="">
+                                                                            <a href="{{ route('product.detail', ['slug' => $product->product_slug])}}">
                                                                                 <img src="/backend/images/products/{{$product->product_file}}" class="img-fluid" alt="product">
                                                                             </a>
                                                                         </div>
                                                                         <div class="product-back">
-                                                                            <a href="">
+                                                                            <a href="{{ route('product.detail', ['slug' => $product->product_slug])}}">
                                                                                 <img src="/backend/images/products/{{$product->product_file}}" class="img-fluid" alt="product">
                                                                             </a>
                                                                         </div>
                                                                     </div>
 
                                                                     <div class="product-detail product-detail2">
-                                                                        <a href="">
+                                                                        <a href="{{ route('product.detail', ['slug' => $product->product_slug])}}">
                                                                             <h3>{{$product->product_title}}</h3>
                                                                         </a>
-                                                                        <h5>
+                                                                        <h1>
                                                                             {{$product->product_price}}
                                                                             <span>{{$product->product_price}}</span>
-                                                                        </h5>
+                                                                        </h1>
                                                                         <button class="tooltip-top add-cartnoty" data-tippy-content="Beni Sepete Ekle">
                                                                             Sepete Ekle
                                                                         </button>

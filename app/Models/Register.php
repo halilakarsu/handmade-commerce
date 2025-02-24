@@ -11,7 +11,7 @@ class Register extends Authenticatable
 
     protected $table = 'registers';
 
-    protected $fillable = ['customer_email', 'customer_password'];
+    protected $fillable = ['customer_name','customer_lastname','customer_adres','customer_phone','customer_email', 'customer_password','customer_il', 'customer_ilce'];
 
 
     protected $hidden = ['customer_password'];

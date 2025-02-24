@@ -2547,8 +2547,8 @@ $('.feature-slide').slick({
   $('.add-cartnoty').on('click', function () {
     $.notify({
       icon: 'fa fa-check',
-      title: 'Success!',
-      message: 'Item Successfully added to your cart'
+      title: 'Ürün!',
+      message: 'Sepetinize başarılı bir şekilde eklendi.'
     },{
       element: 'body',
       position: null,
@@ -2563,7 +2563,7 @@ $('.feature-slide').slick({
       offset: 20,
       spacing: 10,
       z_index: 1031,
-      delay: 5000,
+      delay: 2000,
       animate: {
         enter: 'animated fadeInDown',
         exit: 'animated fadeOutUp'

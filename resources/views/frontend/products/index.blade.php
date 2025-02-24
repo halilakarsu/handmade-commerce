@@ -10,7 +10,7 @@
                         <div>
                             <h2>ÜRÜNLER</h2>
                             <ul>
-                                <li><a href="index.html">Anasayfa</a></li>
+                                <li><a href="/">Anasayfa</a></li>
                                 <li><i class="fa fa-angle-double-right"></i></li>
                                 <li><a href="javascript:void(0)">Ürünler</a></li>
                             </ul>
@@ -73,7 +73,7 @@
                                                     <div class="filter-main-btn"><span class="filter-btn btn btn-theme"><i class="fa fa-filter" aria-hidden="true"></i> Filtrele</span></div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div>  
                                         <div class="product-wrapper-grid  product">
                                             <div class="row items">
 
@@ -83,34 +83,38 @@
                                                             <div class="product-box">
                                                                 <div class="product-imgbox">
                                                                     <div class="product-front">
-                                                                        <a href="product-page(left-sidebar).html">
+                                                                        <a href="{{ route('product.detail', ['slug' => $product->product_slug])}}">
                                                                             <img src="/backend/images/products/{{$product->product_file}}" class="img-fluid" alt="product">
                                                                         </a>
                                                                     </div>
                                                                     <div class="product-back">
-                                                                        <a href="product-page(left-sidebar).html">
-                                                                            <img src="/backend/images/products/{{$product->product_file}}" class="img-fluid" alt="product">
+                                                                        <a href="{{ route('product.detail', ['slug' => $product->product_slug])}}">
+                                                                            <img style="width:50px !important" src="/backend/images/products/{{$product->product_file}}" class="img-fluid" alt="product">
                                                                         </a>
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="product-detail product-detail2 ">
-                                                                    <a href="product-page(left-sidebar).html">
-                                                                        <h3>{{$product->product_title}}</h3>
-                                                                    </a>
-                                                                    <h5>
-                                                                        {{$product->product_price}}
-                                                                        <span>{{$product->product_price}}</span>
-                                                                    </h5>
-                                                                    <button class="tooltip-top add-cartnoty" data-tippy-content="Beni Sepete Ekle">
+                                                                <div class="product-detail product-detail2">
+                                                                  <div class="blog-details-2 text-light">
+                                                          <a href="blog-details.html" tabindex="0">
+                                                             <h4  class="text-lila">{{$product->product_title}}</h4>
+                                                          </a>
+                                                          
+                                                       </div>
+                                                                    <h2 style="font-size:25px !important" class="poppins-bold text-dark">
+                                                                        {{$product->product_price}}₺</h2>
+                                                                    <input type="hidden" value="1" id="quantity" name="quantity">
+                                                                    <button id="{{$product->id}}" class="add-to-cart-btn tooltip-top add-cartnoty" data-tippy-content="Beni Sepete Ekle">
                                                                      Sepete Ekle
                                                                     </button>
                                                                 </div>
+                                                        
                                                             </div>
                                                         </div>
+                                                        
+                                                           
                                                     @endforeach
                                                 @endforeach
-
                                             </div>
                                         </div>
 
@@ -124,7 +128,6 @@
         </div>
     </section>
     <!-- section End -->
-
     <script>
         $(document).ready(function () {
             $('.add-to-cart-btn').click(function (e) {
@@ -137,20 +140,21 @@
                 var product_id = $(this).attr('id');
                 var quantity = $("#quantity").val();
                 $.ajax({
-                    url: "add-to-cart",
+                    url: "/add-to-cart",
                     method: "POST",
                     data: {
                         'quantity': quantity,
                         'product_id': product_id,
                     },
                     success: function (response) {
-                        alertify.set('notifier','position','top-right');
-                        alertify.success(response.status);
+                        //alertify.set('notifier','position','top-left');
+                        //alertify.success(response.status);
                         cartload();
                     },
                 });
             });
         });
+
     </script>
 @endsection
 

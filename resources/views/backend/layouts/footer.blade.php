@@ -1,3 +1,5 @@
+
+
 <!-- footer start-->
 <footer class="footer">
     <div class="container-fluid">
@@ -97,5 +99,16 @@
 <script src="/backend/assets/js/jsgrid/griddata-manage-product.js"></script>
 <script src="/backend/assets/js/jsgrid/jsgrid-manage-product.js"></script>
 @yield('js')
+<script>
+var menuToggle = document.querySelector(".whatsapp-float"),
+    wrapperMenu = document.querySelector(".nav-whatsapp"),
+    closeBtn = document.querySelector(".closeWA");
+
+menuToggle.onclick = function() {
+  wrapperMenu.classList.toggle('active');
+}
+closeBtn.onclick = function() {
+  wrapperMenu.classList.remove('active');
+};</script>
 </body>
 </html>

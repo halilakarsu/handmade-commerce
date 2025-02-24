@@ -45,7 +45,7 @@
                                                             <h4 class="text-danger "><b>{{$category->categori_title}}</b></h4>
                                                         </button>
                                                     </h2>
-                                                    <div id="collapseOne{{$category->id}}" class="accordion-collapse collapse {{$i==1? "show" : ""}}" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                                    <div id="collapseOne{{$category->id}}" class="accordion-collapse collapse {{$i==1? "show " : " " }} aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                                         @foreach($category->types  as $type)
                                                             <div class="accordion-body">
                                                                 <strong>   <a href="">{{$type->type_title}}</a></strong>
@@ -76,27 +76,26 @@
                                         </div>
                                         <div class="product-wrapper-grid  product">
                                             <div class="row items">
-                                                @foreach ($categoriPro as $category)
-                                                    @foreach ($category->types as $type)
-                                                        @foreach ($type->products as $product)
+
+                                                        @foreach ($products as $product)
                                                             <div class="col-xl-3 col-md-4 col-6 col-grid-box item">
                                                                 <div class="product-box">
                                                                     <div class="product-imgbox">
                                                                         <div class="product-front">
                                                                             <!-- Ürün sayfasına yönlendirme -->
-                                                                            <a href="">
+                                                                            <a href="{{route('product.detail',['slug'=>$product->product_slug])}}">
                                                                                 <img src="/backend/images/products/{{$product->product_file}}" class="img-fluid" alt="product">
                                                                             </a>
                                                                         </div>
                                                                         <div class="product-back">
-                                                                            <a href="">
+                                                                            <a href="{{ route('product.detail', ['slug' => $product->product_slug])}}">
                                                                                 <img src="/backend/images/products/{{$product->product_file}}" class="img-fluid" alt="product">
                                                                             </a>
                                                                         </div>
                                                                     </div>
 
                                                                     <div class="product-detail product-detail2">
-                                                                        <a href="">
+                                                                        <a href="{{ route('product.detail', ['slug' => $product->product_slug])}}">
                                                                             <h3>{{$product->product_title}}</h3>
                                                                         </a>
                                                                         <h5>
@@ -109,9 +108,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        @endforeach
-                                                    @endforeach
-                                                @endforeach
+                                                      @endforeach
 
 
                                             </div>
